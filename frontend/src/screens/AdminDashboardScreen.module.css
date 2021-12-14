@@ -1,0 +1,263 @@
+.dashboardSection {
+  display: grid;
+  grid-template-columns: 0.2fr 1fr;
+  grid-gap: 3rem;
+  background-color: #f5f5f5;
+  padding-right: 2rem
+}
+
+.dashboardContentLeft {
+  background: #192129;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4rem 0;
+  align-items: center;
+}
+
+.salesOrdersRevenues {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 8rem;
+}
+
+.sales,
+.orders,
+.revenues {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  justify-content: center;
+  padding: .5rem 1rem;
+}
+
+.salesRight img,
+.ordersRight img,
+.revenuesRight img {
+  margin-left: 3rem;
+}
+
+.shopOverview h5 {
+  font-weight: 600;
+  font-size: 2.45rem;
+  text-transform: uppercase;
+  color: #484c50;
+  margin-bottom: 2.5rem;
+}
+
+.sales .salesLeft h6,
+.orders .ordersLeft h6,
+.revenues .revenuesLeft h6 {
+  font-weight: 500;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: #484c50;
+  margin-bottom: .5rem;
+}
+
+.sales .salesLeft h3,
+.orders .ordersLeft h3,
+.revenues .revenuesLeft h3 {
+  font-weight: 600;
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: #484c50;
+  margin-bottom: .5rem;
+}
+
+.sales .salesLeft p,
+.orders .ordersLeft p,
+.revenues .revenuesLeft p {
+  font-size: 1.4rem;
+  color: #484c50;
+}
+
+.sales .salesLeft span {
+  color: #3cc839;
+}
+
+.orders .ordersLeft span {
+  color: #ffb649;
+}
+
+.revenues .revenuesLeft span {
+  color: #3cc839;
+}
+
+.earningsRunningOrders {
+  padding: 2.5rem 0 2.5rem 0;
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  grid-gap: 8rem;
+}
+
+.earnigs {
+  flex: 0.7;
+  background-color: #ffffff;
+  padding: 1.5rem 2rem;
+}
+
+.runningOrders {
+  flex: 0.3;
+  background-color: #ffffff;
+  padding: 1.5rem 2rem;
+}
+
+.productOrders .orderLine .imgName img {
+  width: 6.6rem;
+  height: 3.1rem;
+  margin-right: 4rem;
+}
+
+.productOrders .orderLine .imgName {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.productOrders .orderLine {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 0;
+}
+
+.orderLine:not(:last-child) {
+  border-bottom: 1px solid #c9d2d9;
+}
+
+.runningOrders .headRunningOrders,
+.earnigs .headEarnings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.earnigs .calculationEarnings img {
+  width: 100%;
+  max-height: 28.2rem;
+  object-fit: fill;
+}
+
+.leftHeadEarnings h5,
+.leftHeadRunningOrders h5 {
+  font-weight: 600;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  color: #484c50;
+}
+
+.rightHeadEarnings {
+  display: flex;
+  align-items: center;
+}
+
+.rightHeadEarnings p,
+.rightHeadRunningOrders p {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #3d78fb;
+}
+
+.rightHeadEarnings i {
+  color: #3d78fb;
+  margin-left: 1rem;
+}
+
+.orderLine .imgName h6 {
+  font-weight: 600;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: #484c50;
+}
+
+.orderLine .price p {
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: #484c50;
+}
+
+.lastOrder {
+  background-color: #ffffff;
+  padding: 1.5rem 2rem;
+}
+
+.lastOrder .headLastOrder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lastOrder .headLastOrder .leftHeadLastOrder h5 {
+  font-weight: 600;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  color: #484c50;
+}
+
+.lastOrder .headLastOrder .rightHeadLastOrder {
+  display: flex;
+  align-items: center;
+}
+
+.lastOrder .headLastOrder .rightHeadLastOrder p {
+  color: #3d78fb;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.lastOrder .headLastOrder .rightHeadLastOrder i {
+  color: #3d78fb;
+  margin-left: 10px;
+}
+
+.ordersWrapper table {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  border-collapse: separate;
+  border-spacing: 0 2rem;
+}
+
+.ordersWrapper table tr,
+.ordersWrapper table td {
+  border: 0;
+}
+
+.ordersWrapper table tr {
+  color: #5a6d80;
+}
+
+.ordersWrapper table tr:not(:first-child) {
+  background: #f7f7f8;
+  box-shadow: 0px 0px 2px rgba(38, 50, 65, 0.25);
+  border-radius: 3px;
+}
+
+.cheakboxAllign {
+  display: flex;
+  align-items: center;
+}
+
+.ordersWrapper table tr th {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.ordersWrapper table tr td {
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 16px;
+}
+
+.cheakboxAllign input[type="checkbox"] {
+  border: 1px solid #929aa2;
+  border-radius: 2px;
+  margin-right: 5px;
+}
+
+.rightAction {
+  text-align: right;
+}

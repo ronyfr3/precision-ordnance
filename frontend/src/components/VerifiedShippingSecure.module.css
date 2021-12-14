@@ -1,0 +1,35 @@
+.verifiedShippingSecureSection {
+  background-color: #ffffff;
+  padding: 7rem 0;
+}
+
+.verifiedShippingSecureContent {
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5rem;
+}
+
+.verifiedShippingSecureContent img {
+  margin-bottom: 1rem;
+}
+
+.verifiedShippingSecureContent h4 {
+  color: #484c50;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.verifiedShippingSecureContent p {
+  font-size: 1.6rem;
+  color: #5a6d80;
+  font-weight: 300;
+}
+
+
+@media (max-width: 1000px) {
+  .verifiedShippingSecureContent {
+    grid-template-columns: 1fr;
+  }
+}

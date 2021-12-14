@@ -1,0 +1,57 @@
+.civilianMilitaryMembershipEventsSection {
+  background-color: #f6f6f6;
+  padding: 7rem 0;
+}
+
+.civilianMilitaryMembershipEventsContent {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+}
+
+.civilianMilitaryMembershipEventsContent::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(37, 45, 53, 0.69);
+}
+
+.civilianMilitaryMembershipEventsContent div {
+  position: relative;
+}
+
+.civilianMilitaryMembershipEventsContent div h3 {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -80%);
+  text-transform: uppercase;
+  font-style: italic;
+  line-height: 1.6;
+  color: #c9d2d9;
+  z-index: 100;
+}
+
+.civilianMilitaryMembershipEventsContent div img {
+  width: 100%;
+  vertical-align: middle;
+}
+
+@media (max-width: 800px) {
+  .civilianMilitaryMembershipEventsContent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
+  }
+}
+
+@media (max-width: 500px) {
+  .civilianMilitaryMembershipEventsContent {
+    display: grid;
+    grid-template-columns: 1fr;
+    position: relative;
+  }
+}

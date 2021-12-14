@@ -1,0 +1,29 @@
+.gallerySection {
+  padding: 7rem 0;
+}
+
+.allGalleryImage {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5rem;
+}
+
+.allGalleryImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 3px;
+  border: 1px solid #63FF23;
+  transition: all 0.5s ease;
+}
+
+.allGalleryImage img:hover {
+  transform: scale(1.1)
+}
+
+.gallerySection h2 {
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 5rem;
+  color: #484C50;
+}

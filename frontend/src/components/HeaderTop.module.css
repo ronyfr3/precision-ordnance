@@ -1,0 +1,156 @@
+
+.headerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  padding: 1.5rem 0;
+}
+
+.headerTopMiddle {
+  flex: 0.33;
+  text-align: center;
+}
+
+.headerTopMiddle img {
+  width: 30rem;
+  vertical-align: middle;
+}
+
+.headerTopLeft {
+  flex: 0.33;
+}
+
+.headerTopRight {
+  flex: 0.33;
+  justify-content: flex-end;
+}
+
+.headerTopLeft input {
+  border: none;
+  width: 50%;
+  padding: 0.5rem 1.5px;
+  border-bottom: 1px solid #fff;
+  background-color: #192129;
+  color: #fff;
+  font-weight: 300;
+  font-size: 1.6rem;
+  padding: 1rem;
+}
+
+.headerTopLeft input:focus {
+  background-color: #192129;
+}
+
+.headerTopLeft input::placeholder {
+  color: #fff;
+  font-size: 1.45rem;
+}
+
+.headerTopLeft {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 52%;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 100;
+}
+
+.headerTopRight {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.headerTopRightFirst {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.headerTopRightThird,
+.header-top-right-second {
+  cursor: pointer;
+}
+
+.headerTopRightThird a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.headerTopRightSecond {
+  position: relative;
+  color: #fff;
+}
+
+.headerTopRightSecond i {
+  font-size: 1.8rem;
+}
+
+.headerTopRightSecond span {
+  position: absolute;
+  top: -3px;
+  left: 1.2rem;
+  width: 1.3rem;
+  height: 1.3rem;
+  background-color: #f54748;
+  border-radius: 50%;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.3;
+}
+
+.downAngle {
+  padding-left: 0.5rem;
+}
+
+.headerTopRight {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.headerTopRightFirst,
+.headerTopRightSecond,
+.headerTopRightThird {
+  margin-left: 4rem;
+}
+
+.userSigninDropdown {
+  text-transform: capitalize;
+  position: relative;
+}
+
+.userSigninDropdown span {
+  user-select: none;
+}
+
+.userSigninList {
+  list-style: none;
+  display: none;
+  padding: 2rem;
+  position: absolute;
+  top: 3rem;
+  background-color: #192129;
+  width: 20rem;
+  box-shadow: 1px 1px 3px #262F38, -1px -1px 3px #262F38;
+}
+
+.userSigninList li:not(:last-child) {
+  padding-bottom: 1rem;
+}
+
+.dropdownShow {
+  display: block;
+}
+

@@ -1,0 +1,48 @@
+.searchPrintPdf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+
+.search {
+  position: relative;
+  width: 30rem;
+}
+
+.search input {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #E8E8E8;
+  border-radius: 3px;
+}
+
+.search span {
+  position: absolute;
+  right: 1rem;
+  top: 5px;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #8391A0;
+}
+
+.printPdf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* margin-bottom: ; */
+}
+
+.printBtn,
+.downloadBtn {
+  font-weight: 500;
+  font-size: 1.4rem;
+  padding: 1rem 1.2rem;
+  background-color: #f5f5f5;
+  color: #5a6d80;
+  border: 1px solid #5a6d80;
+}
+
+.downloadBtn {
+  margin-left: 2rem;
+}

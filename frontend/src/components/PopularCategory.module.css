@@ -1,0 +1,50 @@
+.popularCategorySection {
+  background-color: #f6f6f6;
+  padding: 7rem 0;
+}
+
+.popularCategoryWrapper > h3 {
+  text-transform: uppercase;
+  text-align: center;
+  color: #484c50;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+.popularCategoryWrapper > p {
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #5a6d80;
+  text-align: center;
+  width: 60%;
+  margin: auto;
+}
+
+.popularCategoryContent {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 4rem;
+  margin-top: 7rem;
+  text-align: center;
+}
+
+.popularCategoryContent > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: cetner;
+  width: 100%;
+  height: 25rem;
+  background-color: #FFFFFF;
+  padding: 1rem 2rem;
+  border-radius: 3px;
+}
+
+.popularCategoryContent a {
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #484C50;
+}
+

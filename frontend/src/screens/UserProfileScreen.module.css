@@ -1,0 +1,28 @@
+.userProfileSection {
+  min-height: 70vh;
+  padding: 8rem 0;
+}
+
+.userProfileWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 5rem;
+}
+
+.userProfileForm input {
+  width: 100%;
+  padding: 1.5rem 1rem;
+  margin-bottom: 4rem;
+  border: 1px solid #c9d2d9;
+  border-radius: 3px;
+  font-size: 1.6rem;
+  color: #444456;
+  background-color: transparent;
+}
+
+.userProfileForm label {
+  color: #484c50;
+  margin-bottom: 4rem;
+  font-weight: 400;
+  font-size: 1.6rem;
+}

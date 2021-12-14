@@ -1,0 +1,11 @@
+.adminOrderListSection {
+  display: grid;
+  grid-template-columns: 0.2fr 1fr;
+  grid-gap: 3rem;
+  background-color: #f5f5f5;
+  padding-right: 2rem;
+}
+
+.adminAllOrderList h4 {
+  color: #484C50;
+}

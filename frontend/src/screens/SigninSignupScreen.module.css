@@ -1,0 +1,233 @@
+.container {
+  background: #fff;
+  border-radius: 0px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  max-width: 100%;
+  min-height: 48rem;
+}
+
+.formContainer form {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 0 15rem;
+  height: 100%;
+  justify-content: center;
+}
+
+.formContainer {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+}
+
+.signInContainer {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+
+.signUpContainer {
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;  
+}
+
+.overlayContainer {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+}
+
+.overlaySignup {
+  color: #fff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0) ;
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlayPanel {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+   align-items: center; 
+  padding: 0px 4rem;
+  height: 100%;
+  width: 50%;
+  text-align: center;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlayRight {
+  right: 0;
+  transform: translateX(0);
+}
+
+.backBtn {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  background-color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  border: 0;
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+  z-index: 1000;
+}
+
+.backBtn2 {
+  background-color: #000;
+  color: #fff;
+}
+
+/* .overlayLeft { 
+  transform: translateX(-20%);
+} */
+
+/* Animation */
+
+/* Move signin to the right */
+.container.rightPanelActive .signInContainer {
+  transform: translateX(100%);
+}
+/* Move overlay */
+.container.rightPanelActive .overlayContainer {
+  transform: translateX(-100%);
+}
+/* Sign up over Sign In */
+.container.rightPanelActive .signUpContainer {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+}
+/* Overlay Back to right */
+.container.rightPanelActive .overlaySignup {
+  transform: translateX(50%);
+}
+.container.right-panel-active .overlayLeft {
+  transform: translateX(0);
+}
+.container.rightPanelActive .overlayRight {
+  transform: translateX(20%);
+}
+
+.overlayLeft, .overlayRight {
+  background-color: #0A0A0A;
+  background-size: contain;
+  background-position: center;
+  
+  object-fit: cover;
+  background-repeat: no-repeat;
+ 
+}
+
+.overlayLeft img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 4rem 7rem;
+}
+
+.overlayRight img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4rem 7rem;
+}
+
+.overlayLeft h5, .overlayRight h5 {
+  font-size: 2.5rem;
+  color: #C9D2D9;
+  margin-bottom: .7rem;
+}
+
+.overlayLeft p, .overlayRight p {
+  font-weight: 300;
+  font-size: 1.6rem;
+  text-align: center;
+  color: #929AA2;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.overlayLeft .ghost, .overlayRight .ghost {
+  padding: 1rem 4rem;
+  background: #5AFE3D;
+  border-radius: 4px;
+  font-size: 1.5rem;
+  color: #484C50;
+  font-weight: 400;
+  display: inline-block;
+}
+
+.overlayLeft, .overlayRight {
+  text-align: center
+}
+
+.marginSignup {
+  padding-top: 40rem;
+  padding: 40rem 19rem 0 19rem;
+}
+
+.formContainer form h5 {
+  font-weight: 500;
+  font-size: 3rem;
+  padding-bottom: 1rem;
+  color: #192129;
+}
+
+.formContainer form span {
+  font-weight: 300;
+  font-size: 1.8rem;
+  padding-bottom: 4rem;
+  color: #5A6D80;
+}
+
+.formContainer form label {
+  font-size: 2.0rem;
+  color: #484C50;
+  
+}
+
+.formContainer form input {
+  border: 1px solid #C9D2D9;
+  border-radius: 4px;
+  padding: 1rem 1.6rem;
+  margin-bottom: 2rem;
+}
+
+.formContainer form input[type='checkbox'] {
+  margin-bottom: 5rem;
+}
+
+.backgroundSignup {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 50px 100px;
+}

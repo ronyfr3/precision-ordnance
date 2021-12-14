@@ -1,0 +1,345 @@
+.settingsDetails h3 {
+  font-weight: 600;
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  color: #484c50;
+}
+
+.settingsDetails {
+  margin-bottom: 4rem;
+}
+
+.settingsSection {
+  display: grid;
+  grid-template-columns: 0.2fr 1fr;
+  grid-gap: 3rem;
+  background-color: #f5f5f5;
+  padding-right: 2rem;
+}
+
+.settingsDetailsWrapper {
+  display: grid;
+  grid-template-columns: 0.35fr 2fr;
+}
+
+.settingsDetailsWrapper .settingsDetailsRight .accountProfile h5,
+.noficationSection .accountProfile h5,
+.securitySection .accountProfile h5 {
+  font-weight: 600;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  color: #484c50;
+  margin-bottom: 2rem;
+}
+
+.settingsDetailsWrapper
+  .settingsDetailsRight
+  .accountProfile
+  .profileImage
+  span {
+    display: inline-block;
+    width: 5rem;
+    height: 5rem;     
+    width: 5rem;
+    height: 5rem;
+    border: 1px solid #192129;
+    border-radius: 50%;
+}
+
+.profileImage span i {
+  display: flex;
+  font-size: 2rem;
+  color: #192129;
+  align-items: center;
+  justify-content: center;
+  height: inherit;
+}
+
+.settingsDetailsWrapper
+  .settingsDetailsRight
+  .accountProfile
+  .profileImage {
+  position: relative;
+  display: inline-block;
+}
+
+.settingsDetailsWrapper
+  .settingsDetailsRight
+  .accountProfile
+  .profileImage
+  .profileChange {
+  position: absolute;
+  bottom: 6%;
+  right: 7%;
+  cursor: pointer;
+}
+
+.settingsDetailsWrapper
+  .settingsDetailsRight
+  .accountProfile
+  .profileImage
+  .profileChange
+  i {
+  background-color: #3d78fb;
+  color: #ffffff;
+  font-size: 1.8rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: cover;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settingsDetailsProfile .settingsDetailsWrapper ul li {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #aaaaaa;
+  margin-bottom: 2.5rem;
+}
+
+.settingsDetailsProfile .settingsDetailsWrapper ul li a,
+.settingsDetailsProfile .settingsDetailsWrapper ul li span {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+
+.settingsDetailsProfile .settingsDetailsWrapper ul li a i {
+  margin-right: 5px;
+}
+
+.settingsDetailsProfile .settingsDetailsWrapper ul {
+  border-right: 1px solid #c9d2d9;
+  padding: 3rem;
+}
+
+.settingsDetailsProfile .settingsDetailsWrapper ul li:nth-child(1) {
+  color: #484c50;
+  font-weight: 600;
+}
+
+.settingsDetailsProfile .settingsDetailsWrapper .settingsDetailsRight {
+  padding: 3rem;
+}
+
+.settingsDetailsProfile
+  .settingsDetailsWrapper
+  .settingsDetailsRight
+  .accountProfile
+  .profileImage {
+  margin-bottom: 2rem;
+}
+
+.settingsDetailsProfile
+  .settingsDetailsWrapper
+  .settingsDetailsRight
+  form
+  .doubleInput {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 4rem;
+}
+
+.settingsDetailsProfile
+  .settingsDetailsWrapper
+  .settingsDetailsRight
+  form
+  .doubleInput
+  label,
+.settingsDetailsProfile
+  .settingsDetailsWrapper
+  .settingsDetailsRight
+  form
+  .noDoubleInput
+  label {
+  font-weight: 300;
+  font-size: 1.6rem;
+  color: #484c50;
+}
+
+.tabItem {
+  cursor: pointer;
+}
+
+.tabItem i {
+  font-size: 1.4rem;
+  margin-right: 2px;
+}
+
+.settingsDetailsProfile
+  .settingsDetailsWrapper
+  .settingsDetailsRight
+  form
+  .doubleInput
+  input,
+.settingsDetailsProfile
+  .settingsDetailsWrapper
+  .settingsDetailsRight
+  form
+  .noDoubleInput
+  input {
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid #c9d2d9;
+  border-radius: 4px;
+  margin-bottom: 2.5rem;
+  margin-top: .8rem;
+}
+
+.accountButtons .saveBtn,
+.notificationButtons .saveBtn,
+.securityButtons .saveBtn {
+  display: inline-block;
+  background: #5AFD3D;
+  border-radius: 2px;
+  padding: 1.2rem 1.5rem;
+  color: #192129;
+  font-weight: 500;
+  font-size: 1.4rem;
+  margin-right: 3rem;
+}
+
+.accountButtons .cancelBtn,
+.notificationButtons .cancelBtn,
+.securityButtons .cancelBtn {
+  display: inline-block;
+  background: #ffffff;
+  color: #5a6d80;
+  border-radius: 2px;
+  padding: 1.2rem 1.5rem;
+  font-weight: 500;
+  font-size: 1.4rem;
+  border: 1px solid #5a6d80;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 6rem;
+  height: 3.4rem;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 2.6rem;
+  width: 2.6rem;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #484c50;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #484c50;
+}
+
+input:checked + .slider:before {
+  transform: translateX(2.6rem);
+}
+
+.slider.round {
+  border-radius: 3.4rem;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.notificationSection .notificationFiles .noti {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 3rem 0;
+}
+
+.notificationSection .notificationFiles .noti:not(:last-child) {
+  border-bottom: 1px solid #c9d2d9;
+}
+
+.notificationSection .notificationFiles .noti .notiLeft h6 {
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: #484c50;
+}
+
+.notificationSection .notificationFiles .noti .notiLeft p {
+  font-weight: 300;
+  font-size: 1.6rem;
+  color: #484c50;
+}
+
+.securitySection .emailField label,
+.changePassword label {
+  font-weight: 300;
+  font-size: 1.6rem;
+  color: #484c50;
+}
+.securitySection .emailField input,
+.changePassword input {
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid #c9d2d9;
+  border-radius: 4px;
+  margin-bottom: 2.5rem;
+  margin-top: .8rem;
+}
+
+.securitySection .changePassword {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.securitySection .changePassword a {
+  text-decoration: none;
+  color: #3d78fb;
+  font-weight: 400;
+  font-size: 1.6rem;
+  margin-left: 2rem;
+}
+
+.securitySection .noti {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 3rem 0;
+}
+
+.securitySection .noti .notiLeft h6 {
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: #484c50;
+}
+
+.securitySection .noti .notiLeft p {
+  font-weight: 300;
+  font-size: 1.6rem;
+  color: #484c50;
+}

@@ -1,0 +1,103 @@
+/* .last-product-orderpage {
+  background-color: #f5f5f5;
+  padding: 15px 20px;
+} */
+.orderListTable {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  border-collapse: separate;
+  border-spacing: 0 2rem;
+}
+
+.orderListTable tr {
+  color: #5a6d80;
+}
+
+.orderListTable img {
+  width: 4rem;
+  height: 3rem;
+  object-fit: contain;
+}
+
+.orderListTable tr {
+  background: #ffffff;
+  /* box-shadow: 0px 0px 2px rgba(38, 50, 65, 0.25); */
+  border-radius: 3px;
+  color: #5a6d80;
+}
+
+.cheakbox-allign {
+  display: flex;
+  align-items: center;
+}
+
+.orderListTable tr th {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 300;
+  background-color: #F5F5F5;
+  border: 0;
+  box-shadow: 0
+}
+
+.orderListTable tr td {
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 16px;
+}
+
+.orderListTable tr td a {
+  text-decoration: none;
+  color: inherit
+}
+
+.orderListTable .updateBtn {
+  color: #5CB85C;
+  padding: 3px;
+  cursor: pointer
+}
+
+.orderListTable .deleteBtn {
+  color: #D9534F;
+  padding: 3px;
+  cursor: pointer
+}
+
+.orderListPagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.orderListPagination select {
+ display: none;
+}
+
+.orderListPagination .showingPage {
+  font-size: 1.4rem;
+  color: #6A758B;
+  font-weight: 300 !important;
+}
+
+.ordertListPagination .prevBtn, .orderListPagination .nextBtn {
+  background-color: #FFFFFF;
+  padding: .5rem 1rem;
+  border: 0;
+  cursor: pointer;
+  border: 1px solid #B7C7DC;
+}
+
+.orderListPagination .nextBtn {
+  margin-left: 1rem;
+}
+
+.orderListPagination .prevBtn {
+  margin-right: 1rem;
+}
+
+.orderListPagination input {
+  border: 0;
+  border: 1px solid #B7C7DC;
+  padding: 5px;
+}

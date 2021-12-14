@@ -1,0 +1,58 @@
+.activationSection {
+  background-color: #192129;
+}
+
+.activationContent {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+.activationContent > div {
+  background-color:#fff;
+  padding: 5rem 10rem;
+  border-radius: 5px;
+  margin-bottom: 3rem;
+}
+
+.activationContent img {
+  width: 30rem;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+}
+
+.activationContent h2 {
+  color: #606060;
+  margin-bottom: 2.5rem;
+}
+
+.activationContent .userName {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #6E6B65;
+  margin-bottom: 2.5rem;
+  text-transform: capitalize;
+}
+
+.activationContent .activateBtn {
+  background-color: #192129;
+  color: #5A6D80;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.activationContent .activateBtn:hover {
+  background-color: #5A6D80;
+  color: #192129;
+}
+
+.activationContent p {
+  color: #5A6D69;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+ 

@@ -1,0 +1,128 @@
+.contactUsSection {
+  background-color: #f6f6f6;
+  padding: 7rem 0;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: 53%;
+}
+
+.contactUsAddress h3 {
+  text-transform: uppercase;
+  color: #484c50;
+  margin-bottom: 1rem;
+}
+
+.contactUsAddress p {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #5a6d80;
+}
+
+.address,
+.phone,
+.email {
+  display: flex;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.contactUsAddress .address p,
+.contactUsAddress .phone p,
+.contactUsAddress .email p {
+  font-size: 1.6rem;
+  margin-left: 5px;
+}
+
+.contactUsAddress .address img,
+.contactUsAddress .phone img,
+.contactUsAddress .email img {
+  width: 1.6rem;
+}
+
+.contactUsContent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  grid-column-gap: 20rem;
+}
+
+.contactUsForm {
+  background-color: #fff;
+  margin: 0 5rem 5rem;
+  padding: 5rem 3.5rem;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.contactUsForm h4 {
+  color: #484c50;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 5rem;
+}
+
+.contactUsForm input,
+.contactUsForm textarea {
+  width: 100%;
+  padding: 1rem 0;
+  border: 0;
+  border-bottom: 1px solid #5a6d80;
+  color: #5a6d80;
+  font-size: 1.4rem;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 3.5rem;
+}
+
+.contactUsForm textarea {
+  height: 12rem;
+  resize: vertical;
+}
+
+.contactUsForm input::placeholder,
+.contactUsForm textarea::placeholder {
+  color: #5a6d80;
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+
+.contactUsForm .btn {
+  background-color: #484c50;
+  padding: 1.5rem 3rem;
+  font-weight: 500;
+  font-size: 2rem;
+  font-family: "Poppins", sans-serif;
+}
+
+@media (max-width: 1400px) {
+  .contactUsForm {
+    margin: 0;
+  }
+}
+
+@media (max-width: 1000px) {
+  .contactUsContent {
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 5rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .contactUsContent {
+    text-align: center;
+    grid-template-columns: 1fr;
+    grid-gap: 5rem;
+  }
+
+  .contactUsAddress .address,
+  .contactUsAddress .phone,
+  .contactUsAddress .email {
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 2rem;
+  }
+
+  .submitBtn {
+    width: 11rem;
+    margin: auto;
+  }
+}

@@ -1,0 +1,10 @@
+.wordInProgressSection {
+  background-color: #192129;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+  padding: 3rem;
+  font-size: 2rem;
+  font-weight: 500;
+}

@@ -1,0 +1,357 @@
+.productBannerSection {
+  background-repeat: no-repeat;
+  height: 26rem;
+  background-position: center center;
+  background-size: cover;
+}
+
+.productBannerContent {
+  display: flex;
+  align-items: center;
+  height: 26rem;
+}
+
+.productBannerContent h1 {
+  line-height: 1.2;
+  color: #c9d2d9;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 2rem;
+}
+
+ul.breadcrumb {
+  list-style: none;
+}
+
+ul.breadcrumb li {
+  display: inline-block;
+  font-weight: 300;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+}
+
+ul.breadcrumb li + li:before {
+  padding: 3px;
+  color: #5a6d80;
+  content: "/\00a0";
+}
+ul.breadcrumb :nth-child(3) {
+  color: #c9d2d9;
+}
+
+ul.breadcrumb li a {
+  color: #5a6d80;
+  text-decoration: none;
+}
+
+/* Product Section */
+.productSection {
+  background-color: #f6f6f6;
+  padding: 7rem 0;
+}
+
+.totalSortItems {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #c9d2d9;
+}
+
+.sortItemsForms {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sortItemsForms select {
+  border: 0;
+  background-color: transparent;
+}
+
+.itemsForm {
+  margin-left: 5rem;
+}
+
+.total p {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #444456;
+  text-transform: uppercase;
+}
+
+.total p span {
+  font-weight: 600;
+}
+
+.sortFs,
+.sortFs select {
+  font-size: 2rem;
+  color: #444456;
+  font-weight: 300;
+}
+
+.sortFs select {
+  font-weight: 600;
+  padding: 1rem;
+  max-width: 15rem;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+}
+
+.sortItemsForms select option {
+  font-size: 1.5rem;
+}
+
+.allProduct {
+  display: grid;
+  grid-template-columns: 17rem auto;
+  grid-gap: 12rem;
+  padding: 3rem 0;
+}
+
+.productLeftContent h5 {
+  font-weight: 600;
+  color: #444456;
+  margin-bottom: 2rem;
+}
+
+.productLeftContent form {
+  border-bottom: 1px solid #5a6d80;
+  padding-bottom: 1rem;
+  margin-bottom: 3rem;
+}
+
+.productLeftContent form:nth-of-type(3) {
+  border-bottom: 0;
+}
+
+.productLeftContent form div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.productLeftContent form input {
+  width: 2rem;
+  height: 2rem;
+  color: #5a6d80;
+}
+
+.productLeftContent form label {
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #444456;
+  margin-left: 1rem;
+  user-select: none;
+}
+
+.productAndReview {
+  text-decoration: none;
+  display: grid;
+  grid-template-columns: 17rem 87rem;
+  grid-gap: 5rem;
+  align-items: center;
+  border-bottom: 1px solid #c9d2d9;
+  padding-bottom: 4.5rem;
+  margin-bottom: 4rem;
+}
+
+.productAndReview:nth-of-type(4) {
+  border-bottom: 0;
+}
+
+.productReviewStock h3 {
+  color: #484c50;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.productReviewStock h5 {
+  color: #484c50;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #5a6d80;
+}
+
+.productReviewStock p {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #484c50;
+  margin-bottom: 1rem;
+}
+
+.reviewStock i {
+  color: #fbaa4c;
+  font-size: 1.4rem;
+  margin-right: 0.5rem;
+}
+
+.review {
+  margin-bottom: 0.5rem;
+}
+
+.stock p {
+  display: inline-block;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  color: #4baa49;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.stock button {
+  border: 0;
+  margin-left: 2rem;
+  background-color: transparent;
+  color: #F7CCAE;
+  cursor: pointer;
+}
+
+.stock button i {
+  font-size: 1.8rem;
+}
+
+.productReviewStock .btn {
+  padding: 1.2rem 2rem;
+  background-color: transparent;
+  color: #484c50;
+  border: 1px solid #484c50;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.productContent img {
+  width: 50%;
+  margin: auto;
+}
+
+.slick-prev:before, .slick-next:before {
+  font-family: "slick";
+  font-size: 20px;
+  line-height: 1;
+  opacity: 0.75;
+  color: #484c50;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* .slick-prev:before, .slick-next:before {
+  font-family: 'slick';
+  font-size: 20px;
+  line-height: 1;
+  opacity: .75;
+  color: red;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} */
+
+.productSlider {
+  position: relative;
+  text-align: center;
+}
+
+.productSlider .offer {
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  background-color: #f54748;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 400;
+  font-size: 1.4rem;
+  bottom: -7px;
+  right: 0;
+}
+
+.pagination {
+  display: grid;
+  grid-template-columns: 0.3fr 1fr 0.3fr;
+  align-items: center;
+}
+
+.pagination .number {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pagination .next {
+  text-align: right;
+}
+
+.pagination .next button,
+.pagination .previous button {
+  border: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: transparent;
+  cursor: pointer;
+  width: 11rem;
+  padding: 0.8rem 0;
+  color: #fffff4;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+.pagination .next button {
+  background-color: #484c50;
+}
+
+.pagination .previous button {
+  border: 1px solid #b1b2b4;
+  color: #b1b2b4;
+}
+
+.pagination li {
+  background-color: #e7e9eb;
+  /* padding: .6rem 1.5rem; */
+  width: 4rem;
+  padding: 0.5rem 0;
+  font-size: 2rem;
+  color: #797c80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.pagination .p-active {
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #5a6d80;
+}
+
+@media(max-width: 1400px) {
+  .productAndReview {
+    grid-template-columns: 17rem 67rem;
+  }
+}
+
+@media(max-width: 1200px) {
+  .productAndReview {
+    grid-template-columns: 17rem 45rem;
+  }
+}
+
+@media(max-width: 1200px) {
+  .allProduct {
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+  }
+
+  .productAndReview {
+    grid-template-columns: 17rem 56rem;
+  }
+}
+

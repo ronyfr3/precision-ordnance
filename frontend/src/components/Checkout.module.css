@@ -1,0 +1,202 @@
+.checkoutSection {
+  background-color: #f6f6f6;
+  background-image: linear-gradient(to right, #f6f6f6, #ffffff);
+}
+
+.checkoutWrapper {
+  display: grid;
+  grid-template-columns: 1fr 0.4fr;
+}
+
+.checkoutLeft {
+  padding: 7rem 0;
+}
+
+.checkoutForm {
+  margin-right: 8rem;
+}
+
+.checkoutForm h5 {
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #444456;
+  margin-bottom: 4rem;
+}
+
+.checkoutForm .personalInformation {
+  border-bottom: 1px solid #c9d2d9;
+}
+
+.checkoutForm .shipping {
+  margin-top: 4rem;
+  border-bottom: 1px solid #c9d2d9;
+}
+
+.checkoutForm .saveAs {
+  display: flex;
+  align-items: center;  
+}
+
+.checkoutForm .payment h5 {
+  margin-top: 4rem;
+}
+
+.firstLastName,
+.streetLocal,
+.dateCvc {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkoutForm input,
+.checkoutForm select {
+  width: 100%;
+  padding: 1.5rem 1rem;
+  margin-bottom: 4rem;
+  border: 1px solid #c9d2d9;
+  border-radius: 3px;
+  font-size: 1.6rem;
+  color: #444456;
+  background-color: transparent;
+}
+
+.checkoutForm span {
+  color: #484c50;
+  margin-bottom: 4rem;
+  margin-left: 1rem;
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+
+.checkoutForm input[type="checkbox"] {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.checkoutForm select option,
+.checkoutForm select {
+  color: #abb1b7;
+}
+
+.checkoutForm select option {
+  padding: 1rem;
+}
+
+.checkoutForm input::placeholder {
+  font-family: inherit;
+  color: #abb1b7;
+  font-size: 1.6rem;
+}
+
+.checkoutForm .firstName,
+.checkoutForm .lastName,
+.checkoutForm .street,
+.checkoutForm .local,
+.checkoutForm .date,
+.checkoutForm .cvc {
+  flex: 0.47;
+}
+
+.checkoutForm input[type="radio"] {
+  width: auto;
+  margin-bottom: 0;
+}
+
+.checkoutForm .paypal-debit-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkoutForm .paypal,
+.checkoutForm .debit-card {
+  padding: 1.5rem 1rem;
+  flex: 0.47;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #c9d2d9;
+  border-radius: 3px;
+  margin-bottom: 4rem;
+}
+
+.checkoutForm .paypal span,
+.checkoutForm .debit-card span {
+  margin-bottom: 0;
+}
+
+.checkoutButtons {
+  margin-top: 3rem;
+}
+.checkoutButtons .confirmBtn {
+  color: #ffffff;
+  background: #484c50;
+  padding: 1.3rem 3rem;
+  border: 2px solid #484c50;
+  margin-right: 3rem;
+  font-family: inherit;
+  text-transform: uppercase;
+}
+
+.checkoutButtons .continueBtn {
+  background: #ffffff;
+  color: #484c50;
+  border: 2px solid #484c50;
+  padding: 1.3rem 3rem;
+  font-family: inherit;
+  text-transform: uppercase;
+}
+
+.checkoutRight {
+  padding: 7rem 0;
+  background-color: #ffffff;
+  padding-left: 5rem;
+}
+
+.checkoutRightHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkoutRightHeading h4 {
+  font-weight: 300;
+  margin-bottom: 5rem;
+  color: #76797c;
+}
+
+.checkoutRightHeading a {
+  margin-bottom: 5rem;
+  text-decoration: none;
+  color: #f54748;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.checkoutRight ul {
+  list-style-type: none;
+}
+
+.checkoutRight ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 5rem;
+}
+
+.checkoutRight ul li p {
+  color: #76797c;
+}
+
+.checkoutRight ul li span {
+  color: #484c50;
+  text-transform: uppercase;
+}
+
+.checkoutRight ul li:last-child {
+  padding-top: 5rem;
+  border-top: 1px solid #c9d2d9;
+}

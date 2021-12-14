@@ -1,0 +1,5 @@
+1. Customer selects items that they want to buy and clicks on the checkout button.
+2. Initiates a request to the backend to create a checkout session.
+3. On the backend, a checkout session is created via stripe.
+4. the stripe api responds with a session object
+5.the session property is sent to the frontend

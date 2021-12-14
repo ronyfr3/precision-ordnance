@@ -1,0 +1,100 @@
+/* .last-product-orderpage {
+  background-color: #f5f5f5;
+  padding: 15px 20px;
+} */
+.productListTable {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  border-collapse: separate;
+  border-spacing: 0 2rem;
+}
+
+.productListTable tr {
+  color: #5a6d80;
+}
+
+.productListTable img {
+  width: 4rem;
+  height: 3rem;
+  object-fit: contain;
+}
+.productListTable tr {
+  background: #ffffff;
+  /* box-shadow: 0px 0px 2px rgba(38, 50, 65, 0.25); */
+  border-radius: 3px;
+  color: #5a6d80;
+}
+.cheakbox-allign {
+  display: flex;
+  align-items: center;
+}
+.productListTable tr th {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 300;
+  background-color: #f5f5f5;
+  border: 0;
+  box-shadow: 0;
+}
+.productListTable tr td {
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 16px;
+}
+
+.productListTable tr td a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.productListTable .updateBtn {
+  color: #5cb85c;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.productListTable .deleteBtn {
+  color: #d9534f;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.productListPagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.productListPagination select {
+  display: none;
+}
+
+.productListPagination .showingPage {
+  font-size: 1.4rem;
+  color: #6a758b;
+  font-weight: 300 !important;
+}
+
+.productListPagination .prevBtn,
+.productListPagination .nextBtn {
+  background-color: #ffffff;
+  padding: 0.5rem 1rem;
+  border: 0;
+  cursor: pointer;
+  border: 1px solid #b7c7dc;
+}
+
+.productListPagination .nextBtn {
+  margin-left: 1rem;
+}
+
+.productListPagination .prevBtn {
+  margin-right: 1rem;
+}
+
+.productListPagination input {
+  border: 0;
+  border: 1px solid #b7c7dc;
+  padding: 5px;
+}

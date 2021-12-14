@@ -1,0 +1,65 @@
+.sidenavTop .sidenavLogo img {
+  margin-bottom: 5rem;
+}
+
+.sidenavBottomWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #313941;
+  padding: 1rem 3rem;
+}
+
+.sidenavBottom .sidenavImage img {
+  height: 4.1rem;
+  width: 4.1rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.sidenavBottom .adminNameBottom h5 {
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: #c9d2d9;
+}
+
+.sidenavBottom .adminNameBottom p {
+  font-size: 1.222rem;
+  color: #929aa2;
+}
+
+.sidenavTop .sidenavBottom {
+  align-self: flex-end;
+}
+
+.sidenavTop ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidenavTop ul li {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #5f686f;
+  margin-bottom: 3rem;
+}
+
+.sidenavTop ul li i {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.sidenavTop ul > li > a {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.8rem;
+  color: inherit;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.sidenavTop ul li:first-child {
+  color: #c9d2d9;
+}

@@ -1,0 +1,127 @@
+.relatedProductSection {
+  background-color: #f6f6f6;
+  padding: 7rem 0;
+}
+
+.relatedProductWrapper > h3 {
+  text-transform: uppercase;
+  text-align: center;
+  color: #484c50;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 5rem;
+}
+
+.itemCard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5rem;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.imageCard {
+  padding: 3rem;
+  border-radius: 4px 4px 0 0;
+  width: 100%;
+  min-height: 28rem;
+  background-color: #e5e5e5;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.imageCard > img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+.itemOverlay {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    rgba(11, 12, 15, 0.56),
+    rgba(11, 12, 15, 0.56)
+  );
+  border-radius: 5px 5px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.itemOverlay img {
+  width: 1.8rem;
+  margin-right: 1rem;
+}
+
+.itemOverlay p {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.itemOverlay h6 {
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: 600;
+  margin-top: 3.5rem;
+  font-size: 1.8rem;
+}
+
+.addToCart {
+  display: flex;
+  align-items: center;
+}
+
+.imageCard:hover .image {
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.imageCard:hover .item-overlay {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.itemContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  border-radius: 0 0 5px 5px;
+}
+
+.itemContainer h5 {
+  color: #5a6d80;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.itemContainer p {
+  color: #484c50;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.itemContainer .right {
+  height: 4.5rem;
+  width: 4.5rem;
+  border-radius: 50%;
+  background-color: #f54748;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fee8e8;
+  font-weight: 300;
+  font-size: 1.45rem;
+}

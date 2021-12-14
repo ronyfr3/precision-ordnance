@@ -1,0 +1,340 @@
+.productDetailsSection {
+  background-color: #f6f6f6;
+  padding: 7rem 0;
+}
+
+.productDetailsContent {
+  display: grid;
+  grid-template-columns: 67rem auto;
+  grid-gap: 5rem;
+  align-items: center;
+}
+
+.myProductDetailsThumbs,
+.myProductDetails {
+  text-align: center;
+}
+
+.myProductDetailsThumbs {
+  margin-bottom: 12rem;
+}
+
+.productDetailsSlider img {
+  width: 70%;
+  height: 15rem;
+  object-fit: contain;
+}
+
+.myProductDetails .productDetailsThumbs {
+  opacity: 0.4;
+  border: 1px solid #c9d2d9;
+  border-radius: 5px;
+}
+
+.myProductDetails .swiperSlideThumbsactive {
+  opacity: 1;
+}
+
+.productDetailsThumbs img {
+  display: block;
+  padding: 3rem 1rem;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  object-fit: contain;
+}
+
+.productDetailsButtonNext,
+.productDetailsButtonPrev {
+  position: absolute;
+  top: 50%;
+  width: calc(var(--swiper-navigation-size) / 44 * 27);
+  height: var(--swiper-navigation-size);
+  margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--swiper-navigation-color, var(--swiper-theme-color));
+}
+
+.productDetailsButtonNext.swiper-button-disabled,
+.productDetailsButtonPrev.swiper-button-disabled {
+  opacity: 0.35;
+  cursor: auto;
+  pointer-events: none;
+}
+
+.productDetailsButtonNext:after,
+.productDetailsButtonPrev:after {
+  font-family: swiper-icons;
+  font-size: var(--swiper-navigation-size);
+  text-transform: none !important;
+  letter-spacing: 0;
+  text-transform: none;
+  font-variant: initial;
+  line-height: 1;
+}
+
+.productDetailsButtonPrev,
+.swiper-rtl .product-details-button-next {
+  left: 10px;
+  right: auto;
+}
+
+.productDetailsButtonPrev:after,
+.swiper-rtl .product-details-button-next:after {
+  content: "\f053";
+  color: #2e3a59;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.productDetailsButtonNext,
+.swiper-rtl .product-details-button-prev {
+  right: 10px;
+  left: auto;
+}
+.productDetailsButtonNext:after,
+.swiper-rtl .product-button-prev:after {
+  content: "\f054";
+  color: #2e3a59;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.productDetailsButtonNext.swiper-button-disabled,
+.productDetailsButtonPrev.swiper-button-disabled {
+  opacity: 0.35;
+  cursor: auto;
+  pointer-events: none;
+}
+
+.productDetailsRight > div {
+  margin-bottom: 3rem;
+}
+
+.productDetailsRight h6 {
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #2c2c33;
+}
+
+.productDetailsName h6 {
+  color: #929aa1;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.productDetailsName h1 {
+  color: #484c50;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.productDetailsName h5 {
+  color: #929aa1;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.productDetailsPrice > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.productDetailsPrice > div h6 {
+  text-decoration: line-through;
+  color: #929aa1;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.productDetailsPrice h4 {
+  color: #484c50;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.productDetailsPrice span {
+  width: 4rem;
+  height: 4rem;
+  background-color: #f54748;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+
+.productDetailsStock h6 {
+  color: #4baa49;
+}
+
+.productDetailsStock > div {
+  display: flex;
+  align-items: center;
+}
+
+.productDetailsStock > div h5 {
+  color: #929aa1;
+  font-weight: 500;
+}
+
+.productDetailsStock .review {
+  margin: 0 1rem;
+}
+
+.productDetailsStock .review i {
+  color: #fbaa4c;
+  font-size: 1.3rem;
+  margin-right: 0.6rem;
+}
+
+.productDetailsStock a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #5a6d80;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.productDetailsDescription p {
+  color: #abb1b6;
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+
+.buyAdd .btn {
+  background-color: #484c50;
+  font-size: 1.6rem;
+  font-family: inherit;
+  padding: 1.2rem 3rem;
+  font-weight: 500;
+}
+
+.buyAdd .add {
+  background-color: transparent;
+  border: 1px solid #484c50;
+  color: #484c50;
+  margin-left: 3rem;
+}
+
+.productDetailsRight .productDetailsShare {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.productDetailsShare h6 {
+  color: #484c50;
+}
+
+.socialDediaShare {
+  display: flex;
+  align-items: center;
+}
+
+.socialMediaShare a {
+  color: #929aa1;
+  text-transform: uppercase;
+  margin-left: 3rem;
+  font-size: 2rem;
+}
+
+.specificationAndReviewsSection {
+  padding: 7rem 0;
+  background-color: #f6f6f6;
+}
+
+.specificationAndReviewsWrapper > ul.specificationReviews {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  border-bottom: 2px solid #484c50;
+}
+
+.specificationAndReviewsWrapper > ul.specificationReviews li {
+  flex: 0.5;
+}
+
+.specificationAndReviewsWrapper > ul.specificationReviews li a {
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #484c50;
+  font-size: 2rem;
+  font-weight: 600;
+  flex: 0.5;
+  border-bottom: 2px solid #c9d2d9;
+  padding-bottom: 2rem;
+  position: relative;
+  top: 2px;
+}
+
+.specificationAndReviewsWrapper > ul.specificationReviews a:hover {
+  border-bottom: 2px solid #484c50;
+}
+
+.specificationAndReviewsWrapper > p {
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: #484c50;
+}
+
+.specificationAndReviewsWrapper > ul.details {
+  list-style-type: disc;
+  /* padding-left: 4rem; */
+  padding: 2rem 0 2rem 4rem;
+}
+
+.specificationAndReviewsWrapper > ul.details li {
+  font-size: 1.6rem;
+  color: #484c50;
+  font-weight: 400;
+}
+
+.specificationAndReviewsContent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  grid-gap: 7rem;
+  padding: 3rem 0;
+}
+
+.specificationAndReviewsRight img {
+  width: 100%;
+  border-radius: 5px;
+  vertical-align: middle;
+}
+
+.specificationAndReviewsLeft p {
+  color: #929aa1;
+}
+
+.specificationAndReviewsLeft span {
+  color: #484c50;
+}
+
+.specificationAndReviewsLeft ul.attributes {
+  list-style: none;
+}
+
+.specificationAndReviewsLeft ul.attributes li {
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+}

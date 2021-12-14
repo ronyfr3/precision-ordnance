@@ -1,0 +1,45 @@
+.shoppingCartBannerSection {
+  background-repeat: no-repeat;
+  height: 26rem;
+  background-position: center center;
+  background-size: cover;
+}
+
+.shoppingCartBannerContent {
+  display: flex;
+  align-items: center;
+  height: 26rem;
+}
+
+.shoppingCartBannerContent h1 {
+  color: #c9d2d9;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 2rem;
+}
+
+.shoppingCartBannerContent ul.breadcrumb {
+  list-style: none;
+}
+
+.shoppingCartBannerContent ul.breadcrumb li {
+  display: inline-block;
+  font-weight: 300;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+}
+
+.shoppingCartBannerContent ul.breadcrumb li + li:before {
+  padding: 3px;
+  color: #5a6d80;
+  content: "/\00a0";
+}
+
+.shoppingCartBannerContent ul.breadcrumb :nth-child(4) {
+  color: #c9d2d9;
+}
+
+.shoppingCartBannerContent ul.breadcrumb li a {
+  color: #5a6d80;
+  text-decoration: none;
+}

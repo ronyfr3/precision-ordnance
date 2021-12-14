@@ -1,0 +1,174 @@
+.adminNavbarSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem 0;
+}
+
+.adminSearch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  flex: 0.3;
+}
+
+.adminSearch input {
+  border: none;
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  background-color: #ffffff;
+  color: #5a6d80;
+  font-weight: 300;
+  font-size: 1.6rem;
+}
+
+.adminSearch input::placeholder {
+  color: #5a6d80;
+  font-size: 1.45rem;
+}
+
+.adminSearch .adminSearchIcon {
+  position: absolute;
+  cursor: pointer;
+  color: #647688;
+  right: 2%;
+}
+
+.adminNavbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0.1;
+}
+
+.adminNavbar li {
+  margin-left: 5rem;
+  list-style-type: none;
+}
+
+.adminNotification {
+  position: relative;
+}
+
+.adminNotification span {
+  position: absolute;
+  top: -3px;
+  left: 1.2rem;
+  width: 8px;
+  height: 8px;
+  background-color: #f54748;
+  border-radius: 50%;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings a {
+  text-decoration: none;
+  color: #929aa1;
+}
+
+.adminNotification i,
+.settings {
+  font-size: 2rem;
+  color: #929aa1;
+  cursor: pointer;
+}
+
+.notificationWrapper {
+  position: absolute;
+  top: 3.5rem;
+  right: -11px;
+}
+
+.notificationContent {
+  max-height: 60rem;
+  width: 40rem;
+  background: #ffffff;
+  overflow: auto;
+}
+
+.notificationContent .headNotificationContent {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+  background-color: #ffffff;
+}
+
+.notificationContent .headNotificationContent h5 {
+  color: #3d78fb;
+  font-size: 1.5rem;
+  margin: 0 1.5rem;
+  padding: 1.5rem 0;
+  font-weight: normal;
+}
+
+.notificationContent .notificationList {
+  padding: 1.5rem;
+}
+
+.notificationContent .notificationList li {
+  border-bottom: 1px solid #c9d2d9;
+  font-size: 1.4rem;
+  color: #484c50;
+  font-weight: 400;
+  padding: 1.5rem;
+  margin-left: 0;
+}
+
+.notificationContent .notificationList li:last-child {
+  border-bottom: 0;
+}
+
+.arrowUp i {
+  font-size: 3.5rem;
+  position: absolute;
+  top: -2.5%;
+  right: 2%;
+  color: #ffffff;
+}
+
+.adminNavbarProfile {
+  position: relative;
+}
+
+.adminNavbarProfile span {
+  cursor: pointer;
+  font-size: 1.8rem;
+  color: #929AA1;
+}
+
+.adminNavbarDropdown {
+  position: absolute;
+  width: 20rem;
+  top: 4rem;
+  left: -17rem;
+  background-color: #ffffff;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.adminNavbarDropdown li {
+  margin-left: 0;
+}
+
+.adminNavbarDropdown li a,
+.adminNavbarDropdown li button {
+  text-decoration: none;
+  display: block;
+  padding: 1rem;
+  font-weight: 400;
+  font-size: 1.6rem;
+  background-color: transparent;
+  border: 0;
+  color: #5a6d80;
+  cursor: pointer;
+}

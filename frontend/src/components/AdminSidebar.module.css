@@ -1,0 +1,90 @@
+.adminSidebarSection {
+  position: sticky;
+  top: 0;
+  background: #192129;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3rem 0;
+}
+
+.adminSidebarLogo {
+  text-align: center;
+}
+
+.adminSidebarLogo img {
+  margin-bottom: 5rem;
+  width: 15rem;
+}
+
+.bottomAdminSidebarWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #313941;
+  padding: 1rem 3rem;
+  border-radius: 2px;
+}
+
+/* .bottomAdminSidebarImage img {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+} */
+
+.bottomAdminSidebarIcon span {
+  font-size: 2rem;
+  margin-right: 1rem;
+  color: #BFD2D9;
+}
+
+.bottomAdminName h5 {
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: #c9d2d9;
+}
+
+.bottomAdminName p {
+  font-size: 1.222rem;
+  color: #929aa2;
+}
+
+.bottomAdminName {
+  align-self: flex-end;
+}
+
+.topAdminSidebar ul {
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.active {
+  color: #c9d2d9 !important;
+}
+
+.topAdminSidebar ul li {
+  padding: 1.5rem 7.5rem;
+  border-left: 2px solid transparent;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  color: #5f686f;
+  margin-bottom: 3rem;
+}
+
+.topAdminSidebar ul li i {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  justify-self: start;
+}
+
+.topAdminSidebar ul > li > a {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.8rem;
+  color: inherit;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
