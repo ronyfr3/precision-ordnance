@@ -8,7 +8,7 @@ export const getMultipleFiles = async () => {
   }
 };
 export const multipleFilesUpload = async (data) => {
-  console.log("dataupload", data);
+
   const datas = {
     user: "61765a978ad5752627b851b5",
     category: "rifle",

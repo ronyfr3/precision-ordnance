@@ -21,7 +21,7 @@ const AdminProductCreateScreen = ({ history }) => {
     }
     localStorage.setItem("path", location.pathname);
     setTimeout(() => setSpinner(false), 500);
-  }, [location]);
+  }, [location, userInfo, history]);
 
   const [tags1, setTags1] = useState([]);
   const [tags2, setTags2] = useState([]);
@@ -64,10 +64,8 @@ const AdminProductCreateScreen = ({ history }) => {
   const [files, setFiles] = useState([]);
 
   const onChange = (e) => {
-    console.log(e.target.files);
     setFiles(e.target.files);
   };
-  console.log(files);
 
   let tagInput1;
   let tagInput2;
@@ -155,7 +153,7 @@ const AdminProductCreateScreen = ({ history }) => {
       }
     }
   };
-  console.log("uploadData", uploadData);
+
   const productObj = {
     user: "61765a978ad5752627b851b5",
     files: uploadData,
@@ -174,6 +172,7 @@ const AdminProductCreateScreen = ({ history }) => {
       price: product.price,
       shortdescription: product.shortdescription,
       longdescription: product.longdescription,
+      countInStock: product.countinstock
     },
   };
   console.log(productObj);
@@ -203,7 +202,7 @@ const AdminProductCreateScreen = ({ history }) => {
       setTags3([]);
       setNewarrival(false);
       setFiles([]);
-      console.log("product", res.data);
+
     } catch (err) {
       if (err.response.status === 500) {
         console.log(err);
@@ -314,7 +313,7 @@ const AdminProductCreateScreen = ({ history }) => {
                 <button className="imgAddBtn" onClick={onSubmit}>
                   Add image
                 </button>{" "}
-                <span className="warning">(only jpg, png allowed!)</span>
+                <span className="info">(only jpg, png allowed!)</span>
               </div>
               <h6>specification</h6>
               <div className="specification">
@@ -323,7 +322,7 @@ const AdminProductCreateScreen = ({ history }) => {
                   <div className="inputTag">
                     <ul className="inputList">
                       {tags1.map((tag, i) => (
-                        <li className="inputItem" key={tag}>
+                        <li key={i} className="inputItem" key={tag}>
                           {tag}
                           <button
                             type="button"
@@ -352,7 +351,7 @@ const AdminProductCreateScreen = ({ history }) => {
                   <div className="inputTag">
                     <ul className="inputList">
                       {tags2.map((tag, i) => (
-                        <li className="inputItem" key={tag}>
+                        <li key={i} className="inputItem" key={tag}>
                           {tag}
                           <button
                             type="button"
@@ -381,7 +380,7 @@ const AdminProductCreateScreen = ({ history }) => {
                   <div className="inputTag">
                     <ul className="inputList">
                       {tags3.map((tag, i) => (
-                        <li className="inputItem" key={tag}>
+                        <li key={i} className="inputItem" key={tag}>
                           {tag}
                           <button
                             type="button"

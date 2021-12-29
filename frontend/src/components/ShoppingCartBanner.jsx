@@ -9,7 +9,7 @@ const ShoppingCartBanner = () => {
       <div className={`${classes.shoppingCartBannerWrapper} container`}>
         <div className={classes.shoppingCartBannerContent}>
           <div>
-            <h1>Shopping Cart</h1>
+            <h2>Shopping Cart</h2>
             <ul className={classes.breadcrumb}>
               <li>
                 <Link to="/">Home</Link>

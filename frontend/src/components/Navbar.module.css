@@ -2,6 +2,10 @@
   background-color: #262f38;
 }
 
+.sidenavWrapper {
+  display: none;
+}
+
 .navbar {
   color: #262F38;
   display: flex;
@@ -80,4 +84,70 @@
 .dropdown:hover .dropdownContentWrapper {
   display: block;
   cursor: pointer;
+}
+
+
+
+/* .sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+} */
+
+/* Style the sidenav links and the dropdown button */
+/* .sidenav a, .dropdownBtn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+} */
+
+/* On mouse-over */
+/* .sidenav a:hover, .dropdownBtn:hover {
+  color: #f1f1f1;
+} */
+
+/* Main content */
+
+
+/* Add an active class to the active dropdown button */
+/* .active {
+  background-color: green;
+  color: white;
+} */
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+/* .dropdownContainer {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+} */
+
+/* Optional: Style the caret down icon */
+/* .fa-caret-down {
+  float: right;
+  padding-right: 8px;
+} */
+
+@media (max-width: 800px) {
+  .navbar {
+    display: none;
+  }
+
+  /* .sidenavWrapper {
+    display: none;
+  } */
 }

@@ -33,8 +33,6 @@ padding-bottom: 5rem;
     width: 100%;
     height: 100%;
     background-image: linear-gradient(rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.6));
-    /* opacity: .7; */
-
 }
 
 .homeBanner h3 {
@@ -43,19 +41,7 @@ padding-bottom: 5rem;
   letter-spacing: 2px;
   color: #fff;
   margin-bottom: 2rem;
-}
-
-.homeBanner h1 {
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 3rem;
-}
-
-.homeBanner p {
-  color: #fff;
-  font-size: 2rem;
-  margin-bottom: 5rem;
+  line-height: 1.6;
 }
 
 .homeBanner .banner span {
@@ -104,51 +90,17 @@ padding-bottom: 5rem;
   border-radius: 100%;
 }
 
-@media (max-width: 1400px) {
-  .homeBannerSection {
-    height: 80vh;
-  }
-}
-
-@media (max-width: 1200px) {
-  .homeBannerWrapper .slick-dots li button:before {
-    top: 0.2rem;
-    left: 0.18rem;
-    width: 1.5rem;
-    height: 1.5rem;
-
-  }
-}
-
-@media (max-width: 1000px) {
-  .homeBanner p {
-    width: 100%;
-  }
-
-  .homeBannerSection {
-    text-align: center;
-    height: 85vh;
-  }
-
-  .homeBanner button {
-    width: 19rem;
-    margin: auto;
-    margin-bottom: 5rem;
-  }
-
-  .homeBannerWrapper .slick-dots li button:before {
-    top: 0.4rem;
-    left: 0.35rem;
-    width: 1.2rem;
-    height: 1.2rem;
-
-  }
-}
-
 @media (max-width: 800px) {
-  .homeBanner h1 {
-    line-height: 1.2;
+  .homeBanner .banner {
+    width: 80%;
   }
 }
+
+@media (max-width: 500px) {
+  .homeBanner .banner {
+    width: 95%;
+  }
+}
+
 
 

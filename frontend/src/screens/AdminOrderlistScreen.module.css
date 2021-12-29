@@ -9,3 +9,15 @@
 .adminAllOrderList h4 {
   color: #484C50;
 }
+
+@media (max-width: 800px) {
+  .adminOrderListRight {
+    width: 80%;
+  }
+}
+
+@media (max-width: 700px) {
+  .adminOrderListRight {
+    width: 65%;
+  }
+}

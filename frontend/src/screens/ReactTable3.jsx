@@ -8,12 +8,13 @@ import {
   useTable,
 } from "react-table";
 import { COLUMNS } from "./table/Columns3";
-import SearchFilter from "./table/SearchFIlter";
+// import SearchFilter from "./table/SearchFIlter";
 import classes from './ReactTable2.module.css'
 
 const ReactTable3 = () => {
-  const { orders } = useSelector((state) => state.orderReducer);
-  console.log(orders);
+  // const { orders } = useSelector((state) => state.orderReducer);
+  const { orders } = useSelector((state) => state.orderListMy);
+
   let Order = [];
   orders?.map((x) =>
     Order.push({
@@ -50,29 +51,21 @@ const ReactTable3 = () => {
     state,
     pageOptions,
     gotoPage,
-    pageCount,
+    // pageCount,
     setPageSize,
-    setGlobalFilter,
+    // setGlobalFilter,
   } = tableInstance;
   const { pageIndex, pageSize } = state;
-  const { globalFilter } = state;
-  const handleUpdate = (id) => {
-    // console.log(id);
-    // handleUpdate
-  };
-  const handleDelete = (id) => {
-    // console.log(id);
-    // handleDelete
-  };
+  // const { globalFilter } = state;
 
   return (
     <>
       <table className={classes.orderListTable} {...getTableProps()}>
         <thead>
-          {headerGroups.map((x) => (
-            <tr {...x.getHeaderGroupProps()}>
-              {x.headers.map((column) => (
-                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+          {headerGroups.map((x, idx) => (
+            <tr key={idx} {...x.getHeaderGroupProps()}>
+              {x.headers.map((column, idx) => (
+                <th key={idx} {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render("Header")}
                   <span>
                     {column.isSorted ? (
@@ -91,15 +84,13 @@ const ReactTable3 = () => {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {page.map((x) => {
-            console.log("x", x);
+          {page.map((x, idx) => {
             prepareRow(x);
             return (
-              <tr {...x.getRowProps()}>
-                {x.cells.map((cell) => {
-                  console.log(cell);
+              <tr key={idx} {...x.getRowProps()}>
+                {x.cells.map((cell, idx) => {
                   return (
-                    <td
+                    <td key={idx}
                       {...cell.getCellProps()}
                       data-label={cell?.column?.Header}
                     >
@@ -109,16 +100,16 @@ const ReactTable3 = () => {
                     </td>
                   );
                 })}
-                <td onClick={() => handleUpdate(x.original._id)}>
+                {/* <td onClick={() => handleUpdate(x.original._id)}>
                 <button className={classes.updateBtn}>
-                    <i class="fas fa-pen-alt"></i>
+                    <i className="fas fa-pen-alt"></i>
                   </button>
-                </td>
-                <td onClick={() => handleDelete(x.original._id)}>
+                </td> */}
+                {/* <td onClick={() => handleDelete(x.original._id)}>
                 <button className={classes.deleteBtn}>
-                    <i class="fas fa-trash-alt"></i>
+                    <i className="fas fa-trash-alt"></i>
                   </button>
-                </td>
+                </td> */}
               </tr>
             );
           })}
@@ -141,7 +132,7 @@ const ReactTable3 = () => {
         </span>
         <div>
         <button className={classes.prevBtn} onClick={() => previousPage()} disabled={!canPreviousPage}>
-          <i class="fas fa-chevron-left"></i>
+          <i className="fas fa-chevron-left"></i>
           </button>
         <span>
           <input
@@ -156,7 +147,7 @@ const ReactTable3 = () => {
           </b>
         </span>
         <button className={classes.nextBtn} onClick={() => nextPage()} disabled={!canNextPage}>
-          <i class="fas fa-chevron-right"></i>
+          <i className="fas fa-chevron-right"></i>
           </button>
         </div>
       </div>

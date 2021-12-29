@@ -1,9 +1,6 @@
 .contactUsSection {
   background-color: #f6f6f6;
   padding: 7rem 0;
-  background-repeat: no-repeat;
-  background-position: bottom right;
-  background-size: 53%;
 }
 
 .contactUsAddress h3 {
@@ -23,7 +20,7 @@
 .email {
   display: flex;
   align-items: center;
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .contactUsAddress .address p,
@@ -107,22 +104,51 @@
 }
 
 @media (max-width: 800px) {
+  .contactUsSection {
+    padding: 5rem 0;
+  }
+
   .contactUsContent {
     text-align: center;
     grid-template-columns: 1fr;
-    grid-gap: 5rem;
+    grid-gap: 3rem;
   }
 
   .contactUsAddress .address,
   .contactUsAddress .phone,
   .contactUsAddress .email {
-    width: 30%;
+    width: 50%;
     margin: 0 auto;
     margin-top: 2rem;
+  }
+
+  .contactUsAddress .address img {
+    align-self: flex-start;
   }
 
   .submitBtn {
     width: 11rem;
     margin: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .contactUsAddress .address,
+  .contactUsAddress .phone,
+  .contactUsAddress .email {
+    width: 42%;
+    margin: 0 auto;
+    margin-top: 2rem;
+  }
+
+  .contactUsForm {
+    margin: 0;
+    padding: 3rem;
+    text-align: center;
+    border-radius: 5px;
+  }
+
+  .contactUsAddress .address img {
+    align-self: center;
   }
 }

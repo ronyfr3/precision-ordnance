@@ -19,7 +19,7 @@ const AdminSettingsScreen = ({ history }) => {
   const { userInfo } = userSignin;
 
   const userDetails = useSelector((state) => state.userDetails);
-  const { user, error } = userDetails;
+  const { user } = userDetails;
 
   let location = useLocation();
 
@@ -37,7 +37,7 @@ const AdminSettingsScreen = ({ history }) => {
 
     setTimeout(() => setSpinner(false), 500);
     localStorage.setItem("path", location.pathname);
-  }, [history, dispatch, userInfo, user]);
+  }, [history, dispatch, userInfo, user, location.pathname]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,11 +49,9 @@ const AdminSettingsScreen = ({ history }) => {
     {
       id: "1",
       tabTitle: (
-        <li className={classes.tabItem}>
-          {/* <Link to="/"> */}
+        <p className={classes.tabItem}>
           <i className="far fa-user"></i> <span>ACCOUNT</span>
-          {/* </Link> */}
-        </li>
+        </p>
       ),
       tabContent: (
         <div className={classes.accountSection}>
@@ -80,7 +78,7 @@ const AdminSettingsScreen = ({ history }) => {
             </div>
             <div className={classes.doubleInput}>
               <div className={classes.inputLeft}>
-                <label htmlFor="">Email</label>
+                <label htmlFor="email">Email</label>
                 <input
                   type="email"
                   placeholder="Email"
@@ -220,11 +218,11 @@ const AdminSettingsScreen = ({ history }) => {
     {
       id: "3",
       tabTitle: (
-        <li className={classes.tabItem}>
+        <p className={classes.tabItem}>
           {/* <Link to="/"> */}
           <i className="fas fa-shield-alt"></i> <span>SECURITY</span>
           {/* </Link> */}
-        </li>
+        </p>
       ),
       tabContent: (
         <div className={classes.securitySection}>
@@ -274,10 +272,11 @@ const AdminSettingsScreen = ({ history }) => {
 
   const [visibleTab, setVisibleTab] = React.useState(data[0].id);
 
-  const listTitles = data.map((item) => (
+  const listTitles = data?.map((item) => (
     <li
       onClick={() => setVisibleTab(item.id)}
-      classNameName={
+      key={item.id}
+      className={
         visibleTab === item.id ? "tab-title tab-title--active" : "tab-title"
       }
     >
@@ -286,7 +285,7 @@ const AdminSettingsScreen = ({ history }) => {
   ));
 
   const listContent = data.map((item) => (
-    <p style={visibleTab === item.id ? {} : { display: "none" }}>
+    <p key={item.id} style={visibleTab === item.id ? {} : { display: "none" }}>
       {item.tabContent}
     </p>
   ));

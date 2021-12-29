@@ -20,15 +20,9 @@ const HomeBanner = () => {
       <div className="homeBannerWrapper">
         <Slider {...settings}>
           <div className="homeBanner">
-            <img src="/images/slider5.jpg" alt="image" />
+            <img src="/images/slider5.jpg" alt="" />
             <div className="banner">
-              <h3>Built for Precision</h3>
-              <h1>Designed for Hunting</h1>
-              <p>
-                Take your marksmanship to the next level with ultra-light,
-                strongly built rifle with a swagger look- lock & loaded for your
-                next hunt.
-              </p>
+              <h3>Highest Quality Workmanship and Components</h3>
               <div>
                 <Link to="/all-products" className="btn">
                   <span>shop now</span>{" "}
@@ -38,15 +32,9 @@ const HomeBanner = () => {
             </div>
           </div>
           <div className="homeBanner">
-            <img src="/images/slider2.jpg" alt="image" />
+            <img src="/images/slider2.jpg" alt="" />
             <div className="banner">
-              <h3>Built for Precision</h3>
-              <h1>Designed for Hunting</h1>
-              <p>
-                Take your marksmanship to the next level with ultra-light,
-                strongly built rifle with a swagger look- lock & loaded for your
-                next hunt.
-              </p>
+              <h3>Accurate, Consistant and Reliable</h3>
               <div>
                 <Link to="/all-products" className="btn">
                   <span>shop now</span>{" "}
@@ -56,15 +44,9 @@ const HomeBanner = () => {
             </div>
           </div>
           <div className="homeBanner">
-            <img src="/images/slider3.jpg" alt="image" />
+            <img src="/images/slider3.jpg" alt="" />
             <div className="banner">
-              <h3>Built for Precision</h3>
-              <h1>Designed for Hunting</h1>
-              <p>
-                Take your marksmanship to the next level with ultra-light,
-                strongly built rifle with a swagger look- lock & loaded for your
-                next hunt.
-              </p>
+              <h3>When only the best will do</h3>
               <div>
                 <Link to="/all-products" className="btn">
                   <span>shop now</span>{" "}

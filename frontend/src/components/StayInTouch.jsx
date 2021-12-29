@@ -20,7 +20,7 @@ const StayInTouch = () => {
       <div className={`${classes.stayInTouchWrapper} container`}>
         <div className={classes.stayInTouchContent}>
           <h4>Stay in touch</h4>
-          <p>Stay in touch with our weekly newsletter for upcoming gear.</p>
+          <p>Subscribe for news on the latest components, specials and information</p>
           <form className={classes.stayInTouchForm}>
             <input
               required

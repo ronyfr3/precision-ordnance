@@ -41,16 +41,16 @@ app.get("/", (req, res) => {
 });
 // notify
 app.post("/notifications/subscribe", (req, res) => {
-  // console.log(req.body);
+
   const payload = JSON.stringify({
     title: req.body.title,
     description: req.body.description,
     icon: req.body.icon,
   });
-  console.log(req.user);
+
   webpush
     .sendNotification(req.body.subscription, payload)
-    .then((result) => console.log())
+    .then((result) => console.log(result))
     .catch((e) => console.log(e.stack));
 
   res.status(200).json({ success: true });

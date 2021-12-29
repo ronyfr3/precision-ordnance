@@ -97,24 +97,55 @@ const createProductReview = catchAsyncError(async (req, res, next) => {
 // @route   PUT /api/products/:id
 // @access  Private/Admin
 const updateProduct = catchAsyncError(async (req, res, next) => {
-  const { category, subcategory, brand, productInfo, newArrival, files } =
-    req.body;
+  // const { category, subcategory, brand, productInfo, newArrival, files } =
+  //   req.body;
 
-  const product = await Product.findById(req.params.id);
+  // const product = await Product.findById(req.params.id);
 
-  if (product) {
-    product.newArrival = newArrival;
-    product.files = files;
-    product.category = category;
-    product.subcategory = subcategory;
-    product.brand = brand;
-    product.productInfo = productInfo;
+  // if (product) {
+  //   product.newArrival = newArrival;
+  //   product.files = files;
+  //   product.category = category;
+  //   product.subcategory = subcategory;
+  //   product.brand = brand;
+  //   product.productInfo = productInfo;
 
-    const updatedProduct = await product.save();
-    res.json({ updatedProduct, message: "product updated successfully" });
-  } else {
-    return next(new ErrorHandler("Product not found", 400));
+  //   const updatedProduct = await product.save();
+  //   res.json({ updatedProduct, message: "product updated successfully" });
+  // } else {
+  //   return next(new ErrorHandler("Product not found", 400));
+  // }
+  if (!req.body) {
+    return next(new ErrorHandler("Data to update can not be empty!", 400));
   }
+
+  const id = req.params.id;
+
+  Product.findByIdAndUpdate(id, req.body, {
+    useFindAndModify: false,
+  })
+
+    .then((data) => {
+      if (!data) {
+        return next(
+          new ErrorHandler(`Failed to update Product with id=${id}.`, 404)
+        );
+      } else
+        res.status(200).json({
+          data,
+
+          message: "Product was updated successfully.",
+        });
+    })
+
+    .catch((err) => {
+      return next(
+        new ErrorHandler(
+          `Error occured while updating Product with id=${id}.`,
+          500
+        )
+      );
+    });
 });
 
 module.exports = {

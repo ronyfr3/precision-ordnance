@@ -2,9 +2,9 @@
   background-color: #192129;
 }
 
-.footerTopWrapper {
+/* .footerTopWrapper {
   padding: 7rem 0;
-}
+} */
 
 .footerTopContent {
   display: grid;
@@ -69,6 +69,79 @@
   color: #3374b4;
 }
 
+.modalWrapper {
+  width: 50%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+}
+
+.contactUsForm {
+  background-color: #fff;
+  padding: 5rem 3.5rem;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.contactUsForm h4 {
+  color: #484c50;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 5rem;
+}
+
+.contactUsForm input,
+.contactUsForm textarea {
+  width: 100%;
+  padding: 1rem 0;
+  border: 0;
+  border-bottom: 1px solid #5a6d80;
+  color: #5a6d80;
+  font-size: 1.4rem;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 3.5rem;
+}
+
+.contactUsForm textarea {
+  height: 12rem;
+  resize: vertical;
+}
+
+.contactUsForm input::placeholder,
+.contactUsForm textarea::placeholder {
+  color: #5a6d80;
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+
+.contactUsForm .btn {
+  background-color: #484c50;
+  padding: 1.5rem 3rem;
+  font-weight: 500;
+  font-size: 2rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.modal {
+  cursor: pointer;
+  user-select: none;
+}
+
+.modal:hover {
+  color: #3374b4;
+}
+
+.times {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
 .paymentMethodsIcon img {
   width: 3rem;
   height: 2.2rem;
@@ -80,25 +153,58 @@
   padding: 1rem;
 }
 
-.footerBottomContent p {
-  text-align: center;
+.footerBottomContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #5a6d80;
-  font-size: 1.8rem;
+  text-align: center;
+  font-size: 1.6rem;
   font-weight: 300;
 }
 
+.footerBottomContent a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 1.6rem;
+}
+
+.footerBottomContent div {
+  margin-right: 1rem;
+}
+/* 
+.footerBottomContent .markosis {
+  color: #C9D2D9;
+  font-size: 1.4rem;
+} */
+
+.footerBottomContent img {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
 @media (max-width: 1000px) {
-  .footerTopContent {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 5rem;
+  .modalWrapper {
+    width: 80%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 800px) {  
+
   .footerTopContent {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 3rem;
+  }
+
+  .footerBottomContent {
+    display: block;
   }
 }
 
@@ -114,11 +220,5 @@
 
   .paymentMethodsIcon {
     width: 50%;
-  }
-}
-
-@media (max-width: 500px) {
-  .footerTopContent {
-    padding: 0 1rem;
   }
 }

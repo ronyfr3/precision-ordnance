@@ -35,13 +35,13 @@ const SigninForm = ({ history }) => {
     e.preventDefault()
     dispatch(signin(email, password))
   }
-console.log(error);
+
   return (
     <form onSubmit={submitHandler}>
       {error && <Message message={error} color="#EF5350" />}
       <h5>Welcome Back!</h5>
       <span>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, reiciendis.
+      Sign in and save your carts with accessories you need.
       </span>
       <label htmlFor="email">
         E-mail address
@@ -54,6 +54,7 @@ console.log(error);
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder=""
+          required
         />
       <label htmlFor="password">Password</label>
       <input
@@ -63,6 +64,7 @@ console.log(error);
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         placeholder=""
+        required
       />
       {/* <div className={classes.checkboxSignup}>
         <input type="checkbox" />

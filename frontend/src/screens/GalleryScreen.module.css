@@ -11,14 +11,14 @@
 .allGalleryImage img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 3px;
-  border: 1px solid #63FF23;
   transition: all 0.5s ease;
+  cursor: pointer;
 }
 
 .allGalleryImage img:hover {
-  transform: scale(1.1)
+  transform: scale(1.01)
 }
 
 .gallerySection h2 {
@@ -26,4 +26,23 @@
   text-align: center;
   padding-bottom: 5rem;
   color: #484C50;
+}
+
+@media (max-width: 1200px) {
+  .allGalleryImage {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .allGalleryImage {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .allGalleryImage {
+    grid-template-columns: 1fr;
+    grid-gap: 3rem;
+  }
 }

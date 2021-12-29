@@ -57,15 +57,13 @@ ul.breadcrumb li a {
   border-bottom: 1px solid #c9d2d9;
 }
 
-.sortItemsForms {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .sortItemsForms select {
   border: 0;
   background-color: transparent;
+}
+
+.sortItemsForms {
+  display: none;
 }
 
 .itemsForm {
@@ -100,6 +98,17 @@ ul.breadcrumb li a {
 
 .sortItemsForms select option {
   font-size: 1.5rem;
+}
+
+.sortAvailableForm {
+  font-weight: 500;
+  color: #484C50;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.sortAvailableForm input {
+  margin-bottom: 1rem;
 }
 
 .allProduct {
@@ -222,6 +231,7 @@ ul.breadcrumb li a {
   border: 1px solid #484c50;
   font-size: 1.4rem;
   font-weight: 700;
+  display: inline-block;
 }
 
 .productContent img {
@@ -238,16 +248,6 @@ ul.breadcrumb li a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-/* .slick-prev:before, .slick-next:before {
-  font-family: 'slick';
-  font-size: 20px;
-  line-height: 1;
-  opacity: .75;
-  color: red;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-} */
 
 .productSlider {
   position: relative;
@@ -332,26 +332,82 @@ ul.breadcrumb li a {
   background-color: #5a6d80;
 }
 
-@media(max-width: 1400px) {
+ @media(max-width: 1400px) {
   .productAndReview {
     grid-template-columns: 17rem 67rem;
   }
-}
 
-@media(max-width: 1200px) {
-  .productAndReview {
-    grid-template-columns: 17rem 45rem;
+  .productSlider {
+    padding: 0 5rem;
   }
 }
 
-@media(max-width: 1200px) {
+
+@media (max-width: 1200px) {
   .allProduct {
-    grid-template-columns: 1fr;
-    grid-gap: 1rem;
+    grid-template-columns: 100%;
+    grid-gap: 0rem;
   }
 
   .productAndReview {
-    grid-template-columns: 17rem 56rem;
+    grid-template-columns: 30rem 63rem;
+    grid-gap: 5rem;
+  }
+
+  .sortItemsForms {
+    display: block;
+  }
+
+  .availabilityForm {
+    display: none;
+  }
+
+}
+
+@media (max-width: 1000px) {
+
+  .productAndReview {
+    grid-template-columns: 20rem 53rem;
   }
 }
+
+@media (max-width: 800px) {
+  .productSection {
+    padding: 5rem 0;
+  }
+
+  .productContent img {
+    width: 60%;
+    margin: auto;
+}
+.productAndReview {
+  grid-template-columns: 17rem 38rem;
+  grid-gap: 3rem;
+}
+}
+
+
+@media (max-width: 600px) {
+  .productAndReview {
+    grid-template-columns: 100%;
+    grid-gap: 5rem;
+  }
+
+  .productReviewStock {
+    text-align: center;
+    order: 2;
+  }
+
+  .productSlider {
+    order: 1;
+  }
+}
+
+/*
+@media (max-width: 500px) {
+  .productSlider {
+    padding: 0 5rem;
+  }
+} */
+
 

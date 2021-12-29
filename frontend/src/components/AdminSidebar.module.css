@@ -27,6 +27,10 @@
   border-radius: 2px;
 }
 
+.bottomAdminName h5 {
+  text-transform: capitalize;
+}
+
 /* .bottomAdminSidebarImage img {
   height: 4rem;
   width: 4rem;
@@ -87,4 +91,11 @@
   color: inherit;
   letter-spacing: 1px;
   text-transform: uppercase;
+}
+
+@media (max-width: 1000px) {
+  .topAdminSidebar ul li {
+    padding: 1rem 2rem;
+    margin-bottom: 1rem;
+  }
 }

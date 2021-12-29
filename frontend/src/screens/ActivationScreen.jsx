@@ -1,35 +1,39 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import jwt from "jsonwebtoken";
-import { activate } from "../actions/userActions";
-import Message from "../components/Message";
-
-import classes from "./ActivationScreen.module.css";
+import React, { useEffect, useState } from "react"
+import jwt from 'jsonwebtoken'
+import { useDispatch, useSelector } from "react-redux"
+import { useLocation } from "react-router-dom"
+import { activate } from "../actions/userActions"
+import Loader from "../components/Loader"
+import Message from "../components/Message"
+import classes from "./ActivationScreen.module.css"
 
 const ActivationScreen = ({ match, history }) => {
-  const [spinner, setSpinner] = useState(true);
+  const [spinner, setSpinner] = useState(true)
 
-  const token = match.params.token;
+  const token = match.params.token
   const { name } = jwt.decode(token);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const userActive = useSelector((state) => state.userActive);
-  const { error } = userActive;
+  let location = useLocation()
+
+  const userActive = useSelector((state) => state.userActive)
+  const { error } = userActive
 
   const activeHandler = () => {
-    dispatch(activate(token));
-    history.push("/");
-  };
+    dispatch(activate(token))
+    history.push("/")
+  }
 
   useEffect(() => {
-    setTimeout(() => setSpinner(false), 500);
-  }, []);
+    localStorage.setItem("path", location.pathname)
+    setTimeout(() => setSpinner(false), 500)
+  }, [location.pathname])
 
   return (
     <>
       {spinner ? (
-        <p>loader</p>
+        <Loader />
       ) : (
         <section className={classes.activationSection}>
           <div className={`${classes.activationWrapper} container`}>
@@ -53,7 +57,7 @@ const ActivationScreen = ({ match, history }) => {
         </section>
       )}
     </>
-  );
-};
+  )
+}
 
-export default ActivationScreen;
+export default ActivationScreen

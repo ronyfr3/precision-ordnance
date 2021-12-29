@@ -54,10 +54,10 @@ const orderSchema = mongoose.Schema(
     //   default: Date.now()
     // },
 
-    // isDelivered: {
-    //   type: Boolean,
-    //   default: false,
-    // },
+    isDelivered: {
+      type: Boolean,
+      default: false,
+    },
 
     // deliveredAt: {
     //   type: Date,

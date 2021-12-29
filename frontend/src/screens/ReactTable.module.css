@@ -10,6 +10,11 @@
   border-spacing: 0 2rem;
 }
 
+.productTableWrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
 .productListTable tr {
   color: #5a6d80;
 }
@@ -97,4 +102,10 @@
   border: 0;
   border: 1px solid #b7c7dc;
   padding: 5px;
+}
+
+@media (max-width: 800px) {
+  .productTableWrapper {
+    width: 100%;
+  }
 }

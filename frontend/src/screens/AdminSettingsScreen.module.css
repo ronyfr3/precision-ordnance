@@ -343,3 +343,15 @@ input:checked + .slider:before {
   font-size: 1.6rem;
   color: #484c50;
 }
+
+@media (max-width: 800px) {
+  .settingsDetailsProfile
+  .settingsDetailsWrapper
+  .settingsDetailsRight
+  form
+  .doubleInput {
+  /* display: grid; */
+  grid-template-columns: 1fr
+  /* grid-gap: 4rem; */
+}
+}

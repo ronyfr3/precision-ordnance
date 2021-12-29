@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 
 import Message from "./Message";
@@ -11,7 +11,8 @@ const SignupForm = ({ history }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [agree, setAgree] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [warningPassword, setWarningPassword] = useState("");
 
   const dispatch = useDispatch();
 
@@ -23,24 +24,28 @@ const SignupForm = ({ history }) => {
       setName("");
       setEmail("");
       setPassword("");
-      setAgree(false)
+      setConfirmPassword("");
     }
   }, [history, success]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(signup(name, email, password));
+    if (password !== confirmPassword) {
+      setWarningPassword("Password do not match");
+    } else {
+      dispatch(signup(name, email, password));
+    }
   };
-
-  console.log("error", error)
 
   return (
     <form onSubmit={submitHandler}>
       {error && <Message message={error} color="#EF5350" />}
+      {warningPassword && <Message message={warningPassword} color="#EF5350" />}
       {success && <Message message={success.message} color="#8BC34A" />}
       <h5>Getting Started</h5>
       <span>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, reiciendis.
+        Sign up and get access to Red dots, scopes, lug actions for your next
+        hunt.
       </span>
       <label htmlFor="name">Name</label>
       <input
@@ -72,33 +77,20 @@ const SignupForm = ({ history }) => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <div className={classes.checkboxSignup}>
-        <input
-          type="checkbox"
-          checked={agree}
-          onChange={(e) => setAgree(e.target.checked)}
-        />
-        <label htmlFor="" checked={agree} className={classes.agree}>
-          I agree to the <span>Terms & Conditions</span>
-        </label>
-      </div>
+      <label htmlFor="password">Confirm Password</label>
+      <input
+        type="password"
+        placeholder=""
+        id="confirmPassword"
+        required
+        name="confirmPassword"
+        value={confirmPassword}
+        onChange={(e) => setConfirmPassword(e.target.value)}
+      />
+
       <button type="submit" className={`btn ${classes.signupBtn}`}>
         SIGN UP
       </button>
-      {/* <div className={classes.socialContainer}>
-        <ul>
-          <li>or sign up with</li>
-          <li>
-            <Link to="/">Facebook</Link>
-          </li>
-          <li>
-            <Link to="/">Google</Link>
-          </li>
-          <li>
-            <Link to="/">Linkdin</Link>
-          </li>
-        </ul>
-      </div> */}
     </form>
   );
 };

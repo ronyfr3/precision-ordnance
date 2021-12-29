@@ -4,6 +4,7 @@ import ReactTable3 from "./ReactTable3";
 import Message from "../components/Message";
 import Footer from "../components/Footer";
 import { getUserDetails, updateUserProfile } from "../actions/userActions";
+import { listMyOrders } from "../actions/orderActions";
 
 import classes from "./UserProfileScreen.module.css";
 import Loader from "../components/Loader";
@@ -27,6 +28,7 @@ const UserProfileScreen = ({ history }) => {
       history.push("/signin-signup");
     } else {
       if (!user || !user.name) {
+        dispatch(listMyOrders())
         dispatch(getUserDetails("profile"));
       } else {
         setName(user.name);

@@ -17,7 +17,7 @@ const AdminProductlist = ({ history }) => {
     }
     localStorage.setItem("path", location.pathname);
     setTimeout(() => setSpinner(false), 500);
-  }, [location, history]);
+  }, [location, history, userInfo]);
   return (
     <>
       {spinner ? (
@@ -30,17 +30,6 @@ const AdminProductlist = ({ history }) => {
             <div className={classes.adminAllProductList}>
               <div>
                 <h4>ALL PRODUCT LIST</h4>
-                {/* <ul class="product-divisions">
-          <li>
-            <Link to="/">ALL</Link>
-          </li>
-          <li>
-            <Link to="/">IN STOCK</Link>
-          </li>
-          <li>
-            <Link to="/">OUT OF STOCK</Link>
-          </li>
-        </ul> */}
               </div>
               <Link
                 to="/admin/productcreate"

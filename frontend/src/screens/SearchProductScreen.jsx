@@ -33,12 +33,12 @@ const SearchProductScreen = () => {
     <section className="searchProductSection">
       <div className="searchProductWrapper container">
         {/* QueryProduct */}
-        {data?.data?.map((x) => {
+        {data?.data?.map((x, idx) => {
           return (
-            <div className="searchAllProduct">
+            <div key={idx} className="searchAllProduct">
               <div className="searchSliderDetails">
                 <div className="searchDetails">
-                  <h3>{x.productInfo?.title}</h3>
+                  <h4>{x.productInfo?.title}</h4>
                   <h6>Category: {x?.category}</h6>
                   <h6 className="brand">Brand: {x?.brand}</h6>
                   <p className="price">$ {x?.productInfo?.price}</p>
@@ -49,10 +49,10 @@ const SearchProductScreen = () => {
                     Add to Cart
                   </button>
                 </div>
-                <div classNameName="searchSlider">
+                <div className="searchSlider">
                   <Slider {...settings}>
-                    {x?.files?.files?.map((x) => {
-                      return <img className="sliderImage" src={`/uploads/${x.filename}`} alt="" />;
+                    {x?.files?.files?.map((x, idx) => {
+                      return <img key={idx} className="sliderImage" src={`/uploads/${x.filename}`} alt="" />;
                     })}
                   </Slider>
                 </div>

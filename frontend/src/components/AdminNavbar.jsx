@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import moment from 'moment';
+import moment from "moment";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -31,17 +31,10 @@ const AdminNavbar = ({ history }) => {
     axios.get("/api/notifi").then((res) => setNotify(res.data));
   }, []);
 
-  console.log(notify);
-
   return (
     <section className={classes.adminNavbarSection}>
       <div className={classes.adminSearch}>
-        {/* <input type="text" placeholder="Search here" />
-        <img
-          className={classes.adminSearchIcon}
-          src="/icons/search.png"
-          alt="Search"
-        /> */}
+        
       </div>
       <ul className={classes.adminNavbar}>
         <li>
@@ -54,24 +47,17 @@ const AdminNavbar = ({ history }) => {
                   <div className={classes.arrowUp}>
                     <i className="fas fa-sort-up"></i>
                   </div>
-                  <div className={classes.headNotificationContent}>
+                  {/* <div className={classes.headNotificationContent}>
                     <h5>Mark all as read</h5>
                     <h5>Notification Settings</h5>
-                  </div>
+                  </div> */}
                   <ul className={classes.notificationList}>
-                    {/* <li>
-                      <p>
-                        You have pending order request for product #1287730 on
-                        14th October 2021
-                      </p>
-                      <p>2 hours ago</p>
-                    </li> */}
-                    {notify?.map((n, idx) => (
-                      // <li key={idx}>
-                      //   <p>{n.message}</p>
-                      //   <p>{moment(n.createdAt).fromNow()}</p>
-                      // </li>
-                      console.log("note", n)
+                    {notify?.reverse()?.map((n, idx) => (
+                      <li key={idx}>
+                        <p>{n.message}</p>
+                        <p>Product: {n.details.productName}</p>
+                        <p>{moment(n.createdAt).fromNow()}</p>
+                      </li>
                     ))}
                   </ul>
                 </div>

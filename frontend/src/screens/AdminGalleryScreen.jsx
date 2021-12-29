@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import AdminSidebar from "../components/AdminSidebar";
 import AdminNavbar from "../components/AdminNavbar";
 import classes from "./AdminGalleryScreen.module.css";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import {
   listGalleries,
@@ -23,14 +23,14 @@ const AdminGalleryScreen = ({ history }) => {
 
   useEffect(() => {
     dispatch(listGalleries());
-  }, []);
+  }, [ dispatch ]);
   //file upload
   const [fileData, setFileData] = useState("");
 
   const onChange = (e) => {
     setFileData(e.target.files[0]);
   };
-  console.log("file", fileData);
+
   //submit image to backend
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -38,7 +38,7 @@ const AdminGalleryScreen = ({ history }) => {
     formData.append("ImageGallery", fileData);
     try {
       //dispathc
-      const res = await axios
+      await axios
         .post("/api/gallery", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -67,7 +67,7 @@ const AdminGalleryScreen = ({ history }) => {
     }
     localStorage.setItem("path", location.pathname);
     setTimeout(() => setSpinner(false), 500);
-  }, [location.pathname]);
+  }, [location.pathname, userInfo, history]);
   return (
     <>
       {spinner ? (

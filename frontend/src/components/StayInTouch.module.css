@@ -66,6 +66,10 @@
 }
 
 @media (max-width: 800px) {
+  .stayInTouchSection {
+    padding: 5rem 0;
+  }
+
   .stayInTouchForm input {
     width: 80%;
   }

@@ -48,3 +48,36 @@
   color: #484C50;
 }
 
+.popularCategoryContent h4 {
+  line-height: 1.4;
+}
+
+
+@media (max-width: 1000px) {
+  .popularCategoryWrapper > h3 {
+    width: 90%;
+  }
+  
+  .popularCategoryWrapper > p {
+    width: 90%;
+  }
+
+  .popularCategoryContent {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 3rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .popularCategorySection {
+    padding: 5rem 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .popularCategoryContent {
+    grid-template-columns: 1fr;
+    width: 85%;
+    margin: 0 auto;
+  }
+}

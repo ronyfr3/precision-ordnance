@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import CivilianMilitaryMembershipEvents from "../components/CivilianMilitaryMembershipEvents";
+// import CivilianMilitaryMembershipEvents from "../components/CivilianMilitaryMembershipEvents";
 import ContactUs from "../components/ContactUs";
 import Footer from "../components/Footer";
 // import HomeBanner from '../components/HomeBanner'
-import Header from "../components/Header";
+// import Header from "../components/Header";
 import HomeBanner from "../components/HomeBanner";
 import OurStory from "../components/OurStory";
 import PopularCategory from "../components/PopularCategory";

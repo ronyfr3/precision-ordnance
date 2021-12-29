@@ -45,15 +45,16 @@ const GalleryScreen = () => {
               ))}
 
              {isViewerOpen && (
-               <div styles={{width: "80% !important", height: "80hv"}}>
+               <div className={classes.bigImage}>
                <ImageViewer
                   src={galleries.map((src) => `/ImageGallery/${src?.filename}`)}
                   currentIndex={currentImage}
-                  disableScroll={false}
+                  disableScroll={true}
                   closeOnClickOutside={true}
                   onClose={closeImageViewer}
                 />
-             </div>
+                {/* <span className={classes.times}><i className="fas fa-times"></i></span> */}
+              </div>
               )}
             </div>
           </div>

@@ -1,9 +1,23 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-import classes from './Navbar.module.css'
+import classes from "./Navbar.module.css";
 
 const Navbar = () => {
+  var dropdown = document.getElementsByClassName("dropdown-btn");
+  var i;
+
+  for (i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function () {
+      this.classList.toggle("active");
+      var dropdownContent = this.nextElementSibling;
+      if (dropdownContent.style.display === "block") {
+        dropdownContent.style.display = "none";
+      } else {
+        dropdownContent.style.display = "block";
+      }
+    });
+  }
   return (
     <>
       <div className={classes.navbarWrapper}>
@@ -17,30 +31,34 @@ const Navbar = () => {
               <div className={`${classes.dropdownContent} container`}>
                 <div>
                   <h6>OPTICS</h6>
-                  <Link to='/subcategory/rafle scopes'>Rifle scopes</Link>
-                  <Link to="/subcategory/binoculars">Binoculars</Link>
-                  <Link to="/subcategory/rangefinders">Rangefinders</Link>
-                  <Link to="/subcategory/red dots">Red dots</Link>
-                  <Link to="/subcategory/rings & mounts">Rings & mounts</Link>
-                  <Link to="/subcategory/accessories">Accessories</Link>
+                  <a href="/subcategory/rifle scopes">Rifle scopes</a>
+                  <a href="/subcategory/binoculars">Binoculars</a>
+                  <a href="/subcategory/rangefinders">Rangefinders</a>
+                  <a href="/subcategory/red dots">Red dots</a>
+                  <a href="/subcategory/rings & mounts">Rings & mounts</a>
+                  <a href="/subcategory/accessories">Accessories</a>
                 </div>
                 <div>
                   <h6>RIFLE COMPONENTS</h6>
-                  <Link to="/subcategory/actions">Actions</Link>
-                  <Link to="/subcategory/barrels">Barrels</Link>
-                  <Link to="/subcategory/triggers">Triggers</Link>
-                  <Link to="/subcategory/muzzle brakes">Muzzle brakes</Link>
-                  <Link to="/subcategory/bottom metal & magazines">Bottom metal & magazines</Link>
+                  <a href="/subcategory/actions">Actions</a>
+                  <a href="/subcategory/barrels">Barrels</a>
+                  <a href="/subcategory/triggers">Triggers</a>
+                  <a href="/subcategory/muzzle brakes">Muzzle brakes</a>
+                  <a href="/subcategory/bottom metal & magazines">
+                    Bottom metal & magazines
+                  </a>
                 </div>
                 <div>
                   <h6>NIGHT VISION & THERMAL</h6>
-                  <Link to="/subcategory/scopes">Scopes</Link>
-                  <Link to="/subcategory/monoculars & binoculars">Monoculars & binoculars </Link>
+                  <a href="/subcategory/scopes">Scopes</a>
+                  <a href="/subcategory/monoculars & binoculars">
+                    Monoculars & binoculars{" "}
+                  </a>
                 </div>
                 <div>
                   <h6>BIPODS & BAGS</h6>
-                  <Link to="/subcategory/bipods">Bipods</Link>
-                  <Link to="/subcategory/shooting bags">Shooting bags</Link>
+                  <a href="/subcategory/bipods">Bipods</a>
+                  <a href="/subcategory/shooting bags">Shooting bags</a>
                 </div>
                 <div>
                   <h6>CLEANING SUPPILES</h6>
@@ -56,25 +74,44 @@ const Navbar = () => {
             <div className={classes.dropdownContentWrapper}>
               <div className={`${classes.dropdownContent} container`}>
                 <div>
-                  <Link className={classes.brand} to="/brand/kahles">Kahles</Link>
-                  <Link className={classes.brand} to="/brand/nightforce">Nightforce</Link>
-                  <Link className={classes.brand} to="/brand/jewel">JEWEL</Link>
+                  <a className={classes.brand} href="/brand/kahles">
+                    Kahles
+                  </a>
+                  <a className={classes.brand} href="/brand/nightforce">
+                    Nightforce
+                  </a>
                 </div>
                 <div>
-                  <Link className={classes.brand} to="/brand/hawkins">HAWKINS</Link>
-                  <Link className={classes.brand} to="/brand/vortex">VORTEX</Link>
+                  <a className={classes.brand} href="/brand/pulsar">
+                    Pulsar
+                  </a>
+                  <a className={classes.brand} href="/brand/hawkins">
+                    HAWKINS
+                  </a>
                 </div>
                 <div>
-                  <Link className={classes.brand} to="/brand/borden">BORDEN</Link>
-                  <Link className={classes.brand} to="/brand/tigger tech">TRIGGER TECH</Link>
+                  <a className={classes.brand} href="/brand/vortex">
+                    VORTEX
+                  </a>
+                  <a className={classes.brand} href="/brand/defiance machine">
+                    DEFIANCE MACHINE
+                  </a>
                 </div>
                 <div>
-                  <Link className={classes.brand} to="/brand/terminator">TERMINATOR</Link>
-                  <Link className={classes.brand} to="/brand/pulsar">PULSAR</Link>
+                  <a className={classes.brand} href="/brand/borden">
+                    Borden
+                  </a>
+                  <a className={classes.brand} href="/brand/trigger tech">
+                    TRIGGER TECH
+                  </a>
                 </div>
                 <div>
-                  <Link className={classes.brand} to="/brand/accutac">ACCUTAC</Link>
-                  <Link className={classes.brand} to="/brand/defiance machine">DEFIANCE MACHINE</Link>
+                  <a className={classes.brand} href="/brand/jewel">
+                    JEWEL
+                  </a>
+                  <a className={classes.brand} href="/brand/terminator">
+                    TERMINATOR
+                  </a>
                 </div>
               </div>
             </div>
@@ -82,6 +119,35 @@ const Navbar = () => {
           <Link to="/gallery">GALLERY</Link>
           <Link to="/our-story">OUR STORY</Link>
         </nav>
+        {/* <div className={classes.sidenavWrapper}>
+          <div className={classes.sidenavContent}>
+            <nav className={classes.sidenav}>
+              <a href="#about">About</a>
+              <a href="#services">Services</a>
+              <a href="#clients">Clients</a>
+              <a href="#contact">Contact</a>
+              <button class="dropdown-btn">
+                Dropdown
+                <i className="fa fa-caret-down"></i>
+              </button>
+              <div className={classes.dropdownContainer}>
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+                <button className={classes.dropdownBtn}>
+                  Dropdown
+                  <i className="fa fa-caret-down"></i>
+                </button>
+                <div className={classes.dropdownContainer}>
+                  <a href="#">Link 1</a>
+                  <a href="#">Link 2</a>
+                  <a href="#">Link 3</a>
+                </div>
+              </div>
+              <a href="#contact">Search</a>
+            </nav>
+          </div>
+        </div> */}
       </div>
     </>
   );

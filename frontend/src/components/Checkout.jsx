@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import sgMail from "@sendgrid/mail";
+// import sgMail from "@sendgrid/mail";
 import classes from "./Checkout.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { createOrder } from "../actions/orderActions";
-import axios from "axios";
+// import axios from "axios";
 // import Paypal from "./Paypal";
 
 const Checkout = ({ history }) => {
@@ -14,7 +14,6 @@ const Checkout = ({ history }) => {
   const totalPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
   // const tax =
   const totalItems = cartItems.reduce((a, c) => a + c.qty, 0);
-  console.log("cartitem", cartItems);
   const [val, setval] = useState({
     first_name: "",
     last_name: "",
@@ -63,8 +62,6 @@ const Checkout = ({ history }) => {
       history.push("/signin-signup");
     }
   }, [userInfo, history]);
-
-  console.log("pp", pp);
 
   const orderData = {
     user: userInfo._id,
@@ -122,7 +119,7 @@ const Checkout = ({ history }) => {
       method: "POST",
       body: JSON.stringify({
         user: userInfo._id,
-        message: `${userInfo._id} is ordered`,
+        message: `${userInfo.name} is ordered`,
         details: {
           productName: pp[0].title,
           totalPrice,

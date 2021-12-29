@@ -34,7 +34,6 @@
   color: #484c50;
   text-align: center;
   text-decoration: none;
-  margin-right: 5rem;
   border-bottom: 2px solid #484c50;
 }
 
@@ -159,33 +158,51 @@
 }
 
 .reactPaginate {
+  text-align: center;
   margin-top: 5rem;
-  list-style-type: none;
-  display: flex;
-  justify-content: center;
 }
 
 .reactPaginate li {
+  display: inline-block;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
   padding: 1rem 2rem;
   background-color: #E7E9EB;
   border-radius: 3px;
   color: #797C80;
   font-size: 1.6rem;
-  margin-right: 2rem;
+  /* margin-right: 2rem; */
   font-weight: 500;
   text-transform: uppercase;
   cursor: pointer;
 }
 
-/* .browseAll {
-  text-align: center;
-  margin-top: 5rem;
+
+@media (max-width: 1000px) {
+  .popularItemWrapper > h3 {
+    width: 90%;
+  }
+  
+  .popularItemWrapper > p {
+    width: 90%;
+  }
+
+  .itemCard {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 3rem;
+  }
 }
 
-.browseAll .btn {
-  background-color: #484c50;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  font-size: 2rem;
-  padding: 1.5rem 3.5rem;
-} */
+@media (max-width: 800px) {
+  .popularItemSection {
+    padding: 5rem 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .itemCard {
+    grid-template-columns: 1fr;
+    width: 85%;
+    margin: 0 auto;
+  }
+}

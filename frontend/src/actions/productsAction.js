@@ -33,6 +33,16 @@ export const listProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
+    // const {
+    //   userSignin: { userInfo },
+    // } = getState();
+
+    // const config = {
+    //   headers: {
+    //     Authorization: `Bearer ${userInfo.token}`,
+    //   },
+    // };
+
     const { data } = await axios.get(`/api/products/${id}`);
 
     dispatch({

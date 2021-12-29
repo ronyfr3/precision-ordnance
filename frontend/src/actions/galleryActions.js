@@ -17,7 +17,6 @@ export const listGalleries = () => async (dispatch) => {
     dispatch({ type: IMAGE_LIST_REQUEST });
 
     const { data } = await axios.get(`/api/gallery`);
-    console.log(data)
 
     dispatch({ type: IMAGE_LIST_SUCCESS, payload: data });
   } catch (error) {
@@ -32,7 +31,7 @@ export const listGalleries = () => async (dispatch) => {
 };
 
 export const deleteGallery = (id) => async (dispatch, getState) => {
-  console.log(id);
+
   try {
     dispatch({
       type: IMAGE_DELETE_REQUEST,
@@ -71,15 +70,15 @@ export const deleteGallery = (id) => async (dispatch, getState) => {
 };
 
 export const createGallery = (fileData) => async (dispatch, getState) => {
-  console.log("rony bhai",fileData);
+
   try {
     dispatch({
       type: IMAGE_CREATE_REQUEST,
     });
 
-    const {
-      userSignin: { userInfo },
-    } = getState();
+    // const {
+    //   userSignin: { userInfo },
+    // } = getState();
 
     const config = {
       headers: {
@@ -89,8 +88,6 @@ export const createGallery = (fileData) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(`/api/gallery`, fileData, config);
-
-    console.log(data);
 
     dispatch({
       type: IMAGE_CREATE_SUCCESS,

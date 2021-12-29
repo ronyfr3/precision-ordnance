@@ -1,15 +1,14 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { addToCart, removeFromCart } from '../actions/cartActions';
-import classes from './ShoppingCart.module.css';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { addToCart, removeFromCart } from "../actions/cartActions";
+import classes from "./ShoppingCart.module.css";
 
 const ShoppingCart = () => {
   const { cartItems } = useSelector((state) => state.cart);
-  console.log(cartItems);
+
   const dispatch = useDispatch();
   const removeCartHandler = (id) => {
-    console.log(id);
     dispatch(removeFromCart(id));
   };
 
@@ -46,18 +45,18 @@ const ShoppingCart = () => {
                     <img
                       src={
                         `${process.env.PUBLIC_URL}` +
-                        `/uploads/${item?.image[0]?.filename}`
+                        `/uploads/${item?.image?.[0]?.filename}`
                       }
-                      alt=''
+                      alt=""
                     />
                     <div className={classes.detailsProductName}>
-                      <h4>{item.title}</h4>
+                      <h4>{item?.title}</h4>
                       {/* <p>Cal: {item.description}</p>
                     <p>Color: Black</p> */}
                     </div>
                   </div>
                   <div className={classes.priceCart}>
-                    <p>$ {item.price} Aud</p>
+                    <p>$ {item?.price} Aud</p>
                   </div>
                   <div className={classes.quantityCart}>
                     <button
@@ -83,7 +82,7 @@ const ShoppingCart = () => {
                     onClick={() => removeCartHandler(item.product)}
                     className={classes.deleteCart}
                   >
-                    <img src='/icons/close.png' alt='Close' />
+                    <img src="/icons/close.png" alt="Close" />
                   </button>
                 </div>
               );

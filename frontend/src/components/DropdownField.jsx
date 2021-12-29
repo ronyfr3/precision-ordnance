@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import classes from "./DropdownField.module.css";
 
@@ -20,7 +20,6 @@ const DropdownField = ({
   brand,
 }) => {
   const { products } = useSelector((state) => state.productsReducer);
-  console.log(products);
 
   // category
   function onlyUnique(value, index, self) {
@@ -46,7 +45,7 @@ const DropdownField = ({
     ?.map((x) => x.brand.toLowerCase().trim())
     .filter(onlyUnique2);
 
-  console.log(inputCategory, inputSubcategory, inputBrand);
+  // console.log(inputCategory, inputSubcategory, inputBrand);
 
   return (
     <>
@@ -62,8 +61,8 @@ const DropdownField = ({
                 id=""
               >
                 <option value="">Select...</option>
-                {uniqueArray.map((category) => {
-                  return <option value={category}>{category}</option>;
+                {uniqueArray.map((category, idx) => {
+                  return <option key={idx} value={category}>{category}</option>;
                 })}
               </select>
             </div>
@@ -91,8 +90,8 @@ const DropdownField = ({
                 id=""
               >
                 <option value="">Select...</option>
-                {uniqueArray1.map((subcategory) => {
-                  return <option value={subcategory}>{subcategory}</option>;
+                {uniqueArray1.map((subcategory, idx) => {
+                  return <option key={idx} value={subcategory}>{subcategory}</option>;
                 })}
               </select>
             </div>
@@ -121,8 +120,8 @@ const DropdownField = ({
                 id=""
               >
                 <option value="">Select...</option>
-                {uniqueArray2.map((brand) => {
-                  return <option value={brand}>{brand}</option>;
+                {uniqueArray2.map((brand, idx) => {
+                  return <option key={idx} value={brand}>{brand}</option>;
                 })}
               </select>
             </div>

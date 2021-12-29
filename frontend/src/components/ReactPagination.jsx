@@ -8,8 +8,8 @@ function Items({ currentItems }) {
   return (
     <>
       {currentItems &&
-        currentItems.map((item) => (
-          <div>
+        currentItems.map((item, idx) => (
+          <div key={idx}>
             <h3>Item #{item}</h3>
           </div>
         ))}

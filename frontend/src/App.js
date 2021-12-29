@@ -29,6 +29,7 @@ import AdminGalleryScreen from "./screens/AdminGalleryScreen";
 import GalleryScreen from "./screens/GalleryScreen";
 import { listGalleries } from "./actions/galleryActions";
 import SearchScreen from "./screens/SearchScreen";
+import AdminDeliveryOrder from "./screens/AdminDeliveryOrder";
 
 const App = ({ match }) => {
   const dispatch = useDispatch();
@@ -76,6 +77,10 @@ const App = ({ match }) => {
         <Route
           path="/admin/productupdate/:id"
           component={AdminProductUpdateScreen}
+        />
+        <Route
+          path="/admin/delivery"
+          component={AdminDeliveryOrder}
         />
         <Route path="/gallery" component={GalleryScreen} />
         <Route path="/order" component={OrderSuccessScreen} />

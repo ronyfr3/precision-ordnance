@@ -47,10 +47,11 @@
   font-weight: 600;
 }
 
-.productDetailsName h1 {
+.productDetailsName h3 {
   color: #484c50;
   font-weight: 700;
   margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
 .productDetailsName h5 {
@@ -135,7 +136,7 @@
 
 .buyAdd .buyBtn {
   text-decoration: none;
-  background-color: #5AFE3D;
+  background-color: #5afe3d;
   font-size: 1.6rem;
   font-family: inherit;
   padding: 1.2rem 3rem;
@@ -149,7 +150,7 @@
 .buyAdd .addBtn {
   padding: 1.2rem 3rem;
   background-color: transparent;
-  border: 1px solid #5AFE3D;
+  border: 1px solid #5afe3d;
   color: #192129;
   margin-left: 3rem;
   font-size: 1.6rem;
@@ -242,16 +243,15 @@
   padding: 3rem 0;
 }
 
-.specificationAndReviewsRight img {
+/* .specificationAndReviewsRight img {
   width: 100%;
   border-radius: 5px;
   vertical-align: middle;
-}
+} */
 
 /* .specificationAndReviewsLeft {
   display: flex;
 } */
-
 
 .specificationAndReviewsLeft p {
   color: #929aa1;
@@ -285,22 +285,21 @@
 
 .productReview li {
   padding: 1rem;
-  border-bottom: 1px solid #929AA1;
+  border-bottom: 1px solid #929aa1;
 }
-
 
 .productReview li p {
   border-bottom: 0 !important;
 }
 
 .productReview .name {
-  color: #484C50;
+  color: #484c50;
   font-weight: 500;
   font-size: 1.6rem;
 }
 
 .productReview .date {
-  color: #929AA1;
+  color: #929aa1;
   font-size: 1.4rem;
   font-weight: 300;
   margin-bottom: 2rem;
@@ -309,11 +308,11 @@
 .productReview .comment {
   font-size: 1.8rem;
   font-weight: 400;
-  color: #484C50;
+  color: #484c50;
 }
 
- .noUser {
-  background-color: #D2EBF5;
+.noUser {
+  background-color: #d2ebf5;
   padding: 1.5rem 2rem;
   border-radius: 3px;
   font-size: 1.6rem;
@@ -321,7 +320,7 @@
 }
 
 .noReviews {
-  background-color: #D2EBF5;
+  background-color: #d2ebf5;
   padding: 1.5rem 2rem;
   border-radius: 3px;
   font-size: 1.6rem;
@@ -329,8 +328,8 @@
   text-transform: capitalize;
 }
 
-
-.reviewForm select, .reviewForm textarea {
+.reviewForm select,
+.reviewForm textarea {
   width: 100%;
   padding: 1.5rem 1rem;
   margin-bottom: 2rem;
@@ -348,12 +347,12 @@
 .reviewForm label {
   font-size: 1.4rem;
   font-weight: 400;
-  color: #484C50;
+  color: #484c50;
 }
 
 .reviewForm .submitBtn {
   border: 0;
-  background-color: #484C50;
+  background-color: #484c50;
   padding: 1rem 2rem;
   border-radius: 3px;
   font-family: inherit;
@@ -364,7 +363,7 @@
 }
 
 .outOfStock p {
-  color: #E45B00;
+  color: #e45b00;
   font-weight: 500;
   font-size: 1.6rem;
   margin-bottom: 1rem;
@@ -373,12 +372,12 @@
 
 .outOfStock button {
   background-color: transparent;
-  border: 2px solid #E45B00;
+  border: 2px solid #e45b00;
   padding: 1rem 2rem;
   font-size: 1.6rem;
   border-radius: 5px;
   cursor: pointer;
-  color: #E45B00;
+  color: #e45b00;
   text-transform: capitalize;
   font-family: inherit;
 }
@@ -389,4 +388,72 @@
   font-size: 1.6rem;
   margin-bottom: 1rem;
   text-transform: capitalize;
+}
+
+@media (max-width: 1200px) {
+  .productDetailsContent {
+    /* display: grid; */
+    grid-template-columns: 45rem auto;
+    /* grid-gap: 7rem;
+    align-items: center; */
+  }
+
+  .productSlider img {
+    width: 70%;
+    margin: auto;
+  }
+
+  /* .productDetailsSlider img {
+    width: 70%;
+    height: 15rem;
+    object-fit: contain;
+  } */
+}
+
+@media (max-width: 1000px) {
+  .productDetailsContent {
+    /* display: grid; */
+    /* display: block; */
+    grid-template-columns: 100%;
+    grid-gap: 5rem;
+    /* align-items: center; */
+  }
+
+  .productSlider img {
+    width: 50%;
+    margin: auto;
+  }
+
+  .specificationAndReviewsContent {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 5rem;
+    padding: 3rem 0;
+  }
+
+  .specificationReviews {
+    display: none !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .productDetailsSection {
+    padding: 5rem 0;
+  }
+
+  .specificationAndReviewsSection {
+    padding: 5rem 0;
+    background-color: #f6f6f6;
+  }
+}
+
+@media (max-width: 500px) {
+  .productSlider {
+    padding: 0 5rem;
+  }
+
+  .productSlider img {
+    width: 70%;
+    margin: auto;
+  }
 }

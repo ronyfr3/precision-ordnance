@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -17,7 +18,6 @@ import {
   createProductReview,
 } from "../actions/productsAction";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
 // import SpecificationAndReviews from "../components/Product"
 // import RelatedProduct from "../components/RelatedProduct"
 import StayInTouch from "../components/StayInTouch";
@@ -27,12 +27,10 @@ import "slick-carousel/slick/slick.css";
 import classes from "./ProductDetailsScreen.module.css";
 import Loader from "../components/Loader";
 
-// import products from '../products'
-
-const ProductDetailsScreen = ({ history, match }) => {
+const ProductDetailsScreen = ({ match, history }) => {
   const [spinner, setSpinner] = useState(true);
   const { userInfo } = useSelector((state) => state.userSignin);
-  console.log('user',userInfo);
+
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   let slider1;
@@ -42,11 +40,12 @@ const ProductDetailsScreen = ({ history, match }) => {
   const id = match.params.id;
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
-  console.log("asdfsdf", productDetails);
-  const { loading, product } = productDetails;
+
+  const { product } = productDetails;
+
+  console.log("product details", product);
 
   const values = product?.productInfo?.info?.values1?.map((value) => value);
-  console.log("values", values);
 
   useEffect(() => {
     dispatch(listProductDetails(id));
@@ -55,27 +54,36 @@ const ProductDetailsScreen = ({ history, match }) => {
     window.scrollTo(0, 0);
   }, [dispatch, id, slider1, slider2]);
 
-  const addToCartHandler = (qty) => {
-    dispatch(addToCart(id, qty));
+  const addToCartHandler = (qty, stock, redirect) => {
+    // console.log("asdfsfads", typeof stock)
+    if (Number(stock) === 0) {
+      toast("Product not in stock");
+    } else {
+      if (redirect) {
+        dispatch(addToCart(id, qty));
+        history.push("/shopping-cart");
+      } else {
+        dispatch(addToCart(id, qty));
+      }
+    }
   };
 
   useEffect(() => {
-    // axios.get(`/api/products/${id}`).then((res) => console.log(res));
     setTimeout(() => setSpinner(false), 500);
   }, []);
 
   // request
-  const reqObj = {
-    productName: productDetails?.product?.productInfo?.title,
-    brand: productDetails?.product?.brand,
-    category: productDetails?.product?.category,
-    price: productDetails?.product?.productInfo?.price,
-  };
+  // const reqObj = {
+  //   productName: productDetails?.product?.productInfo?.title,
+  //   brand: productDetails?.product?.brand,
+  //   category: productDetails?.product?.category,
+  //   price: productDetails?.product?.productInfo?.price,
+  // };
 
   let reqMessage = "Request Product";
   const handleRequest = () => {
     axios
-      .post("/api/RequestStock", {  reqMessage })
+      .post("/api/RequestStock", { reqMessage })
       .then((res) => console.log(res.data));
   };
 
@@ -84,8 +92,6 @@ const ProductDetailsScreen = ({ history, match }) => {
     rating,
     comment,
   };
-
-  console.log(reviewObj);
 
   const handleReview = (e) => {
     e.preventDefault();
@@ -108,8 +114,8 @@ const ProductDetailsScreen = ({ history, match }) => {
                         asNavFor={nav2}
                         ref={(slider) => (slider1 = slider)}
                       >
-                        {product?.files?.files?.map((image) => (
-                          <div>
+                        {product?.files?.files?.map((image, idx) => (
+                          <div key={idx}>
                             <img
                               src={
                                 `${process.env.PUBLIC_URL}` +
@@ -122,7 +128,6 @@ const ProductDetailsScreen = ({ history, match }) => {
                       </Slider>
                     </div>
                     <div className={classes.productSliderTwo}>
-                      {console.log(nav1)}
                       <Slider
                         asNavFor={nav1}
                         ref={(slider) => (slider2 = slider)}
@@ -131,8 +136,8 @@ const ProductDetailsScreen = ({ history, match }) => {
                         focusOnSelect={true}
                         arrows={false}
                       >
-                        {product?.files?.files?.map((image) => (
-                          <div>
+                        {product?.files?.files?.map((image, idx) => (
+                          <div key={idx}>
                             <img src={`/uploads/${image.filename}`} alt="" />
                           </div>
                         ))}
@@ -143,7 +148,7 @@ const ProductDetailsScreen = ({ history, match }) => {
                 <div className={classes.productDetailsRight}>
                   <div className={classes.productDetailsName}>
                     <h6>{product?.category}</h6>
-                    <h1>{product?.productInfo?.title}</h1>
+                    <h3>{product?.productInfo?.title}</h3>
                   </div>
                   <div className={classes.productDetailsPrice}>
                     <h6>price</h6>
@@ -172,15 +177,22 @@ const ProductDetailsScreen = ({ history, match }) => {
                     <p>{product?.productInfo?.shortdescription}</p>
                   </div>
                   <div className={classes.buyAdd}>
-                    <Link
-                      to="/checkout"
-                      onClick={() => addToCartHandler(1)}
+                    <button
+                      onClick={() =>
+                        addToCartHandler(
+                          1,
+                          product?.productInfo?.countInStock,
+                          "redirect"
+                        )
+                      }
                       className={classes.buyBtn}
                     >
                       Buy Now
-                    </Link>
+                    </button>
                     <button
-                      onClick={() => addToCartHandler(1)}
+                      onClick={() =>
+                        addToCartHandler(1, product?.productInfo?.countInStock)
+                      }
                       className={classes.addBtn}
                     >
                       Add to Cart
@@ -223,14 +235,12 @@ const ProductDetailsScreen = ({ history, match }) => {
                 <div className={classes.specificationAndReviewsLeft}>
                   <ul className={classes.attributes}>
                     {product?.productInfo?.info?.name?.map((name, idx) => (
-                      <li>
+                      <li key={idx}>
                         <p>{name}:</p> <span>{values[idx]}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-
-               
                 <div>
                   {product?.reviews?.length === 0 && (
                     <p className={classes.noReviews}>No Reviews</p>

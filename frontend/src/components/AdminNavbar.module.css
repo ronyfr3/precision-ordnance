@@ -10,7 +10,6 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
-  flex: 0.3;
 }
 
 .adminSearch input {
@@ -41,7 +40,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex: 0.1;
+  /* flex: 0.1; */
 }
 
 .adminNavbar li {
@@ -85,6 +84,7 @@
   position: absolute;
   top: 3.5rem;
   right: -11px;
+  z-index: 100
 }
 
 .notificationContent {
@@ -92,6 +92,7 @@
   width: 40rem;
   background: #ffffff;
   overflow: auto;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .notificationContent .headNotificationContent {
@@ -171,4 +172,28 @@
   border: 0;
   color: #5a6d80;
   cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .container-fluid {
+    width: 110rem;
+    margin: 0 auto;
+  }
+
+  .adminSearch {
+    display: none;
+  }
+
+  .adminNavbarSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .notificationContent {
+    width: 30rem;
+  }
 }

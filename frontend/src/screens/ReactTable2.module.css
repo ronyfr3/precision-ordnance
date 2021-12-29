@@ -8,6 +8,12 @@
   border: 0;
   border-collapse: separate;
   border-spacing: 0 2rem;
+  overflow-x: auto;
+}
+
+.orderTableWrapper {
+  width: 100%;
+  overflow-x: auto;
 }
 
 .orderListTable tr {
@@ -52,10 +58,11 @@
   color: inherit
 }
 
-.orderListTable .updateBtn {
+.orderListTable .deliveredBtn {
   color: #5CB85C;
-  padding: 3px;
-  cursor: pointer
+  padding: 5px;
+  cursor: pointer;
+  font-size: 1.6rem;
 }
 
 .orderListTable .deleteBtn {
@@ -100,4 +107,12 @@
   border: 0;
   border: 1px solid #B7C7DC;
   padding: 5px;
+}
+
+
+@media (max-width: 800px) {
+  .orderTableWrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
 }

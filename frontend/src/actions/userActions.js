@@ -54,7 +54,7 @@ export const signin = (email, password) => async (dispatch) => {
 };
 
 export const signup = (name, email, password) => async (dispatch) => {
-  console.log(name, email, password);
+
   try {
     dispatch({
       type: USER_SIGNUP_REQUEST,

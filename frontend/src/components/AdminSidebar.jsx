@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 
 import classes from "./AdminSidebar.module.css";
 
 const AdminSidebar = () => {
+
+  const { userInfo } = useSelector(state => state.userSignin)
+
   return (
     <section className={classes.adminSidebarSection}>
       <div className={classes.topAdminSidebar}>
         <div className={classes.adminSidebarLogo}>
-          <Link activeClassName={classes.active} to="/">
+          <Link className={classes.active} to="/">
             <img src="/icons/po_logo.png" alt="" />
           </Link>
         </div>
@@ -32,17 +36,23 @@ const AdminSidebar = () => {
             </NavLink>
           </li>
           <li>
+          <i className="fas fa-truck"></i>
+            <NavLink activeClassName={classes.active} to="/admin/delivery">
+              Delivered
+            </NavLink>
+          </li>
+          <li>
             <i className="fas fa-cog"></i>
             <NavLink activeClassName={classes.active} to="/admin/settings">
               SETTINGS
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <i className="fas fa-image"></i>
             <NavLink activeClassName={classes.active} to="/admin/gallery">
               Gallery
             </NavLink>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div className={classes.bottomAdminSidebar}>
@@ -53,7 +63,7 @@ const AdminSidebar = () => {
             </span>
           </div>
           <div className={classes.bottomAdminName}>
-            <h5>Emily Blunt</h5>
+            <h5>{userInfo.name}</h5>
             <p>Admin</p>
           </div>
         </div>

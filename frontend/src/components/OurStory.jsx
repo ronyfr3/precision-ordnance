@@ -16,7 +16,7 @@ const OurStory = () => {
         <div className={classes.ourStoryContent}>
           <div>
             <h3>Our Story</h3>
-            <h1>We had come a long way</h1>
+            <h2>We had come a long way</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
               deserunt fuga totam quia voluptatem id accusamus quidem est

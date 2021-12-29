@@ -22,14 +22,6 @@ const SearchFIlter = ({ filter, setFilter }) => {
         </span>
       </div>
       <div className={classes.printPdf}>
-        {/* <div class="buttons-print"> */}
-          {/* <button className={`btn ${classes.printBtn}`}>
-            <i className="fas fa-print"></i> PRINT
-          </button>
-          <button className={`btn ${classes.downloadBtn}`}>
-            <i className="fas fa-download"></i> DOWNLOAD PDF
-          </button> */}
-        {/* </div> */}
       </div>
     </section>
   );

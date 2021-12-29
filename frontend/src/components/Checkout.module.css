@@ -199,4 +199,37 @@
 .checkoutRight ul li:last-child {
   padding-top: 5rem;
   border-top: 1px solid #c9d2d9;
+  margin-bottom: 0;
 }
+
+@media (max-width: 1000px) {
+  .checkoutWrapper {
+    grid-template-columns: 1fr 0.6fr;
+  }
+}
+
+@media (max-width: 1000px) {
+  .checkoutWrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .checkoutLeft {
+    padding: 5rem 0;
+    order: 2;
+  }
+
+  .checkoutRight {
+    order: 1;
+    background-color: transparent;
+    padding: 5rem 0;
+  }
+
+  .checkoutForm {
+    margin-right: 0;
+  }
+
+  .checkoutRight ul li {
+    margin-bottom: 3rem;
+  }
+}
+

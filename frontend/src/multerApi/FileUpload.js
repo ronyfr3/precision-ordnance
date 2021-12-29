@@ -10,12 +10,12 @@ const FileUpload = (props) => {
     const formData = new FormData();
     for (let i = 0; i < multipleFiles.length; i++) {
       formData.append("files", multipleFiles[i]);
-      console.log(formData);
+
     }
     await multipleFilesUpload(formData);
     props.getMultiple();
   };
-  console.log(multipleFiles);
+
   return (
     <div>
       <div className="row">

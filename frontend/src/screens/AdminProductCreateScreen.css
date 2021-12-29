@@ -74,10 +74,11 @@
   margin-bottom: 3rem;
 }
 
-.warning {
-  color: #F36642;
+.productCreateForm .info {
+  color: #57AF57;
   font-weight: 400;
   margin-left: 5px;
+  display: inline-block;
 }
 
 .inputTag ul {
@@ -102,4 +103,11 @@
   border: 0;
   margin-left: 2px;
   cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+  .specification {
+    grid-template-columns: 1fr;
+    grid-gap: 0rem;
+  }
 }

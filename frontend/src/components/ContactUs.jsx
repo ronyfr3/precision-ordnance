@@ -40,21 +40,15 @@ const ContactUs = () => {
           <div className={classes.contactUsAddress}>
             <h3>Contact Us</h3>
             <p>
-              If you’re chasing for neat gears without higher prices, or don’t
-              know where to get started, please contact us by filling up the
-              boxes on the right; and we’ll get back to you shortly.
+              For all inquires please mail us on <br /> <span style={{display: 'block',fontSize: '1.8rem', fontWeight: '600', marginTop: '1.5rem'}}>precisionordnance@bigpond.com</span> 
             </p>
-            <div className={classes.email}>
-              <img src="/icons/mail.png" alt="Mail" />
-              <p>precisionordnance@bigpond.com</p>
-            </div>
             <div className={classes.address}>
               <img src="/icons/map.png" alt="Map" />
               <p>P.O. Box 78 Glenorchy, Tasmania 7010</p>
             </div>
           </div>
           <div className={classes.contactUsForm}>
-            <h4>Drop Your Message Here</h4>
+            <h4>Message Your Inquires</h4>
             <form onSubmit={submitContactInfo}>
               <div>
                 <input
@@ -86,7 +80,7 @@ const ContactUs = () => {
                 ></textarea>
               </div>
               <div className={classes.submitBtn}>
-                <button class="btn">Submit</button>
+                <button className="btn">Submit</button>
               </div>
               <ToastContainer />
             </form>

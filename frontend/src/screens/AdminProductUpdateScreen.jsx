@@ -1,28 +1,31 @@
 // import './ProductCreateScreen.css';
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AdminNavbar from "../components/AdminNavbar";
 import AdminSidebar from "../components/AdminSidebar";
 import Loader from "../components/Loader";
+import { listProductDetails } from "../actions/productsAction";
 import "./AdminProductCreateScreen.css";
 
 const AdminProductUpdateScreen = ({ match, history }) => {
   const [spinner, setSpinner] = useState(true);
-  const { userInfo } = useSelector((state) => state.userSignin)
+  const { userInfo } = useSelector((state) => state.userSignin);
+  const { product: singleProduct } = useSelector(
+    (state) => state.productDetails
+  );
+
+  console.log("18", singleProduct);
+
   let location = useLocation();
-  useEffect(() => {
-    if (!userInfo || !userInfo.isAdmin) {
-      history.push("/")
-    }
-    localStorage.setItem("path", location.pathname);
-    setTimeout(() => setSpinner(false), 500);
-  }, [location]);
+
+  const dispatch = useDispatch();
 
   const id = match.params.id;
+
   const [tags1, setTags1] = useState([]);
   const [tags2, setTags2] = useState([]);
   const [tags3, setTags3] = useState([]);
@@ -55,10 +58,8 @@ const AdminProductUpdateScreen = ({ match, history }) => {
   const [files, setFiles] = useState([]);
 
   const onChange = (e) => {
-    console.log(e.target.files);
     setFiles(e.target.files);
   };
-  console.log(files);
 
   let tagInput1;
   let tagInput2;
@@ -122,6 +123,31 @@ const AdminProductUpdateScreen = ({ match, history }) => {
     }
   };
 
+  useEffect(() => {
+    if (!userInfo || !userInfo.isAdmin) {
+      history.push("/");
+    } else {
+      if (!singleProduct?.productInfo?.title || singleProduct._id !== id) {
+        dispatch(listProductDetails(id));
+      } else {
+        setProduct({
+          category: singleProduct?.category,
+          subcategory: singleProduct?.subcategory,
+          brand: singleProduct?.brand,
+          title: singleProduct?.productInfo?.title,
+          price: singleProduct?.productInfo?.price,
+          shortdescription: singleProduct?.productInfo?.shortdescription,
+          longdescription: singleProduct?.productInfo?.longdescription,
+          longdescription: singleProduct?.productInfo?.longdescription,
+          countinstock: singleProduct?.productInfo?.countInStock,
+        });
+      }
+    }
+
+    localStorage.setItem("path", location.pathname);
+    setTimeout(() => setSpinner(false), 500);
+  }, [location, history, userInfo]);
+
   //upload id
   const [uploadData, setUploadData] = useState();
   const onSubmit = async (event) => {
@@ -146,7 +172,7 @@ const AdminProductUpdateScreen = ({ match, history }) => {
       }
     }
   };
-  console.log("uploadData", uploadData);
+
   const productObj = {
     user: "61765a978ad5752627b851b5",
     files: uploadData,
@@ -164,15 +190,19 @@ const AdminProductUpdateScreen = ({ match, history }) => {
       price: product.price,
       shortdescription: product.shortdescription,
       longdescription: product.longdescription,
+      countInStock: product.countinstock
     },
   };
-  console.log(productObj);
+
+  console.log("197", productObj)
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put(`/api/products/${id}`, productObj, {
+      const res = await axios.patch(`/api/products/${id}`, productObj, {
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
         },
       });
       toast(res.data.message);
@@ -192,12 +222,12 @@ const AdminProductUpdateScreen = ({ match, history }) => {
       setNewarrival(false);
       setFiles([]);
       console.log("product", res.data);
+      setTimeout(() => {
+        window.location.reload(true);
+      }, 300);
+      history.push("/admin/productlist")
     } catch (err) {
-      if (err.response.status === 500) {
-        console.log(err);
-      } else {
-        console.log(err.response.data.msg);
-      }
+      console.log(err.response.data.message);
     }
   };
 
@@ -209,10 +239,10 @@ const AdminProductUpdateScreen = ({ match, history }) => {
         <section className="productCreateScreen">
           <AdminSidebar />
           <div className="productCreateRight">
-            <AdminNavbar history={history}/>
+            <AdminNavbar history={history} />
             <div className="addProduct">
               <div>
-                <h4>Add New Product</h4>
+                <h4>Update Product</h4>
               </div>
             </div>
             <ToastContainer />
@@ -294,7 +324,11 @@ const AdminProductUpdateScreen = ({ match, history }) => {
                   multiple
                   onChange={onChange}
                 />
-                <button onClick={onSubmit}>Only jpg jpeg png allowed!</button>
+                {/* <button onClick={onSubmit}>Only jpg jpeg png allowed!</button> */}
+                <button className="imgAddBtn" onClick={onSubmit}>
+                  Add image
+                </button>{" "}
+                <span className="info">(only jpg, png allowed!)</span>
               </div>
               <h6>specification</h6>
               <div className="specification">

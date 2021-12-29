@@ -9,6 +9,11 @@
   grid-gap: 5rem;
 }
 
+.userProfileWrapper h3 {
+  color: #484C50;
+  margin-bottom: 3rem;
+}
+
 .userProfileForm input {
   width: 100%;
   padding: 1.5rem 1rem;
@@ -25,4 +30,16 @@
   margin-bottom: 4rem;
   font-weight: 400;
   font-size: 1.6rem;
+}
+
+.userProfileOrder {
+  overflow-x: auto;
+}
+
+@media (max-width: 1200px) {
+  .userProfileWrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 5rem;
+  }
 }

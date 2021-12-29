@@ -24,11 +24,12 @@
   margin-bottom: 2rem;
 }
 
-.ourStoryContent h1 {
+.ourStoryContent h2 {
   color: #c9d2d9;
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 3rem;
+  line-height: 1.4;
 }
 
 .ourStoryContent p {
@@ -58,5 +59,16 @@
     display: flex;
     width: 21rem;
     margin: auto;
+  }
+}
+
+@media (max-width: 800px) {
+  .ourStorySection {
+    height: auto;
+  }
+
+  .ourStoryContent {
+    height: auto;
+    padding: 5rem 0;
   }
 }

@@ -60,7 +60,7 @@ const sendEmail = (body) => {
       res.status(400).json({
         msg: "Something wrong!",
       });
-      console.log(err.message);
+
     } else {
       res.status(200).json({
         msg: "Success",

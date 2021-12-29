@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import axios from 'axios'
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -9,11 +10,17 @@ import {
 } from "react-table";
 import { COLUMNS } from "./table/Columns2";
 import SearchFilter from "./table/SearchFIlter";
+import { deleteOrder } from '../actions/orderActions'
+import { useDispatch } from 'react-redux'
 import classes from './ReactTable2.module.css'
 
 const ReactTable2 = () => {
   const { orders } = useSelector((state) => state.orderReducer);
-  console.log(orders);
+  const { userInfo } = useSelector((state) => state.userSignin);
+
+
+  const dispatch = useDispatch()
+
   let Order = [];
   orders?.map((x) =>
     Order.push({
@@ -52,30 +59,36 @@ const ReactTable2 = () => {
     state,
     pageOptions,
     gotoPage,
-    pageCount,
+    // pageCount,
     setPageSize,
     setGlobalFilter,
   } = tableInstance;
   const { pageIndex, pageSize } = state;
   const { globalFilter } = state;
-  const handleUpdate = (id) => {
-    // console.log(id);
-    // handleUpdate
+  const handleUpdate = async (id) => {
+
+    await axios.put(`/api/orders/${id}/deliver`, {orderId: id});
+    setTimeout(() => {
+      window.location.reload(true);
+    }, 500);
   };
   const handleDelete = (id) => {
-    // console.log(id);
-    // handleDelete
+    alert('do you want to delete?');
+    dispatch(deleteOrder(id))
+    setTimeout(() => {
+      window.location.reload(true);
+    }, 500);
   };
 
   return (
-    <>
+    <div className={classes.orderTableWrapper}>
       <SearchFilter filter={globalFilter} setFilter={setGlobalFilter} />
-      <table className={classes.orderListTable} {...getTableProps()}>
+      <table className={`${classes.orderListTable} ${classes.containerFluid}`} {...getTableProps()}>
         <thead>
-          {headerGroups.map((x) => (
-            <tr {...x.getHeaderGroupProps()}>
-              {x.headers.map((column) => (
-                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+          {headerGroups.map((x, idx) => (
+            <tr key={idx} {...x.getHeaderGroupProps()}>
+              {x.headers.map((column, idx) => (
+                <th key={idx} {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render("Header")}
                   <span>
                     {column.isSorted ? (
@@ -94,15 +107,13 @@ const ReactTable2 = () => {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {page.map((x) => {
-            console.log("xxxxxxxxxx", x);
+          {page.map((x, idx) => {
             prepareRow(x);
             return (
-              <tr {...x.getRowProps()}>
-                {x.cells.map((cell) => {
-                  console.log(cell);
+              <tr key={idx} {...x.getRowProps()}>
+                {x.cells.map((cell, idx) => {
                   return (
-                    <td
+                    <td key={idx}
                       {...cell.getCellProps()}
                       data-label={cell?.column?.Header}
                     >
@@ -112,17 +123,18 @@ const ReactTable2 = () => {
                     </td>
                   );
                 })}
-                <td onClick={() => handleUpdate(x.original._id)}>
-                <button className={classes.updateBtn}>
-                    <i class="fas fa-pen-alt"></i>
+                <td onClick={() => handleUpdate(x.original.id)}>
+                <button className={classes.deliveredBtn}>
+                  { x?.original?.status === 'Processing' ? "Delivery" : "Delivered"}                    
                   </button>
                 </td>
-                <td onClick={() => handleDelete(x.original._id)}>
+                <td onClick={() => handleDelete(x.original.id)}>
                 <button className={classes.deleteBtn}>
-                    <i class="fas fa-trash-alt"></i>
+                    <i className="fas fa-trash-alt"></i>
                   </button>
                 </td>
               </tr>
+              // console.log(x?.original?.status)
             );
           })}
         </tbody>
@@ -144,7 +156,7 @@ const ReactTable2 = () => {
         </span>
         <div>
         <button className={classes.prevBtn} onClick={() => previousPage()} disabled={!canPreviousPage}>
-          <i class="fas fa-chevron-left"></i>
+          <i className="fas fa-chevron-left"></i>
           </button>
         <span>
           <input
@@ -159,11 +171,11 @@ const ReactTable2 = () => {
           </b>
         </span>
         <button className={classes.nextBtn} onClick={() => nextPage()} disabled={!canNextPage}>
-          <i class="fas fa-chevron-right"></i>
+          <i className="fas fa-chevron-right"></i>
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

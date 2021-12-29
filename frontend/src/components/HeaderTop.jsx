@@ -7,6 +7,7 @@ import { logout } from "../actions/userActions";
 import classes from "./HeaderTop.module.css";
 import { listQueryProducts } from "../actions/QueryProduct";
 import { useHistory, useLocation } from "react-router-dom";
+import MobileNav from '../components/MobileNav'
 
 const HeaderTop = () => {
   const [show, setShow] = useState(false);
@@ -27,7 +28,6 @@ const HeaderTop = () => {
     dispatch(logout());
   };
   const [inp, setInp] = useState("");
-  console.log("inputSearch", inp);
 
   let history = useHistory();
   let location = useLocation();
@@ -41,12 +41,12 @@ const HeaderTop = () => {
     if (paths !== location.pathname) {
       setInp("");
     }
-  }, [location.pathname]);
-  console.log("pathname", location.pathamne);
-  const fetchQueryProducts = () => {
-    dispatch(listQueryProducts(inp.toString().toUpperCase()));
-    history.push(`/search/${inp}`);
-  };
+  }, [location.pathname, paths]);
+
+  // const fetchQueryProducts = () => {
+  //   dispatch(listQueryProducts(inp.toString().toUpperCase()));
+  //   history.push(`/search/${inp}`);
+  // };
 
   const adminUserRedirect = () => {
     if (userInfo) {
@@ -74,7 +74,7 @@ const HeaderTop = () => {
     } else {
       return (
         <Link to="/signin-signup" className={classes.loginPlace}>
-          SIGNIN / JOIN
+          SIGN IN / JOIN
         </Link>
       );
     }
@@ -94,8 +94,14 @@ const HeaderTop = () => {
             onChange={changeRouteWithSearch}
           />
 
-          <span className={classes.searchIcon}><i className="fas fa-search"></i></span>
+          <span className={classes.searchIcon}>
+            <i className="fas fa-search"></i>
+          </span>
         </form>
+        <div className={classes.menuBar}>
+          {/* <i className="fas fa-bars"></i> */}
+          <MobileNav />
+        </div>
         <div className={classes.headerTopMiddle}>
           <Link to="/">
             <img src="/icons/po_logo.png" alt="Precision Ordnance Logo" />

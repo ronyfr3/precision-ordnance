@@ -24,7 +24,7 @@ const PopularItems = () => {
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % products.length;
+    const newOffset = (event.selected * itemsPerPage) % products?.length;
     console.log(
       `User requested page number ${event.selected}, which is offset ${newOffset}`
     );
@@ -34,10 +34,9 @@ const PopularItems = () => {
   return (
     <section className={classes.popularItemSection}>
       <div className={`${classes.popularItemWrapper} container`}>
-        <h3>POPULAR ITEMS</h3>
+        <h3>MOST POPULAR ITEMS</h3>
         <p>
-          See the popular items that can bring you true hunting experience- lug
-          action, scope, binoculars and what not.
+          View the items the are our biggest sellers
         </p>
         <div className={classes.popularItemContent}>
           <div className={classes.navItem}>

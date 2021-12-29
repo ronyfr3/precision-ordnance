@@ -70,7 +70,7 @@ const getOrderById = catchAsyncError(async (req, res, next) => {
 // @desc    Update order to paid
 // @route   GET /api/orders/:id/pay
 // @access  Private
-const updateOrderToPaid = catchAsyncError(async (req, res, next) => {
+const updateOrderToPaid = catchAsyncError(async (req, res, next) => { 
   const order = await Order.findById(req.params.id);
 
   if (order) {
@@ -95,12 +95,12 @@ const updateOrderToPaid = catchAsyncError(async (req, res, next) => {
 // @route   GET /api/orders/:id/deliver
 // @access  Private/Admin
 const updateOrderToDelivered = catchAsyncError(async (req, res, next) => {
+
   const order = await Order.findById(req.params.id);
 
   if (order) {
     order.isDelivered = true;
-    order.deliveredAt = Date.now();
-
+    // order.deliveredAt = Date.now();
     const updatedOrder = await order.save();
 
     res.json(updatedOrder);
@@ -113,11 +113,15 @@ const updateOrderToDelivered = catchAsyncError(async (req, res, next) => {
 // @route   GET /api/orders/myorders
 // @access  Private
 const getMyOrders = catchAsyncError(async (req, res, next) => {
-  const orders = await Order.find({ user: req.user._id }).populate(
-    "user", "name email"
-  );
+  const orders = await Order.find({ user: req.user._id })
+
+  // const orders = await Order.findById(req.user._id).populate(
+  //   "user",
+  //   "name email"
+  // );
+
   if (!orders) return next(new ErrorHandler("Orders not found", 400));
-  console.log("order", orders);
+
   res.json(orders);
 });
 
@@ -130,6 +134,20 @@ const getOrders = catchAsyncError(async (req, res, next) => {
   res.json(orders);
 });
 
+// @desc    Delete a order
+// @route   DELETE /api/orders/:id
+// @access  Private/Admin
+const deleteOrder = catchAsyncError(async (req, res, next) => {
+  const order = await Order.findById(req.params.id);
+
+  if (order) {
+    await order.remove();
+    res.status(200).json({ message: "Order removed" });
+  } else {
+    return next(new ErrorHandler("Order not found", 400));
+  }
+});
+
 module.exports = {
   addOrderItems,
   getOrderById,
@@ -137,4 +155,5 @@ module.exports = {
   updateOrderToDelivered,
   getMyOrders,
   getOrders,
+  deleteOrder,
 };

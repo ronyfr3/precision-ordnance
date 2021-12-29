@@ -12,7 +12,6 @@ const AdminOrderDetailsScreen = ({ match, history }) => {
   const { orders } = useSelector((state) => state.orderReducer);
   const { userInfo } = useSelector((state) => state.userSignin);
   const singleOrder = orders.find((o) => o._id === id);
-  console.log(singleOrder);
 
   let location = useLocation();
   useEffect(() => {
@@ -21,7 +20,7 @@ const AdminOrderDetailsScreen = ({ match, history }) => {
     }
     localStorage.setItem("path", location.pathname);
     setTimeout(() => setSpinner(false), 500);
-  }, [location.pathname, history]);
+  }, [location.pathname, history, userInfo]);
   return (
     <>
       {spinner ? (

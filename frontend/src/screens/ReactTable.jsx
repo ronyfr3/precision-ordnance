@@ -46,7 +46,7 @@ const ReactTable = () => {
     state,
     pageOptions,
     gotoPage,
-    pageCount,
+    // pageCount,
     setPageSize,
     setGlobalFilter,
   } = tableInstance;
@@ -72,14 +72,14 @@ const ReactTable = () => {
   };
 
   return (
-    <>
+    <div className={classes.productTableWrapper}>
       <SearchFilter filter={globalFilter} setFilter={setGlobalFilter} />
       <table className={classes.productListTable} {...getTableProps()}>
         <thead>
-          {headerGroups.map((x) => (
-            <tr {...x.getHeaderGroupProps()}>
-              {x.headers.map((column) => (
-                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+          {headerGroups.map((x, idx) => (
+            <tr key={idx} {...x.getHeaderGroupProps()}>
+              {x.headers.map((column, idx) => (
+                <th key={idx} {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render('Header')}
                   <span>
                     {column.isSorted ? (
@@ -98,14 +98,14 @@ const ReactTable = () => {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {page.map((x) => {
-            console.log('x', x);
+          {page.map((x, idx) => {
             prepareRow(x);
             return (
-              <tr {...x.getRowProps()}>
-                {x.cells.map((cell) => {
+              <tr key={idx} {...x.getRowProps()}>
+                {x.cells.map((cell, idx) => {
                   return (
                     <td
+                    key={idx}
                       {...cell.getCellProps()}
                       data-label={cell?.column?.Header}
                     >
@@ -117,12 +117,12 @@ const ReactTable = () => {
                 })}
                 <td onClick={() => handleUpdate(x.original._id)}>
                   <button className={classes.updateBtn}>
-                    <i class='fas fa-pen-alt'></i>
+                    <i className='fas fa-pen-alt'></i>
                   </button>
                 </td>
                 <td onClick={() => handleDelete(x.original._id)}>
                   <button className={classes.deleteBtn}>
-                    <i class='fas fa-trash-alt'></i>
+                    <i className='fas fa-trash-alt'></i>
                   </button>
                 </td>
               </tr>
@@ -151,7 +151,7 @@ const ReactTable = () => {
             onClick={() => previousPage()}
             disabled={!canPreviousPage}
           >
-            <i class='fas fa-chevron-left'></i>
+            <i className='fas fa-chevron-left'></i>
           </button>
           <span>
             <input
@@ -170,11 +170,11 @@ const ReactTable = () => {
             onClick={() => nextPage()}
             disabled={!canNextPage}
           >
-            <i class='fas fa-chevron-right'></i>
+            <i className='fas fa-chevron-right'></i>
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

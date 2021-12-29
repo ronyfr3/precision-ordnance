@@ -1,0 +1,91 @@
+.adminDeliveryOrderSection {
+  display: grid;
+  grid-template-columns: 0.2fr 1fr;
+  grid-gap: 3rem;
+  background-color: #f5f5f5;
+  padding-right: 2rem
+}
+
+.lastOrder {
+  background-color: #ffffff;
+  padding: 1.5rem 2rem;
+}
+
+.lastOrder .headLastOrder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lastOrder .headLastOrder .leftHeadLastOrder h5 {
+  font-weight: 600;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  color: #484c50;
+}
+
+.lastOrder .headLastOrder .rightHeadLastOrder {
+  display: flex;
+  align-items: center;
+}
+
+.lastOrder .headLastOrder .rightHeadLastOrder p {
+  color: #3d78fb;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.lastOrder .headLastOrder .rightHeadLastOrder i {
+  color: #3d78fb;
+  margin-left: 10px;
+}
+
+.ordersWrapper table {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  border-collapse: separate;
+  border-spacing: 0 2rem;
+}
+
+.ordersWrapper table tr,
+.ordersWrapper table td {
+  border: 0;
+}
+
+.ordersWrapper table tr {
+  color: #5a6d80;
+}
+
+.ordersWrapper table tr:not(:first-child) {
+  background: #f7f7f8;
+  box-shadow: 0px 0px 2px rgba(38, 50, 65, 0.25);
+  border-radius: 3px;
+}
+
+.cheakboxAllign {
+  display: flex;
+  align-items: center;
+}
+
+.ordersWrapper table tr th {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.ordersWrapper table tr td {
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 16px;
+}
+
+.cheakboxAllign input[type="checkbox"] {
+  border: 1px solid #929aa2;
+  border-radius: 2px;
+  margin-right: 5px;
+}
+
+.rightAction {
+  text-align: right;
+}

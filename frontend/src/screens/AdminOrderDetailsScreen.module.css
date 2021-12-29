@@ -56,3 +56,10 @@
   border-bottom: 0;
 }
 
+@media (max-width: 1000px) {
+  .orderAllLists {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 0rem;
+  }
+}

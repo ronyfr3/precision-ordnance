@@ -1,10 +1,17 @@
-
 .headerTop {
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #fff;
   padding: 1.5rem 0;
+}
+
+.menuBar {
+  display: none;
+  color: #ffffff;
+  font-size: 2rem;
+  border: 0;
+  cursor: pointer;
 }
 
 .headerTopMiddle {
@@ -114,6 +121,17 @@
   padding-left: 0.5rem;
 }
 
+.loginPlace {
+  border: 1px solid #5afe3d;
+  padding: 1rem 1.5rem;
+  transition: 0.4s all ease;
+}
+
+.loginPlace:hover {
+  background-color: #5afe3d;
+  color: #192129;
+}
+
 .headerTopRight {
   display: flex;
   align-items: center;
@@ -143,7 +161,7 @@
   top: 3rem;
   background-color: #192129;
   width: 20rem;
-  box-shadow: 1px 1px 3px #262F38, -1px -1px 3px #262F38;
+  box-shadow: 1px 1px 3px #262f38, -1px -1px 3px #262f38;
 }
 
 .userSigninList li:not(:last-child) {
@@ -154,3 +172,95 @@
   display: block;
 }
 
+@media (max-width: 1200px) {
+  .headerTopMiddle img {
+    width: 20rem;
+  }
+
+  .headerTopLeft input {
+    width: 70%;
+  }
+
+  .searchIcon {
+    right: 33%;
+  }
+}
+
+@media (max-width: 800px) {
+  .headerTopLeft input {
+    width: 100%;
+  }
+
+  .searchIcon {
+    right: 1.5%;
+  }
+
+  .headerTop {
+    display: grid;
+    grid-gap: 1rem;
+  }
+
+  .loginPlace {
+    padding: 0.5rem 1rem;
+  }
+
+  .menuBar {
+    display: block;
+    order: 1;
+    grid-column: 1 / 2;
+  }
+
+  .headerTopMiddle {
+    grid-column: 2 / 3;
+    order: 2;
+  }
+
+  .headerTopMiddle img {
+    width: 15rem;
+    vertical-align: middle;
+    margin-left: 6rem;
+  }
+
+  .headerTopLeft {
+    grid-column: 1 / 4;
+    order: 4;
+  }
+
+  .headerTopRight {
+    grid-column: 3 / 4;
+    order: 3;
+  }
+
+  .headerTopRightSecond {
+    margin-left: 0;
+  }
+
+  .headerTop .headerTopRightThird {
+    margin-left: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .menuBar {
+    margin-right: 3rem;
+  }
+
+  .headerTopMiddle img {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .headerTopMiddle img {
+    width: 14rem;
+    vertical-align: middle;
+  }
+}
+
+@media (max-width: 400px) {
+  .headerTopMiddle img {
+    width: 12rem;
+    vertical-align: middle;
+  }
+}

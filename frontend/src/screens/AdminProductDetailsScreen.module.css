@@ -166,3 +166,10 @@
   margin-left: 3rem;
   font-weight: 300;
 }
+
+@media (max-width: 800px) {
+  .adminProductDetailsWrapper {
+    grid-template-columns: 1fr;
+    grid-gap: 5rem;
+  }
+}

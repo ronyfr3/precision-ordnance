@@ -21,7 +21,7 @@ const VerifiedShippingSecure = () => {
             <img src="/icons/secure_logo.png" alt="Secure" />
             <h4>7 Day Return</h4>
             <p>
-              Didn’t like what you bought? Tell us for a 7-Day Return experience
+              Didn’t like what you bought? Tell us for a 7-Day Return experience (conditions apply)
             </p>
           </div>
         </div>

@@ -1,23 +1,43 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import AdminNavbar from "../components/AdminNavbar";
 import AdminSidebar from "../components/AdminSidebar";
 import Loader from '../components/Loader';
+import { listProductDetails } from '../actions/productsAction'
 import classes from "./AdminProductDetailsScreen.module.css";
 
 const AdminProductDetailsScreen = ({ match, history }) => {
+  const productId = match.params.id
   const [spinner, setSpinner] = useState(true);
   const { userInfo } = useSelector((state) => state.userSignin)
+  // const { product } = useSelector((state) => state.productDetails)
+
+  const dispatch = useDispatch()
   let location = useLocation();
   useEffect(() => {
     if (!userInfo || !userInfo.isAdmin) {
       history.push("/")
+    } else {
+      dispatch(listProductDetails(productId));
+      // if (!product.name || product._id !== productId) {
+        
+      // } else {
+      //   setName(product.name);
+      //   setNumOfReviews(product.numOfReviews);
+      //   setPriceNew(product.priceNew);
+      //   setPriceOld(product.priceOld);
+      //   setCountInStock(product.countInStock);
+      //   setImage(product.image);
+      //   setDescription(product.description);
+      //   setCoreCategory(product.coreCategory);
+      //   setCategory(product.category);
+      // }
     }
     localStorage.setItem("path", location.pathname);
     setTimeout(() => setSpinner(false), 500);
-  }, [location]);
+  }, [location.pathname, dispatch, history, productId, userInfo]);
   const { products } = useSelector((state) => state.productsReducer);
   const singleProduct = products.filter(
     (product) => product._id === match.params.id
@@ -53,8 +73,8 @@ const AdminProductDetailsScreen = ({ match, history }) => {
                     />
                   </div>
                   <div className={classes.adminMultipleProductImage}>
-                    {singleProduct[0]?.files?.files?.map((image) => (
-                      <div>
+                    {singleProduct[0]?.files?.files?.map((image, i) => (
+                      <div key={i}>
                         <img src={`/uploads/${image.filename}`} alt="" />
                       </div>
                     ))}
@@ -111,7 +131,7 @@ const AdminProductDetailsScreen = ({ match, history }) => {
                       </li>
                       <li>
                         <span>Availability:</span>{" "}
-                        {singleProduct[0]?.productInfo?.countInStock == 0 ? (
+                        {Number(singleProduct[0]?.productInfo?.countInStock) === 0 ? (
                           <span>Out of Stock</span>
                         ) : (
                           <span>In Stock</span>
@@ -133,14 +153,14 @@ const AdminProductDetailsScreen = ({ match, history }) => {
                       <ul>
                         {singleProduct[0]?.productInfo?.info?.name?.map(
                           (name) => (
-                            <li>{name}</li>
+                            <li key={name}>{name}</li>
                           )
                         )}
                       </ul>
                       <ul>
                         {singleProduct[0]?.productInfo?.info?.values1?.map(
                           (value) => (
-                            <li>{value}</li>
+                            <li key={value}>{value}</li>
                           )
                         )}
                       </ul>

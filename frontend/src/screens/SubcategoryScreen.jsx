@@ -7,8 +7,6 @@ import "slick-carousel/slick/slick.css";
 import { addToCart } from "../actions/cartActions";
 import StayInTouch from "../components/StayInTouch";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
-import "./SubcategoryScreen.css";
 import Loader from "../components/Loader";
 
 const SubcategoryScreen = ({ match }) => {
@@ -39,20 +37,18 @@ const SubcategoryScreen = ({ match }) => {
   const [click, setClick] = useState(false);
   const [click1, setClick1] = useState(false);
   const inStockCheck = () => {
-    setClick(true);
+    setClick(!click);
     setClick1(false);
     setVal2(
-      subCategoryArray?.filter(
-        (x) =>Number( x?.productInfo?.countInStock) > 0
-      )
+      subCategoryArray?.filter((x) => Number(x?.productInfo?.countInStock) > 0)
     );
   };
   const outOfStockCheck = () => {
+    setClick1(!click1);
     setClick(false);
-    setClick1(true);
     setVal1(
       subCategoryArray?.filter(
-        (x) => Number( x?.productInfo?.countInStock) === 0
+        (x) => Number(x?.productInfo?.countInStock) === 0
       )
     );
   };
@@ -115,7 +111,7 @@ const SubcategoryScreen = ({ match }) => {
                           id="in-stock"
                           name="checkValue"
                           value=""
-                          checked={click === true}
+                          checked={click}
                           onClick={inStockCheck}
                         />
                         <label htmlFor="in-stock"> IN STOCK</label>
@@ -127,7 +123,7 @@ const SubcategoryScreen = ({ match }) => {
                           id="out-of-stock"
                           name="checkValue"
                           value=""
-                          checked={click1 === true}
+                          checked={click1}
                           onClick={outOfStockCheck}
                         />
                         <label htmlFor="out-of-stock"> OUT OF STOCK</label>
@@ -139,16 +135,15 @@ const SubcategoryScreen = ({ match }) => {
                     {/* instock */}
                     {click === true ? (
                       <>
-                        {val2?.map((c) => (
-                          <div className="productAndReview">
+                        {val2?.map((c, idx) => (
+                          <div key={idx} className="productAndReview">
                             <div className="productReviewStock">
-                              <h3>{c?.productInfo?.title}</h3>
-                              {/* <h5>Cal: 7.56MM</h5> */}
+                              <h5>{c?.productInfo?.title}</h5>
                               <p>$ {c.productInfo.price} AUD</p>
                               <div className="reviewStock">
-                                
                                 <div className="stock">
-                                  {Number(c?.countInStock === 0) ? (
+                                  {Number(c?.productInfo?.countInStock) ===
+                                  0 ? (
                                     <p style={{ color: "#F54748" }}>
                                       Out of Stock
                                     </p>
@@ -164,37 +159,38 @@ const SubcategoryScreen = ({ match }) => {
                                 Add to Cart
                               </button>
                             </div>
-                            <div classNameName="productSlider">
-                                <Slider {...settings}>
-                                  {c?.files?.files?.map((image) => {
-                                    return (
-                                      <div>
-                                        <img
-                                          src={
-                                            `${process.env.PUBLIC_URL}` +
-                                            `/uploads/${image?.filename}`
-                                          }
-                                          alt="Product"
-                                        />
-                                      </div>
-                                    );
-                                  })}
-                                </Slider>
-                              </div>
+                            <div className="productSlider">
+                              <Slider {...settings}>
+                                {c?.files?.files?.map((image, idx) => {
+                                  return (
+                                    <div key={idx}>
+                                      <img
+                                        src={
+                                          `${process.env.PUBLIC_URL}` +
+                                          `/uploads/${image?.filename}`
+                                        }
+                                        alt="Product"
+                                      />
+                                    </div>
+                                  );
+                                })}
+                              </Slider>
+                            </div>
                           </div>
                         ))}
                       </>
                     ) : click1 === true ? (
                       <>
-                        {val1?.map((c) => (
-                          <div className="productAndReview">
+                        {val1?.map((c, idx) => (
+                          <div key={idx} className="productAndReview">
                             <div className="productReviewStock">
-                              <h3>{c?.productInfo?.title}</h3>
+                              <h5>{c?.productInfo?.title}</h5>
                               {/* <h5>Cal: 7.56MM</h5> */}
                               <p>$ {c.productInfo.price} AUD</p>
                               <div className="reviewStock">
                                 <div className="stock">
-                                  {Number(c?.countInStock === 0) ? (
+                                  {Number(c?.productInfo?.countInStock) ===
+                                  0 ? (
                                     <p style={{ color: "#F54748" }}>
                                       Out of Stock
                                     </p>
@@ -210,23 +206,23 @@ const SubcategoryScreen = ({ match }) => {
                                 Add to Cart
                               </button>
                             </div>
-                            <div classNameName="productSlider">
-                                <Slider {...settings}>
-                                  {c?.files?.files?.map((image) => {
-                                    return (
-                                      <div>
-                                        <img
-                                          src={
-                                            `${process.env.PUBLIC_URL}` +
-                                            `/uploads/${image?.filename}`
-                                          }
-                                          alt="Product"
-                                        />
-                                      </div>
-                                    );
-                                  })}
-                                </Slider>
-                              </div>
+                            <div className="productSlider">
+                              <Slider {...settings}>
+                                {c?.files?.files?.map((image, idx) => {
+                                  return (
+                                    <div key={idx}>
+                                      <img
+                                        src={
+                                          `${process.env.PUBLIC_URL}` +
+                                          `/uploads/${image?.filename}`
+                                        }
+                                        alt="Product"
+                                      />
+                                    </div>
+                                  );
+                                })}
+                              </Slider>
+                            </div>
                           </div>
                         ))}
                       </>
@@ -234,14 +230,15 @@ const SubcategoryScreen = ({ match }) => {
                       <>
                         {subCategoryArray?.map((c, i) => {
                           return (
-                            <div className="productAndReview">
+                            <div key={i} className="productAndReview">
                               <div className="productReviewStock">
                                 <h5>{c?.productInfo?.title}</h5>
                                 {/* <h5>Cal: 7.56MM</h5> */}
                                 <p>$ {c?.productInfo?.price} AUD</p>
                                 <div className="reviewStock">
                                   <div className="stock">
-                                    {Number(c?.countInStock === 0) ? (
+                                    {Number(c?.productInfo?.countInStock) ===
+                                    0 ? (
                                       <p style={{ color: "#F54748" }}>
                                         Out of Stock
                                       </p>
@@ -257,11 +254,11 @@ const SubcategoryScreen = ({ match }) => {
                                   Add to Cart
                                 </button>
                               </div>
-                              <div classNameName="productSlider">
+                              <div className="productSlider">
                                 <Slider {...settings}>
-                                  {c?.files?.files?.map((image) => {
+                                  {c?.files?.files?.map((image, idx) => {
                                     return (
-                                      <div>
+                                      <div key={idx}>
                                         <img
                                           src={
                                             `${process.env.PUBLIC_URL}` +

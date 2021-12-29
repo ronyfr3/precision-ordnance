@@ -8,16 +8,32 @@ import classes from "./SigninSignupScreen.module.css";
 
 const SigninSignupScreen = ({ history }) => {
   const [activeClass, setActiveClass] = useState("");
-  const [spinner, setSpinner] = useState(true);
+  const [showOne, setShowOne] = useState(true)
+  const [showTwo, setShowTwo] = useState(false)
+  const [spinner, setSpinner] = useState(true)
 
   const location = useLocation();
   const handleSignup = () => {
     setActiveClass(classes.rightPanelActive);
+    setShowTwo(true)
+    setShowOne(true)
   };
 
   const handleSignin = () => {
     setActiveClass("");
+    setShowOne(true)
+    setShowTwo(true)
   };
+
+  const handleSigninSignupOne = () => {
+    setShowOne(!showOne)
+    setShowTwo(true)
+  }
+
+  const handleSigninSignupTwo = () => {
+    setShowOne(true)
+    setShowTwo(!showTwo)
+  }
 
   useEffect(() => {
     localStorage.setItem("path", location.pathname);
@@ -35,23 +51,30 @@ const SigninSignupScreen = ({ history }) => {
             id="containerr"
           >
             <div
+            style={{ display: showTwo ? 'block' : 'none' }}
               className={`${classes.formContainer} ${classes.signUpContainer}`}
             >
+              <Link to="/" className={`${classes.backBtn} ${classes.backBtn2} ${classes.hide}`}><i className="fas fa-long-arrow-alt-left"></i> Back</Link>
               <SignupForm history={history} />
+              <div className={classes.newCustomer}> <span>Have an Account?</span> <button onClick={handleSigninSignupTwo}>Login</button></div>
             </div>
             <div
+            style={{ display: showOne ? 'block' : 'none' }}
               className={`${classes.formContainer} ${classes.signInContainer}`}
             >
               <Link to="/" className={`${classes.backBtn} ${classes.backBtn2}`}><i className="fas fa-long-arrow-alt-left"></i> Back</Link>
               <SigninForm history={history} />
+              <div className={classes.newCustomer}><span>New customer?</span> <button onClick={handleSigninSignupOne}>Sign up</button></div>
+              {/* <h1 style={{position: 'relative', zIndex: '10000', color: 'red'}}>hello workd</h1> */}
+
             </div>
             <div className={classes.overlayContainer}>
               <div className={classes.overlaySignup}>
                 <div
                   className={`${classes.overlayPanel}  ${classes.overlayLeft}`}
                   style={{
-                    backgroundImage: `linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5)), url(${
-                      process.env.PUBLIC_URL + "/images/sign-up.png"
+                    backgroundImage: `linear-gradient(rgb(0, 0, 0, 0.7), rgb(0, 0, 0, 0.7)), url(${
+                      process.env.PUBLIC_URL + "/images/signin-signup.jpg"
                     })`,
                   }}
                 >
@@ -60,7 +83,7 @@ const SigninSignupScreen = ({ history }) => {
                     <img src="/images/Logo.png" alt="" />
                     <h5>Already have an account?</h5>
                     <p>
-                      Get access to latest scopes, lug actions and custom-built
+                      Get access to latest scopes, lug actions and custom-built    
                       rifles, super fast.
                     </p>
                     <button
@@ -68,15 +91,15 @@ const SigninSignupScreen = ({ history }) => {
                       className={`${classes.ghost} btn`}
                       id="signIn"
                     >
-                      Signin
+                      Sign in
                     </button>
                   </div>
                 </div>
                 <div
                   className={`${classes.overlayPanel} ${classes.overlayRight}`}
                   style={{
-                    backgroundImage: `linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5)), url(${
-                      process.env.PUBLIC_URL + "/images/sign-up.png"
+                    backgroundImage: `linear-gradient(rgb(0, 0, 0, 0.7), rgb(0, 0, 0, 0.7)), url(${
+                      process.env.PUBLIC_URL + "/images/signin-signup.jpg"
                     })`,
                   }}
                 >
@@ -84,8 +107,7 @@ const SigninSignupScreen = ({ history }) => {
                     <img src="/images/Logo.png" alt="" />
                     <h5>Gear up!</h5>
                     <p>
-                      Register and save your carts with neat and ultra-light
-                      gears for your next hunt.
+                    Sign up and explore the top-featured gears at Precision Ordnance.
                     </p>
                     <button
                       onClick={handleSignup}

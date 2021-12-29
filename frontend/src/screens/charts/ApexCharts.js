@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import {
   AreaChart,
@@ -7,6 +7,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
+  ResponsiveContainer
 } from "recharts";
 
 const ApexCharts = () => {
@@ -15,7 +16,7 @@ const ApexCharts = () => {
   "July", "August", "September", "October", "November", "December"
 ];
   var date = new Date("2021-11-22T10:22:37.124Z");
-  var year = date.getFullYear();
+  // var year = date.getFullYear();
   var month = date.getMonth() + 1;
   var dt = date.getDate();
 
@@ -30,7 +31,7 @@ const ApexCharts = () => {
         time:monthNames[new Date(x.createdAt).getMonth()],
         price:x.totalPrice
     }))
-  console.log(ordersArr);
+
 
  
   //   const data = [
@@ -78,10 +79,8 @@ const ApexCharts = () => {
   //     },
   //   ];
   return (
-    <div>
+    <ResponsiveContainer width="100%" height={250}>
       <AreaChart
-        width={730}
-        height={250}
         // data={data}
         data={ordersArr}
         margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
@@ -106,7 +105,7 @@ const ApexCharts = () => {
           fill="url(#colorUv)"
         />
       </AreaChart>
-    </div>
+    </ResponsiveContainer>
   );
 };
 

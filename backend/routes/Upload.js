@@ -40,7 +40,6 @@ router.post("/", (req, res) => {
     // console.log(req.files);
     //multer error
     if (err instanceof multer.MulterError) {
-      console.log(err);
       res
         .status(500)
         .send({

@@ -22,10 +22,6 @@ export const COLUMNS = [
     accessor: "price",
   },
   {
-    Header: "customer",
-    accessor: "customer",
-  },
-  {
     Header: "status",
     accessor: "status",
   },

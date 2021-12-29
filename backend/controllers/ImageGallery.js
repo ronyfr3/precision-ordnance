@@ -50,7 +50,6 @@ const createImage = asyncHandler(async (req, res) => {
     // console.log(req.file);
     //multer error
     if (err instanceof multer.MulterError) {
-      console.log(err);
       res
         .status(500)
         .send({
@@ -84,7 +83,6 @@ const createImage = asyncHandler(async (req, res) => {
 
 //delete-one-image
 const deleteImage = asyncHandler(async (req, res) => {
-  console.log(`body:`, req.params.id);
   try {
     await ImageGallery.findByIdAndDelete(req.params.id);
     res.status(200).json("Deleted successfully");

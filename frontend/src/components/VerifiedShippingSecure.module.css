@@ -30,6 +30,18 @@
 
 @media (max-width: 1000px) {
   .verifiedShippingSecureContent {
-    grid-template-columns: 1fr;
+    grid-gap: 3rem;
   }
+}
+
+@media (max-width: 800px) {
+  .verifiedShippingSecureContent {
+    grid-template-columns: 1fr;
+    grid-gap: 5rem;
+  }
+
+  .verifiedShippingSecureSection {
+    padding: 5rem 0;
+  }
+  
 }

@@ -22,3 +22,21 @@
 .adminAllProductList h4 {
   color: #484C50;
 }
+
+@media (max-width: 800px) {
+  .adminProductListRight {
+    width: 75%;
+  }
+}
+
+@media (max-width: 700px) {
+  .adminProductListRight {
+    width: 67%;
+  }
+}
+
+@media (max-width: 600px) {
+  .adminProductListRight {
+    width: 50%;
+  }
+}

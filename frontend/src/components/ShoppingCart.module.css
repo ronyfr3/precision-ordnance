@@ -52,12 +52,14 @@
 
 .detailsCartItem .productCart img {
   width: 60%;
+  margin-right: 1rem;
 }
 
 .cartItems .detailsProductName h4 {
   color: #484c50;
   font-weight: 600;
   margin-bottom: 1rem;
+  line-height: 1.4;
 }
 
 .cartItems .detailsProductName p {
@@ -137,7 +139,7 @@
 .shoppingCartButtons .continueBtn {
   background: #ffffff;
   color: #192129;
-  border: 2px solid #5AFE3D;
+  border: 2px solid #5afe3d;
   padding: 1.3rem 3rem;
   font-family: inherit;
   text-transform: uppercase;
@@ -180,4 +182,56 @@
 .shoppingCartRight ul li:last-child {
   padding-top: 5rem;
   border-top: 1px solid #c9d2d9;
+}
+
+@media (max-width: 1400px) {
+  .detailsCartItem .productCart {
+    display: block;
+    text-align: center;
+  }
+
+  .detailsCartItem .productCart img {
+    display: inline-block;
+    width: 40%;
+    margin: 0 auto;
+    margin-bottom: 0.5s;
+  }
+
+  .shoppingCartLeft .productAttributes {
+    margin-bottom: 3rem;
+  }
+
+  .detailsProductName {
+    text-align: left;
+  }
+}
+
+@media (max-width: 1000px) {
+  .shoppingCartWrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .shoppingCartLeft {
+    order: 2;
+  }
+
+  .shoppingCartRight {
+    order: 1;
+    background-color: transparent;
+    padding-left: 0;
+  }
+
+  .shoppingCartRight ul li {
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .shoppingCartLeft {
+    padding: 5rem 0;
+  }
+
+  .shoppingCartRight {
+    padding: 5rem 0;
+  }
 }

@@ -26,6 +26,7 @@
   padding: 0 28rem;
   text-align: center;
 }
+
 .testimonialContent img {
   width: 13rem;
   margin: 0 auto;
@@ -51,4 +52,38 @@
   color: #5a6d80;
   font-weight: 500;
   text-transform: uppercase;
+}
+
+@media (max-width: 1000px) {
+  .testimonialWrapper > h3 {
+    width: 90%;
+  }
+  
+  .testimonialWrapper > p {
+    width: 90%;
+  }
+
+  .testimonialContent {
+    padding: 0 10rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .testimonialSection {
+    padding: 5rem 0;
+  }
+
+  .testimonialContent {
+    padding: 0 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .testimonialWrapper .slick-prev {
+    left: 0.5rem;
+  }
+
+  .testimonialWrapper .slick-next {
+    right: 0.5rem;
+  }
 }
