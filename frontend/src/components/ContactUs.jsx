@@ -10,6 +10,7 @@ const ContactUs = () => {
     name: "",
     email: "",
     message: "",
+    phone: ""
   });
 
   const changeContactInfo = (e) => {
@@ -31,6 +32,7 @@ const ContactUs = () => {
       name: "",
       email: "",
       message: "",
+      phone: ""
     });
   };
   return (
@@ -65,6 +67,15 @@ const ContactUs = () => {
                   name="email"
                   placeholder="Your email"
                   value={contactInfo.email}
+                  onChange={changeContactInfo}
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="Your phone number"
+                  value={contactInfo.phone}
                   onChange={changeContactInfo}
                 />
               </div>

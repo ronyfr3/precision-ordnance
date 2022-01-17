@@ -12,6 +12,7 @@ const addOrderItems = catchAsyncError(async (req, res, next) => {
   if (orderItems && orderItems.length === 0) {
     return next(new ErrorHandler("No order items", 400));
   }
+
   const order = new Order({
     user: req.user._id,
     userInfo,
@@ -25,11 +26,11 @@ const addOrderItems = catchAsyncError(async (req, res, next) => {
 
   const emailData = {
     from: process.env.SENDER_EMAIL,
-    to: user.email,
+    to: req.user.email,
     subject: "Order Summary",
     html: `
       <h1>Order Summary</h1>
-      <p>G’Day ${user.first_name}</p>
+      <p>G’Day ${req.user.name}</p>
       <p>Here’s your attached order summary:</p> 
       <p>We wish you the best hunting experience with the new addition to your collection. Hunting on!</p>  
       <p>Regards,</p>   
@@ -52,6 +53,16 @@ const addOrderItems = catchAsyncError(async (req, res, next) => {
   res.status(201).json(createdOrder);
 });
 
+const undeliveredOrders = catchAsyncError(async (req, res, next) => {
+  const allOrders = await Order.find();
+  const filterOrder = allOrders.filter((x) => x.isDelivered === false);
+  if (filterOrder.length === 0) {
+    return next(new ErrorHandler("empty orders", 404));
+  } else {
+    res.status(200).json({ data: filterOrder });
+  }
+});
+
 // @desc    Get order by ID
 // @route   GET /api/orders/:id
 // @access  Private
@@ -70,7 +81,7 @@ const getOrderById = catchAsyncError(async (req, res, next) => {
 // @desc    Update order to paid
 // @route   GET /api/orders/:id/pay
 // @access  Private
-const updateOrderToPaid = catchAsyncError(async (req, res, next) => { 
+const updateOrderToPaid = catchAsyncError(async (req, res, next) => {
   const order = await Order.findById(req.params.id);
 
   if (order) {
@@ -81,7 +92,7 @@ const updateOrderToPaid = catchAsyncError(async (req, res, next) => {
       status: req.body.status,
       update_time: req.body.update_time,
       email_address: req.body.payer.email_address,
-    };
+    };                                                                                                                                                                                                                                                                                
 
     const updatedOrder = await order.save();
 
@@ -95,7 +106,6 @@ const updateOrderToPaid = catchAsyncError(async (req, res, next) => {
 // @route   GET /api/orders/:id/deliver
 // @access  Private/Admin
 const updateOrderToDelivered = catchAsyncError(async (req, res, next) => {
-
   const order = await Order.findById(req.params.id);
 
   if (order) {
@@ -113,7 +123,7 @@ const updateOrderToDelivered = catchAsyncError(async (req, res, next) => {
 // @route   GET /api/orders/myorders
 // @access  Private
 const getMyOrders = catchAsyncError(async (req, res, next) => {
-  const orders = await Order.find({ user: req.user._id })
+  const orders = await Order.find({ user: req.user._id });
 
   // const orders = await Order.findById(req.user._id).populate(
   //   "user",
@@ -156,4 +166,5 @@ module.exports = {
   getMyOrders,
   getOrders,
   deleteOrder,
+  undeliveredOrders
 };

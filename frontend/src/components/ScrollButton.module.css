@@ -11,3 +11,11 @@
   color: #192129;
   cursor: pointer;
 }
+
+@media (max-width: 600px) {
+  .scrollBtn {
+    font-size: 1.6rem;
+    padding: .5rem;
+    border-radius: 0.5rem;
+  }
+}

@@ -196,7 +196,7 @@
 }
 
 .specificationAndReviewsWrapper > ul.specificationReviews li {
-  flex: 0.5;
+  flex: 1;
 }
 
 .specificationAndReviewsWrapper > ul.specificationReviews li a {
@@ -214,9 +214,9 @@
   top: 2px;
 }
 
-.specificationAndReviewsWrapper > ul.specificationReviews a:hover {
+/* .specificationAndReviewsWrapper > ul.specificationReviews a:hover {
   border-bottom: 2px solid #484c50;
-}
+} */
 
 .specificationAndReviewsWrapper > p {
   font-size: 1.6rem;
@@ -237,9 +237,9 @@
 }
 
 .specificationAndReviewsContent {
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 7rem;
+  grid-gap: 7rem; */
   padding: 3rem 0;
 }
 
@@ -422,17 +422,6 @@
   .productSlider img {
     width: 50%;
     margin: auto;
-  }
-
-  .specificationAndReviewsContent {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 5rem;
-    padding: 3rem 0;
-  }
-
-  .specificationReviews {
-    display: none !important;
   }
 }
 

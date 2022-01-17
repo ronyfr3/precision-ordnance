@@ -10,7 +10,7 @@
 }
 
 .userProfileWrapper h3 {
-  color: #484C50;
+  color: #484c50;
   margin-bottom: 3rem;
 }
 
@@ -34,6 +34,39 @@
 
 .userProfileOrder {
   overflow-x: auto;
+}
+
+.modalSection {
+  width: 50%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+}
+
+.contactUsForm {
+  background-color: #fff;
+  padding: 5rem 3.5rem;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.contactUsForm input {
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid #c9d2d9;
+  border-radius: 4px;
+  margin-bottom: 2.5rem;
+  margin-top: 0.8rem;
+}
+
+.times {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 3rem;
+  cursor: pointer;
 }
 
 @media (max-width: 1200px) {

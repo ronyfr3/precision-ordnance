@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import AdminNavbar from "../components/AdminNavbar";
 import AdminSidebar from "../components/AdminSidebar";
+import Message from '../components/Message'
 import Loader from "../components/Loader";
 import { getUserDetails, updateUserProfile } from "../actions/userActions";
 import classes from "./AdminSettingsScreen.module.css";
 
 const AdminSettingsScreen = ({ history }) => {
+  const [show, setShow] = useState(false);
   const [spinner, setSpinner] = useState(true);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [warningMessage, setWarningMessage] = useState("");
 
   const dispatch = useDispatch();
 
@@ -41,30 +45,30 @@ const AdminSettingsScreen = ({ history }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateUserProfile({ id: user._id, name, email, password }));
-    window.location.reload();
+    if (password !== confirmPassword) {
+      setWarningMessage("Password do not match");
+    } else {
+      dispatch(updateUserProfile({ id: user._id, name, email, password }));
+      window.location.reload();
+    }
   };
 
-  const data = [
-    {
-      id: "1",
-      tabTitle: (
-        <p className={classes.tabItem}>
-          <i className="far fa-user"></i> <span>ACCOUNT</span>
-        </p>
-      ),
-      tabContent: (
-        <div className={classes.accountSection}>
+  const handleEmptyForm = (e) => {
+    e.preventDefault();
+  };
+
+  const modal = (
+    <div className={classes.modalSection}>
+      <div className={classes.modalWrapper}>
+        <div className={classes.contactUsForm}>
           <div className={classes.accountProfile}>
+            {warningMessage && (
+              <Message message={warningMessage} color="#EF5350" />
+            )}
             <h5>EDIT PROFILE</h5>
-            <div className={classes.profileImage}>
-              <span>
-                <i className="fas fa-user"></i>
-              </span>
-            </div>
           </div>
           <form onSubmit={handleSubmit}>
-            <div className={classes.doubleInput}>
+            <div className={classes.noDoubleInput}>
               <div className={classes.inputLeft}>
                 <label htmlFor="name">Name</label>
                 <input
@@ -76,7 +80,7 @@ const AdminSettingsScreen = ({ history }) => {
                 />
               </div>
             </div>
-            <div className={classes.doubleInput}>
+            <div className={classes.noDoubleInput}>
               <div className={classes.inputLeft}>
                 <label htmlFor="email">Email</label>
                 <input
@@ -88,24 +92,117 @@ const AdminSettingsScreen = ({ history }) => {
                 />
               </div>
             </div>
-            <div className={classes.doubleInput}>
+            <div className={classes.noDoubleInput}>
               <div className={classes.inputRight}>
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">New Password</label>
                 <input
                   type="password"
                   placeholder="******"
                   id="password"
                   name="password"
                   value={password}
+                  required
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
             </div>
+            <div className={classes.noDoubleInput}>
+              <div className={classes.inputRight}>
+                <label htmlFor="confirmPassword">Confirm Password</label>
+                <input
+                  type="password"
+                  placeholder="******"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  value={confirmPassword}
+                  required
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+              </div>
+            </div>
             <div className={classes.accountButtons}>
-              <button className={`btn ${classes.saveBtn}`}>SAVE CHANGES</button>
+              <button className={`btn ${classes.saveBtn}`}>
+                Save Profile
+              </button>
             </div>
           </form>
+          <span onClick={() => setShow(!show)} className={classes.times}>
+            <i className="far fa-times-circle"></i>
+          </span>
         </div>
+      </div>
+    </div>
+  );
+
+  const data = [
+    {
+      id: "1",
+      tabTitle: (
+        <p className={classes.tabItem}>
+          <i className="far fa-user"></i> <span>ACCOUNT</span>
+        </p>
+      ),
+      tabContent: (
+        <>
+          <div className={classes.accountSection}>
+            <div className={classes.accountProfile}>
+              <h5>PROFILE</h5>
+              <div className={classes.profileImage}>
+                <span>
+                  <i className="fas fa-user"></i>
+                </span>
+              </div>
+            </div>
+            <form onSubmit={handleEmptyForm}>
+              <div className={classes.doubleInput}>
+                <div className={classes.inputLeft}>
+                  <label htmlFor="name">Name</label>
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    value={name}
+                    name="name"
+                    // onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className={classes.doubleInput}>
+                <div className={classes.inputLeft}>
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    value={email}
+                    // onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className={classes.doubleInput}>
+                <div className={classes.inputRight}>
+                  <label htmlFor="password">Password</label>
+                  <input
+                    type="password"
+                    placeholder="******"
+                    id="password"
+                    name="password"
+                    value={password}
+                    // onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div
+                onClick={() => setShow(!show)}
+                className={classes.accountButtons}
+              >
+                <button className={`btn ${classes.saveBtn}`}>
+                  Change Profile
+                </button>
+              </div>
+            </form>
+          </div>
+          {show ? modal : ""}
+        </>
       ),
     },
     // {
@@ -215,59 +312,59 @@ const AdminSettingsScreen = ({ history }) => {
     //     </div>
     //   ),
     // },
-    {
-      id: "3",
-      tabTitle: (
-        <p className={classes.tabItem}>
-          {/* <Link to="/"> */}
-          <i className="fas fa-shield-alt"></i> <span>SECURITY</span>
-          {/* </Link> */}
-        </p>
-      ),
-      tabContent: (
-        <div className={classes.securitySection}>
-          <div className={classes.securityDetails}>
-            <h5>PASSWORD SETTINGS</h5>
-          </div>
-          <form>
-            <div className={classes.emailField}>
-              <label htmlFor="">Email address</label>
-              <input type="email" name="" id="" placeholder="emily@gmail.com" />
-            </div>
-            <div className={classes.changePassword}>
-              <div className="">
-                <label htmlFor="">Password</label>
-                <input
-                  type="password"
-                  name=""
-                  id=""
-                  placeholder="***************"
-                />
-              </div>
-              <div className="">
-                <Link to="/">Change password</Link>
-              </div>
-            </div>
-            <div className={classes.noti}>
-              <div className={classes.notiLeft}>
-                <h6>Security Alert</h6>
-                <p>Notify me if someone want to login in my account</p>
-              </div>
-              <div className={classes.notiRight}>
-                <label className={classes.switch}>
-                  <input type="checkbox" checked />
-                  <span className={`${classes.slider} ${classes.round}`}></span>
-                </label>
-              </div>
-            </div>
-            <div className={classes.securityButtons}>
-              <button className={`${classes.saveBtn}`}>SAVE CHANGES</button>
-              <button className={`${classes.cancelBtn}`}>CANCEL</button>
-            </div>
-          </form>
-        </div>
-      ),
-    },
+    // {
+    //   id: "3",
+    //   tabTitle: (
+    //     <p className={classes.tabItem}>
+    //       {/* <Link to="/"> */}
+    //       <i className="fas fa-shield-alt"></i> <span>SECURITY</span>
+    //       {/* </Link> */}
+    //     </p>
+    //   ),
+    //   tabContent: (
+    //     <div className={classes.securitySection}>
+    //       <div className={classes.securityDetails}>
+    //         <h5>PASSWORD SETTINGS</h5>
+    //       </div>
+    //       <form>
+    //         <div className={classes.emailField}>
+    //           <label htmlFor="">Email address</label>
+    //           <input type="email" name="" id="" placeholder="emily@gmail.com" />
+    //         </div>
+    //         <div className={classes.changePassword}>
+    //           <div className="">
+    //             <label htmlFor="">Password</label>
+    //             <input
+    //               type="password"
+    //               name=""
+    //               id=""
+    //               placeholder="***************"
+    //             />
+    //           </div>
+    //           <div className="">
+    //             <Link to="/">Change password</Link>
+    //           </div>
+    //         </div>
+    //         <div className={classes.noti}>
+    //           <div className={classes.notiLeft}>
+    //             <h6>Security Alert</h6>
+    //             <p>Notify me if someone want to login in my account</p>
+    //           </div>
+    //           <div className={classes.notiRight}>
+    //             <label className={classes.switch}>
+    //               <input type="checkbox" checked />
+    //               <span className={`${classes.slider} ${classes.round}`}></span>
+    //             </label>
+    //           </div>
+    //         </div>
+    //         <div className={classes.securityButtons}>
+    //           <button className={`${classes.saveBtn}`}>SAVE CHANGES</button>
+    //           <button className={`${classes.cancelBtn}`}>CANCEL</button>
+    //         </div>
+    //       </form>
+    //     </div>
+    //   ),
+    // },
   ];
 
   const [visibleTab, setVisibleTab] = React.useState(data[0].id);

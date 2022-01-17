@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import EmptyCart from './EmptyCart'
 import { addToCart, removeFromCart } from "../actions/cartActions";
 import classes from "./ShoppingCart.module.css";
 
@@ -26,6 +27,7 @@ const ShoppingCart = () => {
   const totalItems = cartItems.reduce((a, c) => a + c.qty, 0);
 
   // const cartTotalPrice = totalPrice - totalItems
+  if (cartItems.length === 0) return <EmptyCart/>
   return (
     <section className={classes.shoppingCartSection}>
       <div className={`${classes.shoppingCartWrapper} container`}>

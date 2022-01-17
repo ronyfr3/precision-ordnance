@@ -54,6 +54,15 @@
   background-color: transparent;
 }
 
+.feedbackMessage {
+  background-color: #C9D2D9;
+  padding: 1rem 2rem;
+  border-radius: 3px;
+  color: #5CB85C !important;
+  font-weight: 600;
+  display: inline-block;
+}
+
 @media (max-width: 1000px) {
   .stayInTouchForm input {
     width: 50%;

@@ -30,10 +30,9 @@ const orderSchema = mongoose.Schema(
     ],
     shippingAddress: {
       address: { type: String },
-      city: { type: String },
-      street: { type: String },
+      suburb: { type: String },
+      postcode: { type: String },
       state: { type: String },
-      country: { type: String },
     },
     shippingPrice: {
       type: Number,

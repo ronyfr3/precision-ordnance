@@ -23,6 +23,12 @@
   color: #82848b;
 }
 
+.productCreateForm input:focus,
+.productCreateForm select:focus,
+.productCreateForm textarea:focus {
+  color: #222222;
+}
+
 .productCreateForm input[type='checkbox'] {
   width: 2rem;
 }

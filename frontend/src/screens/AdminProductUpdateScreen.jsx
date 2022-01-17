@@ -1,4 +1,3 @@
-// import './ProductCreateScreen.css';
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -14,23 +13,19 @@ import "./AdminProductCreateScreen.css";
 const AdminProductUpdateScreen = ({ match, history }) => {
   const [spinner, setSpinner] = useState(true);
   const { userInfo } = useSelector((state) => state.userSignin);
-  const { product: singleProduct } = useSelector(
-    (state) => state.productDetails
-  );
+  const { products } = useSelector((state) => state.productsReducer);
 
-  console.log("18", singleProduct);
+  const id = match.params.id;
+
+  const singleProduct = products.find((product) => product._id === id);
 
   let location = useLocation();
 
   const dispatch = useDispatch();
 
-  const id = match.params.id;
-
   const [tags1, setTags1] = useState([]);
   const [tags2, setTags2] = useState([]);
   const [tags3, setTags3] = useState([]);
-  // new arrival
-  const [newarrival, setNewarrival] = useState(false);
 
   const [product, setProduct] = useState({
     category: "",
@@ -50,10 +45,7 @@ const AdminProductUpdateScreen = ({ match, history }) => {
       [name]: value,
     });
   };
-  //newarrival
-  const handleArrival = () => {
-    setNewarrival(!newarrival);
-  };
+
   //file upload
   const [files, setFiles] = useState([]);
 
@@ -141,6 +133,9 @@ const AdminProductUpdateScreen = ({ match, history }) => {
           longdescription: singleProduct?.productInfo?.longdescription,
           countinstock: singleProduct?.productInfo?.countInStock,
         });
+        setTags1(singleProduct?.productInfo?.info?.name)
+        setTags2(singleProduct?.productInfo?.info?.values1)
+        setTags3(singleProduct?.productInfo?.info?.values2)
       }
     }
 
@@ -179,10 +174,9 @@ const AdminProductUpdateScreen = ({ match, history }) => {
     category: product.category,
     subcategory: product.subcategory,
     brand: product.brand,
-    newArrival: newarrival,
     productInfo: {
       info: {
-        name: tags1,
+        name: tags1, 
         values1: tags2,
         values2: tags3,
       },
@@ -190,11 +184,11 @@ const AdminProductUpdateScreen = ({ match, history }) => {
       price: product.price,
       shortdescription: product.shortdescription,
       longdescription: product.longdescription,
-      countInStock: product.countinstock
+      countInStock: product.countinstock,
     },
   };
 
-  console.log("197", productObj)
+  console.log("197", productObj);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -219,13 +213,12 @@ const AdminProductUpdateScreen = ({ match, history }) => {
       setTags1([]);
       setTags2([]);
       setTags3([]);
-      setNewarrival(false);
       setFiles([]);
       console.log("product", res.data);
       setTimeout(() => {
         window.location.reload(true);
       }, 300);
-      history.push("/admin/productlist")
+      history.push("/admin/productlist");
     } catch (err) {
       console.log(err.response.data.message);
     }
@@ -307,15 +300,6 @@ const AdminProductUpdateScreen = ({ match, history }) => {
                 type="text"
                 placeholder=""
               />
-              <div>
-                <input
-                  name="newarrival"
-                  checked={newarrival === true}
-                  onChange={handleArrival}
-                  type="checkbox"
-                />{" "}
-                <span>New arrival</span>
-              </div>
               <div>
                 <input
                   type="file"

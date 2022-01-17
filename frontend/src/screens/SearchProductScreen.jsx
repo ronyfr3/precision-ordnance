@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import "./SearchProductScreen.css";
 
-const SearchProductScreen = () => {
+const SearchProductScreen = ({match}) => {
   const dispatch = useDispatch();
   // const { products } = useSelector((state) => state.productsReducer);
 
@@ -25,41 +25,69 @@ const SearchProductScreen = () => {
   };
   //   console.log(searchProduct?.files?.files?.map(x=>x))
   let { queryProducts } = useSelector((state) => state.QueryProducts);
-  let values = queryProducts.filter((x) => x.data.length > 0);
-  let [data] = values;
-  // console.log("queryProducts", data?.data);
+
+  console.log("queryProducts", queryProducts);
 
   return (
     <section className="searchProductSection">
       <div className="searchProductWrapper container">
+      <h6>Search result for: <span>{match.params.search}</span></h6>
         {/* QueryProduct */}
-        {data?.data?.map((x, idx) => {
-          return (
-            <div key={idx} className="searchAllProduct">
-              <div className="searchSliderDetails">
-                <div className="searchDetails">
-                  <h4>{x.productInfo?.title}</h4>
-                  <h6>Category: {x?.category}</h6>
-                  <h6 className="brand">Brand: {x?.brand}</h6>
-                  <p className="price">$ {x?.productInfo?.price}</p>
-                  <button
-                    onClick={() => addToCartHandler(x._id, 1)}
-                    className="cartBtn"
-                  >
-                    Add to Cart
-                  </button>
-                </div>
-                <div className="searchSlider">
+        <div className="productRightContentGridSearch">
+          {queryProducts?.map((c, idx) => {
+            return (
+              <div key={idx} className="productAndReviewGrid">
+                <div className="productSliderGrid">
                   <Slider {...settings}>
-                    {x?.files?.files?.map((x, idx) => {
-                      return <img key={idx} className="sliderImage" src={`/uploads/${x.filename}`} alt="" />;
+                    {c?.files?.files?.map((image, idx) => {
+                      return (
+                        <div key={idx}>
+                          <img
+                            src={
+                              `${process.env.PUBLIC_URL}` +
+                              `/uploads/${image?.filename}`
+                            }
+                            alt="Product"
+                          />
+                        </div>
+                      );
                     })}
                   </Slider>
                 </div>
+                <div className="productReviewStockGrid">
+                  <div className="productAttribute">
+                    <h6>{c?.category}</h6>
+                    <h5>{c?.productInfo?.title}</h5>
+                    <h6>$ {c?.productInfo?.price} AUD</h6>
+                  </div>
+                  <div className="reviewAndButtonGrid">
+                    <button
+                      onClick={() =>
+                        addToCartHandler(
+                          c._id,
+                          1,
+                          Number(c?.productInfo?.countInStock)
+                        )
+                      }
+                      className="btn"
+                    >
+                      Add to Cart
+                    </button>
+                    <div className="reviewStock">
+                      <div className="stock">
+                        {Number(c?.productInfo?.countInStock) === 0 ? (
+                          <p style={{ color: "#F54748" }}>Out of Stock</p>
+                        ) : (
+                          <p>In stock</p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </section>
   );

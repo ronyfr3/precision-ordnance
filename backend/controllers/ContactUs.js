@@ -7,7 +7,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const ContactUs = catchAsyncError(async (req, res, next) => {
   // sendEmail(req.body);
 
-  const { name, email, message } = req.body;
+  const { name, email, message, phone } = req.body;
   if (!name || !email || !message) {
     return next(new ErrorHandler("you have to fill all the fields", 400));
   } else {
@@ -16,8 +16,9 @@ const ContactUs = catchAsyncError(async (req, res, next) => {
       to: email,
       subject: "contact us",
       html: `
-        <h1>Cotact Us</h1>
+        <h1>Contact Us</h1>
         <p>Name: ${name}</p>
+        <p>Number: ${phone}</p>
         <hr />
         <p>${message}</p>
         <h3>Precision Ordnance</h3>

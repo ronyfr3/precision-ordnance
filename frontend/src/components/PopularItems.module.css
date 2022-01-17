@@ -128,7 +128,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 1rem 2rem;
   border-radius: 0 0 5px 5px;
 }
 
@@ -157,6 +157,13 @@
   font-size: 1.45rem;
 }
 
+
+.itemContainer .category {
+  text-transform: capitalize;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
+
 .reactPaginate {
   text-align: center;
   margin-top: 5rem;
@@ -166,7 +173,6 @@
   display: inline-block;
   margin-right: 2rem;
   margin-bottom: 2rem;
-  padding: 1rem 2rem;
   background-color: #E7E9EB;
   border-radius: 3px;
   color: #797C80;
@@ -175,6 +181,11 @@
   font-weight: 500;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+.reactPaginate li a {
+  display: inline-block;
+  padding: 1rem 2rem;
 }
 
 

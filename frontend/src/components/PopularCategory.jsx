@@ -5,6 +5,7 @@ import classes from "./PopularCategory.module.css";
 
 const PopularCategory = () => {
   const { products } = useSelector((state) => state.productsReducer);
+  console.log(products);
 
   function onlyUnique(value, index, self) {
     return self?.indexOf(value) === index;

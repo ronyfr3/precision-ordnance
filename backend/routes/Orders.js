@@ -6,11 +6,13 @@ const {
   getMyOrders,
   getOrders,
   deleteOrder,
+  undeliveredOrders
 } = require("../controllers/Order");
 const { protect, admin } = require("../middleware/authMiddleware");
 const router = require("express").Router();
 
 router.route("/").post(protect, addOrderItems).get(getOrders);
+router.route("/undelivered").get(undeliveredOrders);
 router.route("/myorders").get(protect, getMyOrders);
 router.route("/:id").get(protect, getOrderById).delete(protect, deleteOrder);
 router.route("/:id/pay").put(protect, updateOrderToPaid);

@@ -41,3 +41,9 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.socialSignin {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

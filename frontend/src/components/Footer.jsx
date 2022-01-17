@@ -15,6 +15,7 @@ const Footer = () => {
     name: "",
     email: "",
     message: "",
+    phone: "",
   });
 
   const changeContactInfo = (e) => {
@@ -36,6 +37,7 @@ const Footer = () => {
       name: "",
       email: "",
       message: "",
+      phone: ""
     })
   }
 
@@ -61,6 +63,15 @@ const Footer = () => {
                   name="email"
                   placeholder="Your email"
                   value={contactInfo.email}
+                  onChange={changeContactInfo}
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="Your phone number"
+                  value={contactInfo.phone}
                   onChange={changeContactInfo}
                 />
               </div>

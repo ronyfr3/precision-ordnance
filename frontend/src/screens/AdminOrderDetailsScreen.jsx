@@ -16,7 +16,7 @@ const AdminOrderDetailsScreen = ({ match, history }) => {
   let location = useLocation();
   useEffect(() => {
     if (!userInfo || !userInfo.isAdmin) {
-      history.push("/")
+      history.push("/");
     }
     localStorage.setItem("path", location.pathname);
     setTimeout(() => setSpinner(false), 500);
@@ -34,43 +34,45 @@ const AdminOrderDetailsScreen = ({ match, history }) => {
               <h4>ORDER DETAILS</h4>
               <div className={classes.orderAllLists}>
                 <div className={classes.orderAllListsLeft}>
-                  <ul>
+                  <ul className={classes.itemsSummary}>
                     <li>
                       <span>items summary</span>
                       <span>qty</span>
                       <span>price</span>
                       <span>total price</span>
                     </li>
-                    <li>
-                      <span className={classes.titleAndImage}>
-                        <img
-                          src={`/uploads/${singleOrder?.orderItems[0]?.image[0]?.filename}`}
-                          alt=""
-                        />
-                        {singleOrder?.orderItems[0]?.title}
-                      </span>
-                      <span>{singleOrder?.orderItems[0]?.qty}</span>
-                      <span>{singleOrder?.orderItems[0]?.price}</span>
-                      <span>{singleOrder?.totalPrice}</span>
-                    </li>
+                    {singleOrder?.orderItems?.map((orderItem) => (
+                      <li>
+                        <span className={classes.titleAndImage}>
+                          <img
+                            src={`/uploads/${orderItem?.image[0]?.filename}`}
+                            alt=""
+                          />
+                          {orderItem?.title}
+                        </span>
+                        <span>{orderItem?.qty}</span>
+                        <span>{orderItem?.price}</span>
+                        <span>{orderItem?.totalPrice}</span>
+                      </li>
+                    ))}
                   </ul>
                   <ul>
                     <li>Customer info</li>
                     <li>
                       <span>Frist Name</span>
-                      <span>{singleOrder?.user?.first_name}</span>
+                      <span>{singleOrder?.userInfo?.first_name}</span>
                     </li>
                     <li>
                       <span>Last Name</span>
-                      <span>{singleOrder?.user?.last_name}</span>
+                      <span>{singleOrder?.userInfo?.last_name}</span>
                     </li>
                     <li>
                       <span>Email</span>
-                      <span>{singleOrder?.user?.email}</span>
+                      <span>{singleOrder?.userInfo?.email}</span>
                     </li>
                     <li>
-                      <span>Last Name</span>
-                      <span>{singleOrder?.user?.mobile}</span>
+                      <span>Phone</span>
+                      <span>{singleOrder?.userInfo?.mobile}</span>
                     </li>
                   </ul>
                 </div>
@@ -82,20 +84,16 @@ const AdminOrderDetailsScreen = ({ match, history }) => {
                       <span>{singleOrder?.shippingAddress?.address}</span>
                     </li>
                     <li>
-                      <span>City</span>
-                      <span>{singleOrder?.shippingAddress?.city}</span>
+                      <span>Suburb</span>
+                      <span>{singleOrder?.shippingAddress?.suburb}</span>
                     </li>
                     <li>
-                      <span>Street</span>
-                      <span>{singleOrder?.shippingAddress?.city}</span>
+                      <span>Post Code</span>
+                      <span>{singleOrder?.shippingAddress?.postcode}</span>
                     </li>
                     <li>
                       <span>State</span>
-                      <span>{singleOrder?.shippingAddress?.city}</span>
-                    </li>
-                    <li>
-                      <span>Country</span>
-                      <span>{singleOrder?.shippingAddress?.country}</span>
+                      <span>{singleOrder?.shippingAddress?.state}</span>
                     </li>
                   </ul>
                 </div>

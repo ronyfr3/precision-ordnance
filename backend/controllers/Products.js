@@ -8,8 +8,10 @@ const APIfeatures = require("../Elastic/Elastic");
 // @access  Public
 const getProducts = catchAsyncError(async (req, res, next) => {
   const features = new APIfeatures(Product.find(), req.query)
+    .search()
     .filtering()
     .sorting();
+
   const allProducts = await features.query;
   if (!allProducts) return next(new ErrorHandler("Products not found", 400));
   res.status(200).json(allProducts);

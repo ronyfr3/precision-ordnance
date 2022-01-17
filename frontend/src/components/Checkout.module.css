@@ -41,13 +41,13 @@
   margin-top: 4rem;
 }
 
-.firstLastName,
+/* .firstLastName,
 .streetLocal,
 .dateCvc {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
+} */
 
 .checkoutForm input,
 .checkoutForm select {

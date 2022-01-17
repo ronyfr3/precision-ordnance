@@ -28,14 +28,12 @@ const AdminNavbar = ({ history }) => {
   const [notify, setNotify] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/notifi").then((res) => setNotify(res.data));
+    axios.get("/api/notifi").then((res) => setNotify(res.data.reverse()));
   }, []);
 
   return (
     <section className={classes.adminNavbarSection}>
-      <div className={classes.adminSearch}>
-        
-      </div>
+      <div className={classes.adminSearch}></div>
       <ul className={classes.adminNavbar}>
         <li>
           <div className={classes.adminNotification}>
@@ -52,7 +50,7 @@ const AdminNavbar = ({ history }) => {
                     <h5>Notification Settings</h5>
                   </div> */}
                   <ul className={classes.notificationList}>
-                    {notify?.reverse()?.map((n, idx) => (
+                    {notify?.map((n, idx) => (
                       <li key={idx}>
                         <p>{n.message}</p>
                         <p>Product: {n.details.productName}</p>

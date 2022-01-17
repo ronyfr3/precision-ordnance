@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AdminNavbar from "../components/AdminNavbar";
 import AdminSidebar from "../components/AdminSidebar";
 import DropdownField from "../components/DropdownField";
-import Loader from '../components/Loader';
+import Loader from "../components/Loader";
 import "./AdminProductCreateScreen.css";
 
 const AdminProductCreateScreen = ({ history }) => {
@@ -17,7 +17,7 @@ const AdminProductCreateScreen = ({ history }) => {
   let location = useLocation();
   useEffect(() => {
     if (!userInfo || !userInfo.isAdmin) {
-      history.push("/")
+      history.push("/");
     }
     localStorage.setItem("path", location.pathname);
     setTimeout(() => setSpinner(false), 500);
@@ -35,7 +35,7 @@ const AdminProductCreateScreen = ({ history }) => {
   const [inputSubcategory, setInputSubcategory] = useState("");
   const [inputBrand, setInputBrand] = useState("");
   // new arrival
-  const [newarrival, setNewarrival] = useState(false);
+  // const [newarrival, setNewarrival] = useState(false);
 
   const [product, setProduct] = useState({
     category: "",
@@ -57,9 +57,9 @@ const AdminProductCreateScreen = ({ history }) => {
     });
   };
   //newarrival
-  const handleArrival = () => {
-    setNewarrival(!newarrival);
-  };
+  // const handleArrival = () => {
+  //   setNewarrival(!newarrival);
+  // };
   //file upload
   const [files, setFiles] = useState([]);
 
@@ -161,7 +161,6 @@ const AdminProductCreateScreen = ({ history }) => {
     subcategory: subcategorys ? subcategorys : inputSubcategory,
     brand: brands ? brands : inputBrand,
     discount: product.discount,
-    newarrival: newarrival,
     productInfo: {
       info: {
         name: tags1,
@@ -172,10 +171,10 @@ const AdminProductCreateScreen = ({ history }) => {
       price: product.price,
       shortdescription: product.shortdescription,
       longdescription: product.longdescription,
-      countInStock: product.countinstock
+      countInStock: product.countinstock,
     },
   };
-  console.log(productObj);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -200,9 +199,8 @@ const AdminProductCreateScreen = ({ history }) => {
       setTags1([]);
       setTags2([]);
       setTags3([]);
-      setNewarrival(false);
       setFiles([]);
-
+      
     } catch (err) {
       if (err.response.status === 500) {
         console.log(err);
@@ -293,15 +291,7 @@ const AdminProductCreateScreen = ({ history }) => {
                 type="text"
                 placeholder=""
               />
-              <div>
-                <input
-                  name="newarrival"
-                  checked={newarrival === true}
-                  onChange={handleArrival}
-                  type="checkbox"
-                />{" "}
-                <span>New arrival</span>
-              </div>
+
               <div>
                 <input
                   type="file"

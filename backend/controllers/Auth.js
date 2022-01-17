@@ -1,8 +1,15 @@
 const sgMail = require("@sendgrid/mail");
+const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { google } = require("googleapis");
+const { OAuth2 } = google.auth;
 const User = require("../Model/Auth");
 const ErrorHandler = require("../middleware/errorMiddleware");
 const catchAsyncError = require("../middleware/catchAsyncError");
+const client = new OAuth2(
+  "779648521547-gjlsus2l9aud4kosqdtc5gu5icmumqlp.apps.googleusercontent.com"
+);
+
 // const nodemailer = require("nodemailer");
 // const { google } = require("googleapis");
 
@@ -114,10 +121,12 @@ const signinUser = catchAsyncError(async (req, res, next) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
 
+  console.log("user", user);
+
   if (user && (await user.authenticate(password))) {
     // / Generate token and send to the client
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "7d",
+      expiresIn: "30d",
     });
     res.json({
       _id: user._id,
@@ -132,7 +141,7 @@ const signinUser = catchAsyncError(async (req, res, next) => {
 });
 
 // @desc    Get user profile
-// @route   Get /api/users/profile
+// @route   GET /api/users/profile
 // @access  Private
 const getUserProfile = catchAsyncError(async (req, res, next) => {
   const user = await User.findById(req.user._id);
@@ -147,7 +156,12 @@ const getUserProfile = catchAsyncError(async (req, res, next) => {
   } else {
     return next(new ErrorHandler("User not found", 400));
   }
+  res.send("pass")
 });
+
+const hello = (async (req, res) => {
+  res.send("hello")
+})
 
 // @desc    Update user profile
 // @route   PUT /api/users/profile
@@ -155,7 +169,7 @@ const getUserProfile = catchAsyncError(async (req, res, next) => {
 const updateUserProfile = catchAsyncError(async (req, res, next) => {
   const user = await User.findById(req.user._id);
   const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
-    expiresIn: "7d",
+    expiresIn: "30d",
   });
 
   if (user) {
@@ -177,6 +191,230 @@ const updateUserProfile = catchAsyncError(async (req, res, next) => {
   }
 });
 
+// @desc    Get single profile
+// @route   Get /api/users/:id
+// @access  Private
+const getUserById = catchAsyncError(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+  console.log(user);
+
+  if (user) {
+    res.json(user);
+  } else {
+    return next(new ErrorHandler("User not found", 400));
+  }
+});
+
+// @desc    Update user
+// @route   PUT /api/users/:id
+// @access  Private/Admin
+const updateUser = catchAsyncError(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+
+  if (user) {
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    user.isAdmin = req.body.isAdmin;
+
+    const updatedUser = await user.save();
+
+    res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+    });
+  } else {
+    return next(new ErrorHandler("User not found", 400));
+  }
+});
+
+// @desc    Delete user
+// @route   DELETE /api/users/:id
+// @access  Private/Admin
+const deleteUser = catchAsyncError(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+
+  if (user) {
+    await user.remove();
+    res.json({ message: "User removed" });
+  } else {
+    return next(new ErrorHandler("User not found", 400));
+  }
+});
+
+// @desc    Google signin
+// @route   POST /api/users/google
+// @access  Public
+const googleLogin = catchAsyncError(async (req, res, next) => {
+  const { tokenId } = req.body;
+  if (!tokenId)
+    return next(new ErrorHandler("you need to provide a token id", 400));
+
+  const verify = await client.verifyIdToken({
+    idToken: tokenId,
+    audience:
+      "779648521547-gjlsus2l9aud4kosqdtc5gu5icmumqlp.apps.googleusercontent.com", //google client_id
+  });
+  const { email_verified, email, name } = verify.payload;
+  // console.log(email); //google pop up selected email
+  // console.log("email_verified", email_verified); //return true / false
+
+  if (!email_verified)
+    return res.status(400).json({ msg: "Email verification failed." });
+
+  const user = await User.findOne({ email });
+
+  const password = email + "123456";
+  // const hashed_password = await bcrypt.hash(password, 12);
+
+  if (user && (await user.authenticate(password))) {
+    // const isMatch = await bcrypt.compare(password, user.hashed_password);
+    // if (!isMatch) return next(new ErrorHandler("password not match", 400));
+
+    const refresh_token = createRefreshToken({ id: user._id });
+
+    res.cookie("refreshtoken", refresh_token, {
+      httpOnly: true,
+      path: "/user/refresh_token",
+      secure: true,
+      maxAge: 180000,
+    });
+
+    return res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      token: refresh_token,
+    });
+  } else {
+    const newUser = new User({
+      name,
+      email,
+      password,
+    });
+
+    const userData = await newUser.save();
+
+    const refresh_token = createRefreshToken({ id: userData._id });
+
+    res.cookie("refreshtoken", refresh_token, {
+      httpOnly: true,
+      path: "/user/refresh_token",
+      secure: true,
+      maxAge: 180000,
+    });
+
+    res.json({
+      _id: userData._id,
+      name: userData.name,
+      email: userData.email,
+      isAdmin: userData.isAdmin,
+      token: refresh_token,
+    });
+  }
+});
+
+//user/facebook_login
+const facebookLogin = catchAsyncError(async (req, res, next) => {
+  const { accessToken, userID } = req.body;
+  //developers.facebook.com/docs/graph-api/overview/ -->versions curl -i X GET \
+  const URL = `https://graph.facebook.com/v2.9/${userID}/?fields=id,name,email,picture&access_token=${accessToken}`;
+
+  const data = await fetch(URL)
+    .then((res) => res.json())
+    .then((res) => {
+      return res;
+    });
+
+  const { email, name, picture } = data;
+
+  const password = email + "123456";
+  const hashed_password = await bcrypt.hash(password, 12);
+
+  const user = await User.findOne({ email });
+
+  if (user) {
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) return next(new ErrorHandler("Password is incorrect.", 400));
+
+    const refresh_token = createRefreshToken({ id: user._id });
+    res.cookie("refreshtoken", refresh_token, {
+      httpOnly: true,
+      path: "/user/refresh_token",
+      secure: true,
+      maxAge: 180000,
+    });
+
+    res.status(200).json({
+      message: "Login Successfull",
+      refreshToken: refresh_token,
+      data: {
+        name: user.name,
+        email: user.email,
+        avatar: user.avatar,
+        isAdmin: user.isAdmin,
+      },
+    });
+  } else {
+    const newUser = new Users({
+      name,
+      email,
+      password: passwordHash,
+      avatar: picture.data.url,
+    });
+
+    const fbUserData = await newUser.save();
+
+    const refresh_token = createRefreshToken({ id: newUser._id });
+    res.cookie("refreshtoken", refresh_token, {
+      httpOnly: true,
+      path: "/user/refresh_token",
+      secure: true,
+      maxAge: 180000,
+    });
+
+    res.status(200).json({
+      message: "Login Success",
+      refreshToken: refresh_token,
+      data: {
+        name: fbUserData.name,
+        email: fbUserData.email,
+        avatar: fbUserData.avatar,
+        isAdmin: fbUserData.isAdmin,
+      },
+    });
+  }
+});
+
+// function validateEmail(email) {
+//   const re =
+//     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+//   return re.test(email);
+// }
+
+// const createActivationToken = (payload) => {
+//   return jwt.sign(payload, process.env.ACTIVATION_TOKEN_SECRET, {
+//     expiresIn: "3m",
+//   });
+// };
+
+// const createAccessToken = (payload) => {
+//   // return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
+//   return jwt.sign(payload, "123456", {
+//     expiresIn: "3m",
+//   });
+// };
+
+function createRefreshToken(payload) {
+  //payload = user._id
+  // return jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, {
+  return jwt.sign(payload, process.env.JWT_SECRET, {
+    expiresIn: "30d",
+  });
+}
+
 module.exports = {
   signupUser,
   signinUser,
@@ -184,4 +422,9 @@ module.exports = {
   getUsers,
   updateUserProfile,
   getUserProfile,
+  getUserById,
+  updateUser,
+  deleteUser,
+  googleLogin,
+  hello
 };

@@ -13,7 +13,6 @@ const reviewSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-
 const productSchema = new mongoose.Schema(
   {
     user: {
@@ -23,7 +22,7 @@ const productSchema = new mongoose.Schema(
     files: {
       type: mongoose.Schema.Types.Mixed,
     },
-    newArrival: { type: Boolean },
+    newArrival: { type: Boolean, default: false },
     category: {
       type: String,
     },

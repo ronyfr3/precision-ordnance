@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import AdminSidebar from '../components/AdminSidebar'
 import AdminNavbar from '../components/AdminNavbar'
+import Loader from '../components/Loader'
 import classes from "./AdminDeliveryOrder.module.css";
 
 const AdminDeliveryOrder = ({ history }) => {
@@ -12,7 +13,7 @@ const AdminDeliveryOrder = ({ history }) => {
   const { orders } = useSelector((state) => state.orderReducer);
   const { userInfo } = useSelector((state) => state.userSignin);
 
-  const orderDelivered = orders.filter(order => order.isDelivered === true)
+  const orderDelivered = orders?.filter(order => order?.isDelivered === true)
 
   console.log(orderDelivered);
 
@@ -24,7 +25,8 @@ const AdminDeliveryOrder = ({ history }) => {
     setTimeout(() => setSpinner(false), 500);
   }, [location.pathname, userInfo, history]);
   return (
-    <section className={classes.adminDeliveryOrderSection}>
+    <>
+    {spinner ? <Loader /> : <section className={classes.adminDeliveryOrderSection}>
       <AdminSidebar />
       <div className={classes.adminDeliveryOrderRigth}>
         <AdminNavbar/>
@@ -73,7 +75,8 @@ const AdminDeliveryOrder = ({ history }) => {
       </div>
     </div>
       </div>
-    </section>
+    </section>}
+    </>
   );
 };
 

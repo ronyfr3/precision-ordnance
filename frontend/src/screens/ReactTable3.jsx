@@ -1,4 +1,5 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
+import axios from 'axios'
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -12,21 +13,26 @@ import { COLUMNS } from "./table/Columns3";
 import classes from './ReactTable2.module.css'
 
 const ReactTable3 = () => {
-  // const { orders } = useSelector((state) => state.orderReducer);
-  const { orders } = useSelector((state) => state.orderListMy);
+  const { userInfo } = useSelector((state) => state.userSignin);
+  // const { orders } = useSelector((state) => state.orderListMy);
+  const [falsyOrder,setFalsyOrder] = useState([])
 
-  let Order = [];
-  orders?.map((x) =>
-    Order.push({
-      id: x._id,
-      image: x.orderItems.find((x) => x.image).image,
-      product_name: x.orderItems[0].title,
-      price: x.orderItems[0].price,
-      status: x.isDelivered === true ? "Delivered" : "Processing",
-    })
-  );
+  console.log("falsyOrder", falsyOrder)
+
+  useEffect(() => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    axios
+      .get("/api/orders/myorders", config)
+      .then((res) => setFalsyOrder(res.data))
+      .then((err) => console.log(err));
+  }, []);
+
   const columns = useMemo(() => COLUMNS, []);
-  const data = useMemo(() => Order, [orders]);
+  const data = useMemo(() => falsyOrder, [falsyOrder]);
   //creating table instance
   const tableInstance = useTable(
     {
@@ -94,7 +100,7 @@ const ReactTable3 = () => {
                       {...cell.getCellProps()}
                       data-label={cell?.column?.Header}
                     >
-                      <Link to={`/admin/orderlist/${x.original.id}`}>
+                      <Link to={`/user-orders/${x?.original?._id}`}>
                         {cell.render("Cell")}
                       </Link>
                     </td>

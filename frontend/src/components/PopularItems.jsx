@@ -68,6 +68,7 @@ const PopularItems = () => {
                 </div>
                 <div className={classes.itemContainer}>
                   <div className={classes.left}>
+                    <p className={classes.category}>{product.category}</p>
                     <h5>{product?.productInfo?.title}</h5>
                     <p>${product?.productInfo?.price}</p>
                   </div>

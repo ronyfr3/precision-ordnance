@@ -15,7 +15,7 @@ import Slider from "react-slick";
 import { addToCart } from "../actions/cartActions";
 import {
   listProductDetails,
-  createProductReview,
+  // createProductReview,
 } from "../actions/productsAction";
 import Footer from "../components/Footer";
 // import SpecificationAndReviews from "../components/Product"
@@ -31,8 +31,6 @@ const ProductDetailsScreen = ({ match, history }) => {
   const [spinner, setSpinner] = useState(true);
   const { userInfo } = useSelector((state) => state.userSignin);
 
-  const [rating, setRating] = useState(0);
-  const [comment, setComment] = useState("");
   let slider1;
   let slider2;
   const [nav1, setNav1] = useState(null);
@@ -72,31 +70,19 @@ const ProductDetailsScreen = ({ match, history }) => {
     setTimeout(() => setSpinner(false), 500);
   }, []);
 
-  // request
-  // const reqObj = {
-  //   productName: productDetails?.product?.productInfo?.title,
-  //   brand: productDetails?.product?.brand,
-  //   category: productDetails?.product?.category,
-  //   price: productDetails?.product?.productInfo?.price,
-  // };
 
   let reqMessage = "Request Product";
   const handleRequest = () => {
-    axios
-      .post("/api/RequestStock", { reqMessage })
-      .then((res) => console.log(res.data));
+    if (!userInfo) {
+      history.push("/signin-signup");
+    } else {
+      axios
+        .post("/api/RequestStock", { reqMessage })
+        .then((res) => toast(res.data.message));
+    }
   };
 
-  // review section
-  const reviewObj = {
-    rating,
-    comment,
-  };
 
-  const handleReview = (e) => {
-    e.preventDefault();
-    dispatch(createProductReview(id, reviewObj));
-  };
   return (
     <>
       {spinner ? (
@@ -227,9 +213,6 @@ const ProductDetailsScreen = ({ match, history }) => {
                 <li>
                   <Link to="/">specification</Link>
                 </li>
-                <li>
-                  <Link to="/">reviews</Link>
-                </li>
               </ul>
               <div className={classes.specificationAndReviewsContent}>
                 <div className={classes.specificationAndReviewsLeft}>
@@ -241,62 +224,7 @@ const ProductDetailsScreen = ({ match, history }) => {
                     ))}
                   </ul>
                 </div>
-                <div>
-                  {product?.reviews?.length === 0 && (
-                    <p className={classes.noReviews}>No Reviews</p>
-                  )}
-                  <ul className={classes.productReview}>
-                    {product?.reviews?.map((review) => (
-                      <li key={review._id}>
-                        <p className={classes.name}>{review?.name}</p>
-                        {/* <p className={classes.rating}>{review.rating}</p> */}
-                        <Rating value={review.rating} />
-                        <p className={classes.date}>
-                          {review.createdAt.substring(0, 10)}
-                        </p>
-                        <p className={classes.comment}>{review.comment}</p>
-                      </li>
-                    ))}
-                  </ul>
-                  {userInfo ? (
-                    <form
-                      className={classes.reviewForm}
-                      onSubmit={handleReview}
-                    >
-                      <label htmlFor="">Rating</label>
-                      <select
-                        name="rating"
-                        value={rating}
-                        onChange={(e) => setRating(e.target.value)}
-                        id=""
-                      >
-                        <option value="">Select...</option>
-                        <option value="1">1- Poor</option>
-                        <option value="2">2- Fair</option>
-                        <option value="3">3- Good</option>
-                        <option value="4">4- Very Good</option>
-                        <option value="5">5- Excellent</option>
-                      </select>
-                      <label htmlFor="">Comment</label>
-                      <textarea
-                        name="comment"
-                        value={comment}
-                        onChange={(e) => setComment(e.target.value)}
-                        id=""
-                        cols="30"
-                        rows="10"
-                      ></textarea>
-                      <button className={classes.submitBtn} type="submit">
-                        Submit
-                      </button>
-                    </form>
-                  ) : (
-                    <p className={classes.noUser}>
-                      Please <Link to="/signin-signup">sign in</Link> to write a
-                      review{" "}
-                    </p>
-                  )}
-                </div>
+                
               </div>
               <p>{product?.productInfo?.longdescription}</p>
             </div>

@@ -1,0 +1,22 @@
+.emptyCartWrapper {
+  min-height: 30vh;
+  text-align: center;
+}
+
+.emptyCartWrapper h3 {
+  color: #192129;
+  margin-top: 3rem;
+  font-weight: 600;
+}
+
+.emptyCartWrapper a {
+  text-decoration: none;
+  display: inline-block;
+  color: #192129;
+  background-color: #5AFE3D;
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  margin-top: 2rem;
+  font-weight: 400;
+  border-radius: 3px;
+}

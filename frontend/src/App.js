@@ -17,7 +17,6 @@ import CategoryScreen from "./screens/CategoryScreen";
 import ShoppingCartScreen from "./screens/ShoppingCartScreen";
 import SigninSignupScreen from "./screens/SigninSignupScreen";
 import UserProfileScreen from "./screens/UserProfileScreen";
-import { allOrders } from "./actions/orderActions";
 import AdminOrderDetailsScreen from "./screens/AdminOrderDetailsScreen";
 import OrderSuccessScreen from "./screens/OrderSuccessScreen";
 import SubcategoryScreen from "./screens/SubcategoryScreen";
@@ -30,13 +29,19 @@ import GalleryScreen from "./screens/GalleryScreen";
 import { listGalleries } from "./actions/galleryActions";
 import SearchScreen from "./screens/SearchScreen";
 import AdminDeliveryOrder from "./screens/AdminDeliveryOrder";
+import UserOrderDetailsScreen from "./screens/UserOrderDetailsScreen";
+import AdminAllUsersScreen from "./screens/AdminUserListScreen";
+import AdminUserUpdateSeceen from "./screens/AdminUserUpdateSeceen";
+import { allOrders } from "./actions/orderActions";
+import { listUsers } from './actions/userActions'
 
-const App = ({ match }) => {
+const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(allOrders())
+    dispatch(listUsers())
     dispatch(listProducts());
-    dispatch(listGalleries())
-    dispatch(allOrders());
+    dispatch(listGalleries());
   }, [dispatch]);
 
   const [pathlocation, setPathlocation] = useState();
@@ -47,13 +52,13 @@ const App = ({ match }) => {
 
   return (
     <>
-    {
-      pathlocation===location.pathname? "" : <Header />
-    }
+      {pathlocation === location.pathname ? "" : <Header />}
       <Switch>
         <Route path="/admin/dashboard" component={AdminDashboardScreen} />
         <Route path="/admin/gallery" component={AdminGalleryScreen} />
         <Route path="/admin/settings" component={AdminSettingsScreen} />
+        <Route exact path="/admin/userlist" component={AdminAllUsersScreen} />
+        <Route exact path="/admin/userlist/:id" component={AdminUserUpdateSeceen} />
         <Route
           exact
           path="/admin/productlist"
@@ -78,10 +83,8 @@ const App = ({ match }) => {
           path="/admin/productupdate/:id"
           component={AdminProductUpdateScreen}
         />
-        <Route
-          path="/admin/delivery"
-          component={AdminDeliveryOrder}
-        />
+        <Route path="/admin/delivery" component={AdminDeliveryOrder} />
+        <Route path="/user-orders/:id" component={UserOrderDetailsScreen} />
         <Route path="/gallery" component={GalleryScreen} />
         <Route path="/order" component={OrderSuccessScreen} />
         <Route path="/profile" component={UserProfileScreen} />

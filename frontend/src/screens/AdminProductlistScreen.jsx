@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from 'react-redux'
+import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import ReactTable from "./ReactTable";
 import AdminSidebar from "../components/AdminSidebar";
@@ -9,15 +9,16 @@ import Loader from "../components/Loader";
 
 const AdminProductlist = ({ history }) => {
   const [spinner, setSpinner] = useState(true);
-  const  {userInfo}  = useSelector((state) => state.userSignin)
+  const { userInfo } = useSelector((state) => state.userSignin);
   let location = useLocation();
-  useEffect(() => {
-    if (!userInfo || !userInfo.isAdmin) {
-      history.push("/")
-    }
+
+  if (!userInfo || !userInfo.isAdmin) {
+    history.push("/");
+  } else {
     localStorage.setItem("path", location.pathname);
     setTimeout(() => setSpinner(false), 500);
-  }, [location, history, userInfo]);
+  }
+
   return (
     <>
       {spinner ? (

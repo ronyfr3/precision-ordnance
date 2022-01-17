@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import AdminNavbar from "../components/AdminNavbar";
 import AdminSidebar from "../components/AdminSidebar";
 import classes from "./AdminDashboardScreen.module.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ApexCharts from "./charts/ApexCharts";
 import { useLocation } from "react-router-dom";
 import Loader from "../components/Loader";
@@ -12,8 +12,12 @@ const AdminDashboardScreen = ({ history }) => {
 
   const { userInfo } = useSelector((state) => state.userSignin);
   const { orders } = useSelector((state) => state.orderReducer);
-  console.log(orders);
   const state = useSelector((state) => state);
+
+  const dispatch = useDispatch()
+
+  const processingOrders = orders?.filter(order => order.isDelivered === false)
+
   // console.log(state.orderReducer.orders);
   let sum = 0;
   for (let i = 0; i < state?.orderReducer?.orders?.length; i++) {
@@ -100,7 +104,7 @@ const AdminDashboardScreen = ({ history }) => {
                     <th>Status</th>
                   </tr>
 
-                  {orders?.map((order) => (
+                  {processingOrders?.map((order) => (
                     <tr key={order._id}>
                       <td className={classes.cheakboxAllign}>
                         <input type="checkbox" />

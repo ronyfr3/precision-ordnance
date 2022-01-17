@@ -27,9 +27,9 @@ const OrderSuccessScreen = () => {
                   confirm the order. Thank you so much for your generosity, have
                   a great day.
                 </p>
-                <Link className={classes.orderBtn} to="/">
+                <a href="/" className={classes.orderBtn}>
                   <i className="fas fa-arrow-left"></i> Back to Website
-                </Link>
+                </a>
               </div>
             </div>
           </div>

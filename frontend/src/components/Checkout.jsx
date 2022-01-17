@@ -15,9 +15,8 @@ const Checkout = ({ history }) => {
   // const tax =
   const totalItems = cartItems.reduce((a, c) => a + c.qty, 0);
   const [val, setval] = useState({
-    first_name: "",
-    last_name: "",
-    email: "",
+    first_name: userInfo?.name,
+    email: userInfo?.email,
     mobile: "",
     address: "",
     postcode: "",
@@ -58,16 +57,15 @@ const Checkout = ({ history }) => {
   };
 
   useEffect(() => {
-    if (!userInfo) {
+    if (!userInfo?._id) {
       history.push("/signin-signup");
     }
   }, [userInfo, history]);
 
   const orderData = {
-    user: userInfo._id,
+    user: userInfo?._id,
     userInfo: {
       first_name: val.first_name,
-      last_name: val.last_name,
       email: val.email,
       mobile: val.mobile,
     },
@@ -220,16 +218,6 @@ const Checkout = ({ history }) => {
                     required
                   />
                 </div>
-                <div className={classes.lastName}>
-                  <input
-                    placeholder="Last name"
-                    type="text"
-                    name="last_name"
-                    value={val.last_name}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
               </div>
               <div>
                 <input
@@ -310,6 +298,8 @@ const Checkout = ({ history }) => {
                 <option value="Tasmania">Tasmania</option>
                 <option value="Victoria">Victoria</option>
                 <option value="Western Australia">Western Australia</option>
+                <option value="Northern Territory">Northern Territory</option>
+                <option value="Australian Capital Territory">Australian Capital Territory</option>
               </select>
               {/* <div className={classes.saveAs}>
                 <input type="checkbox" /> <span>Save as default address</span>

@@ -21,19 +21,6 @@ const AdminProductDetailsScreen = ({ match, history }) => {
       history.push("/")
     } else {
       dispatch(listProductDetails(productId));
-      // if (!product.name || product._id !== productId) {
-        
-      // } else {
-      //   setName(product.name);
-      //   setNumOfReviews(product.numOfReviews);
-      //   setPriceNew(product.priceNew);
-      //   setPriceOld(product.priceOld);
-      //   setCountInStock(product.countInStock);
-      //   setImage(product.image);
-      //   setDescription(product.description);
-      //   setCoreCategory(product.coreCategory);
-      //   setCategory(product.category);
-      // }
     }
     localStorage.setItem("path", location.pathname);
     setTimeout(() => setSpinner(false), 500);

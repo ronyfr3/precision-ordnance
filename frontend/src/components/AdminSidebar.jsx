@@ -5,8 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import classes from "./AdminSidebar.module.css";
 
 const AdminSidebar = () => {
-
-  const { userInfo } = useSelector(state => state.userSignin)
+  const { userInfo } = useSelector((state) => state.userSignin);
 
   return (
     <section className={classes.adminSidebarSection}>
@@ -24,9 +23,9 @@ const AdminSidebar = () => {
             </NavLink>
           </li>
           <li>
-            <i className="fas fa-shopping-cart"></i>
-            <NavLink activeClassName={classes.active} to="/admin/orderlist">
-              ORDERS
+            <i className="fas fa-users"></i>
+            <NavLink activeClassName={classes.active} to="/admin/userlist">
+              Users
             </NavLink>
           </li>
           <li>
@@ -36,9 +35,16 @@ const AdminSidebar = () => {
             </NavLink>
           </li>
           <li>
-          <i className="fas fa-truck"></i>
+            <i className="fas fa-shopping-cart"></i>
+            <NavLink activeClassName={classes.active} to="/admin/orderlist">
+              ORDERS
+            </NavLink>
+          </li>
+
+          <li>
+            <i className="fas fa-truck"></i>
             <NavLink activeClassName={classes.active} to="/admin/delivery">
-              Delivered
+              Dispatch
             </NavLink>
           </li>
           <li>

@@ -178,6 +178,10 @@
   font-size: 1.4rem;
 } */
 
+.emptyCartWrapper h3 {
+  color: green;
+}
+
 .footerBottomContent img {
   width: 2rem;
   height: 2rem;
