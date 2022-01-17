@@ -156,12 +156,8 @@ const getUserProfile = catchAsyncError(async (req, res, next) => {
   } else {
     return next(new ErrorHandler("User not found", 400));
   }
-  res.send("pass")
+  res.send("pass");
 });
-
-const hello = (async (req, res) => {
-  res.send("hello")
-})
 
 // @desc    Update user profile
 // @route   PUT /api/users/profile
@@ -209,24 +205,34 @@ const getUserById = catchAsyncError(async (req, res, next) => {
 // @route   PUT /api/users/:id
 // @access  Private/Admin
 const updateUser = catchAsyncError(async (req, res, next) => {
-  const user = await User.findById(req.params.id);
-
-  if (user) {
-    user.name = req.body.name || user.name;
-    user.email = req.body.email || user.email;
-    user.isAdmin = req.body.isAdmin;
-
-    const updatedUser = await user.save();
-
-    res.json({
-      _id: updatedUser._id,
-      name: updatedUser.name,
-      email: updatedUser.email,
-      isAdmin: updatedUser.isAdmin,
+  const id = req.params.id;
+  //without await it works as expexted
+  //no need to use upsert:true , if user not found it will create a new one
+  User.findByIdAndUpdate(id, req.body, {
+    new: true
+  })
+    .then((data) => {
+      if (!data) {
+        return next(
+          new ErrorHandler(
+            `Failed to update user with id=${id}.`,
+            400
+          )
+        );
+      } else
+        res.status(200).json({
+          data,
+          message: "user was updated successfully.",
+        });
+    })
+    .catch((err) => {
+      return next(
+        new ErrorHandler(
+          `Error occured while updating user with id=${id}.`,
+          500
+        )
+      );
     });
-  } else {
-    return next(new ErrorHandler("User not found", 400));
-  }
 });
 
 // @desc    Delete user
@@ -426,5 +432,4 @@ module.exports = {
   updateUser,
   deleteUser,
   googleLogin,
-  hello
 };

@@ -53,16 +53,36 @@ const router = express.Router();
 //   .get(protect, getUserProfile)
 //   .put(protect, updateUserProfile);
 // router.route("/account-activation").post(activateUser);
-router
-  .route("/")
-  .post(userRegisterValidation, runValidation, signupUser)
-  .get(protect, admin, getUsers);
-router.route("/signin").post(userSigninValidation, runValidation, signinUser);
-router
-  .route("/profile")
-  .get(protect, getUserProfile)
-  .put(protect, updateUserProfile);
+// router
+//   .route("/")
+//   .post(userRegisterValidation, runValidation, signupUser)
+//   .get(protect, admin, getUsers);
+// router.route("/signin").post(userSigninValidation, runValidation, signinUser);
+// router
+//   .route("/profile")
+//   .get(protect, getUserProfile)
+//   .put(protect, updateUserProfile);
+// router.post("/google", googleLogin);
+// router.route("/account-activation").post(activateUser);
+
+
+// router.get("/", protect, admin, getUsers);
+// router.post("/", userRegisterValidation, runValidation, signupUser);
+
+router.post("/signup", userRegisterValidation, runValidation, signupUser);
+router.post("/signin", userRegisterValidation, runValidation, signinUser);
+router.post("/account-activation", activateUser);
+
+router.get("/userlist",protect, admin, getUsers);
+router.put("/profile", protect, updateUserProfile);
+router.get("/profile", protect, getUserProfile);
+// router.patch("/profile", protect, updateUserProfile);
+
+
+router.get("/userlist/:id",protect, admin, getUserById);
+router.patch("/userlist/:id",protect, updateUser);
+router.delete("userlist/:id",protect, admin, deleteUser);
+
 router.post("/google", googleLogin);
-router.route("/account-activation").post(activateUser);
 
 module.exports = router;
