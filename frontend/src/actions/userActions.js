@@ -77,7 +77,7 @@ export const signup = (name, email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/users",
+      "/api/users/signup",
       { name, email, password },
       config
     );
@@ -194,7 +194,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/users/${id}`, config);
+    const { data } = await axios.get(`/api/users/userlist/${id}`, config);
 
 
     dispatch({
@@ -251,7 +251,6 @@ export const logout = () => async (dispatch) => {
   dispatch({ type: USER_LOGOUT });
 };
 
-
 export const listUsers = () => async (dispatch, getState) => {
   try {
     dispatch({
@@ -268,7 +267,7 @@ export const listUsers = () => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`/api/users`, config)
+    const { data } = await axios.get(`/api/users/userlist`, config)
 
     dispatch({
       type: USER_LIST_SUCCESS,
@@ -307,7 +306,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
     //   },
     // }
 
-    const { data } = await axios.put(`/api/users/${user.id}`, user,)
+    const { data } = await axios.put(`/api/users/userlist/${user.id}`, user,)
 
     dispatch({ type: USER_UPDATE_SUCCESS })
 
